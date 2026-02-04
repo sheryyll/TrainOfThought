@@ -1,0 +1,197 @@
+STATISTICS
+
+Statistics is a field that deals with the collection, organization, interpretation,
+analysis, and presentation of data.
+
+Statistics helps in decision-making by analyzing data and drawing meaningful
+conclusions from data.
+
+
+APPLICATIONS OF STATISTICS
+
+Statistics is used in almost every domain and field, including:
+
+- Day-to-day activities
+- Machine Learning
+- Data Analysis
+- Business Analysis
+- Risk Analysis
+- Healthcare
+- Education
+- Government and policy making
+
+Example:
+- Finding the feasibility and effectiveness of vaccination programs
+
+
+---------------------------------------------------------------------
+
+TYPES OF STATISTICS
+
+
+1. DESCRIPTIVE STATISTICS
+
+Descriptive statistics focuses on organizing, summarizing, and presenting data
+in a meaningful way.
+
+Examples:
+
+Measures of Central Tendency:
+- Mean
+- Median
+- Mode
+
+Measures of Dispersion:
+- Variance
+- Standard Deviation
+
+
+2. INFERENTIAL STATISTICS
+
+Inferential statistics uses data from a sample to make conclusions or predictions
+about a larger population.
+
+Examples:
+- Hypothesis testing
+- Confidence intervals
+- Regression analysis
+
+
+---------------------------------------------------------------------
+
+POPULATION AND SAMPLE
+
+
+Population:
+The population refers to the entire group of individuals, objects, or data that we
+want to study.
+
+Examples:
+- All citizens of a country
+- All students in a university
+- All manufactured items in a factory
+
+
+Sample:
+A sample is a smaller subset selected from the population to represent the entire
+population.
+
+Examples:
+- A group of 500 voters selected from a city
+- 50 students chosen from a class of 500 students
+
+
+Relationship between Population and Sample:
+- Population → Entire data set
+- Sample → Part of the population
+- Conclusions about the population are drawn using sample data
+
+
+---------------------------------------------------------------------
+
+MEASURES OF CENTRAL TENDENCY
+
+
+1. MEAN
+
+- Mean of a population refers to the average of the population.
+
+- Population Mean:
+  Population mean is denoted by μ and is given by:
+  μ = (ΣX) / N
+
+  Where:
+  ΣX = sum of all population values
+  N  = total number of values in the population
+
+- Sample Mean:
+  Sample mean is denoted by x̄ and is given by:
+  x̄ = (Σx) / n
+
+  Where:
+  Σx = sum of all sample values
+  n  = total number of values in the sample
+
+
+2. MEDIAN
+
+- Median is the middle value of a dataset when the data is arranged
+  in ascending or descending order.
+
+- If the number of observations (n) is odd:
+  Median = value of the (n + 1) / 2 th observation
+
+- If the number of observations (n) is even:
+  Median = average of the (n / 2) th and (n / 2 + 1) th observations
+
+
+3. MODE
+
+- Mode is the value that occurs most frequently in a dataset.
+
+- A dataset may have:
+  • One mode (Unimodal)
+  • Two modes (Bimodal)
+  • More than two modes (Multimodal)
+  • No mode (if all values occur with the same frequency)
+
+
+---------------------------------------------------------------------
+
+MEASURES OF DISPERSION
+
+Measures of dispersion describe how spread out or scattered the data values
+are around a central value.
+
+
+1. RANGE
+
+- Range is the difference between the maximum and minimum values in a dataset.
+
+- Formula:
+  Range = Maximum value − Minimum value
+
+
+2. VARIANCE
+
+- Variance measures the average of the squared deviations from the mean.
+- It shows how far the data values are spread from the mean.
+
+
+- Population Variance:
+  Population variance is denoted by σ² and is given by:
+  σ² = (Σ (X − μ)²) / N
+
+  Where:
+  X  = each population value
+  μ  = population mean
+  N  = total number of population values
+
+
+- Sample Variance:
+  Sample variance is denoted by s² and is given by:
+  s² = (Σ (x − x̄)²) / (n − 1)
+
+  Where:
+  x  = each sample value
+  x̄ = sample mean
+  n  = total number of sample values
+
+
+3. STANDARD DEVIATION
+
+- Standard deviation is the square root of variance.
+- It measures the average distance of data values from the mean.
+
+
+- Population Standard Deviation:
+  Population standard deviation is denoted by σ and is given by:
+  σ = √[(Σ (X − μ)²) / N]
+
+
+- Sample Standard Deviation:
+  Sample standard deviation is denoted by s and is given by:
+  s = √[(Σ (x − x̄)²) / (n − 1)]
+
+
+---------------------------------------------------------------------
