@@ -195,3 +195,262 @@ are around a central value.
 
 
 ---------------------------------------------------------------------
+
+BASAL CORRECTION
+
+- Basal correction is used while calculating sample variance.
+
+- Sample variance is calculated by:
+    s² = Σ(x − x̄)² / (n − 1)
+- Dividing by (n − 1) instead of n avoids underestimation
+  of the population variance.
+- Degree of Freedom (DF): n - 1
+
+
+---------------------------------------------------------------------
+
+VARIABLE
+
+- A variable is a property or characteristic that can take different values.
+- Example:
+    Age = 25
+    Gender = Male
+
+
+TYPES OF VARIABLES
+
+1. Quantitative Variable:
+   - Variables that can be measured numerically.
+
+   a. Discrete Quantitative Variable:
+      - Takes only whole number values.
+      - Example: Number of students, Number of cars
+
+   b. Continuous Quantitative Variable:
+      - Can take any value within a range.
+      - Example: Height, Weight, Temperature
+
+
+2. Qualitative / Categorical Variable:
+   - Variables that describe qualities or categories.
+   - Example: Gender, Blood group, Color
+
+
+---------------------------------------------------------------------
+
+RANDOM VARIABLE:
+
+   - A variable whose value depends on the outcome of a random experiment.
+   - It is usually represented by a capital letter (X, Y).
+   - Example:
+       X = Number of heads obtained when a coin is tossed
+  
+TYPES OF RANDOM VARIABLES
+
+1. Discrete Random Variable:
+   - Takes only countable values.
+   - Usually obtained by counting.
+   - Example:
+       X = Number of heads in 3 coin tosses
+
+2. Continuous Random Variable:
+   - Takes any value within a given range.
+   - Usually obtained by measurement.
+   - Example:
+       X = Height of students
+
+
+---------------------------------------------------------------------
+
+HISTOGRAM
+
+- A histogram is a graphical representation of a frequency distribution
+  of a continuous variable.
+
+- In a histogram:
+  • The horizontal axis (X-axis) represents class intervals.
+  • The vertical axis (Y-axis) represents frequencies.
+
+- Rectangular bars are drawn for each class interval.
+
+- The bars in a histogram:
+  • Have no gaps between them.
+  • Touch each other because the data is continuous.
+
+- The width of each bar represents the class interval,
+  and the height represents the frequency.
+
+
+EXAMPLE
+
+Class Interval     Frequency
+0 – 10                 5
+10 – 20                9
+20 – 30                6
+30 – 40                4
+
+- On the X-axis, take the class intervals.
+- On the Y-axis, take the frequencies.
+- Draw rectangles for each class interval.
+
+
+---------------------------------------------------------------------
+
+PROBABILITY DENSITY FUNCTION (PDF) FROM HISTOGRAM
+
+- A probability density function represents the probability distribution
+  of a continuous random variable.
+
+- A histogram can be converted into a probability density function.
+
+- To obtain a PDF from a histogram:
+  • Divide the frequency of each class interval by
+    (total number of observations × class width).
+
+- After this conversion:
+  • The total area under the histogram becomes 1.
+  • The height of each bar represents probability density.
+
+- Probability density is given by:
+
+    Probability Density = Frequency / (Total Frequency × Class Width)
+
+- The histogram obtained after this conversion is called
+  a probability density histogram.
+
+
+---------------------------------------------------------------------
+
+PERCENTILES AND QUARTILES
+
+- Percentiles and quartiles are measures of position.
+- They divide a data set into equal parts.
+
+
+QUARTILES
+
+- Quartiles divide the data into four equal parts.
+
+- Important values in quartile representation:
+
+  • Minimum             : Smallest value in the data set
+  • Q1 (1st Quartile)   : 25% of the data lies below Q1
+  • Q2 (Median)        : 50% of the data lies below Q2
+  • Q3 (3rd Quartile)  : 75% of the data lies below Q3
+  • Maximum             : Largest value in the data set
+
+
+QUARTILE FORMULAS
+
+For Ungrouped Data:
+
+- Position of quartiles:
+
+    Q1 = (n + 1) / 4
+    Q2 = (n + 1) / 2
+    Q3 = 3(n + 1) / 4
+
+  where,
+    n = total number of observations
+
+
+For Grouped Data:
+
+- Quartile formula:
+
+    Qk = L + [ ( (kN / 4) − cf ) / f ] × h
+
+  where,
+    k  = 1, 2, or 3
+    L  = lower limit of the quartile class
+    N  = total frequency
+    cf = cumulative frequency of the class preceding
+         the quartile class
+    f  = frequency of the quartile class
+    h  = class width
+
+
+INTERQUARTILE RANGE (IQR)
+
+- Interquartile Range measures the spread of the middle 50% of the data.
+
+- It is defined as:
+
+    IQR = Q3 − Q1
+
+- IQR is less affected by extreme values (outliers).
+
+
+LOWER FENCE AND UPPER FENCE
+
+- Lower and upper fences are used to identify outliers.
+
+- Formulas:
+
+    Lower Fence (LF) = Q1 − 1.5 × IQR
+    Upper Fence (UF) = Q3 + 1.5 × IQR
+
+- Any value less than LF is a lower outlier.
+- Any value greater than UF is an upper outlier.
+
+
+PERCENTILES
+
+- Percentiles divide the data into 100 equal parts.
+
+- The kᵗʰ percentile (Pk) is the value below which
+  k% of the observations lie.
+
+- Example:
+    P25 = First quartile (Q1)
+    P50 = Median (Q2)
+    P75 = Third quartile (Q3)
+
+
+---------------------------------------------------------------------
+
+COVARIANCE AND CORRELATION
+
+- Covariance and correlation are measures of the relationship
+  between two variables.
+
+
+COVARIANCE
+
+- Covariance indicates the direction of the relationship
+  between two variables.
+
+- If covariance is:
+  • Positive → variables increase together
+  • Negative → one variable increases while the other decreases
+  • Zero     → no linear relationship
+
+- Formula for covariance:
+
+  For population:
+
+    Cov(X, Y) = Σ[(X − μx)(Y − μy)] / N
+
+  For sample:
+
+    Cov(X, Y) = Σ[(X − x̄)(Y − ȳ)] / (n − 1)
+
+
+CORRELATION
+
+- Correlation measures both the direction and strength
+  of the relationship between two variables.
+
+- Correlation coefficient is denoted by r.
+
+- Value of r lies between −1 and +1.
+
+  • r = +1 → Perfect positive correlation
+  • r = −1 → Perfect negative correlation
+  • r = 0  → No linear correlation
+
+- Formula for correlation coefficient:
+
+    r = Cov(X, Y) / (σx σy)
+
+- Correlation is independent of change of origin and scale.
