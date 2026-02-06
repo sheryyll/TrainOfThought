@@ -419,6 +419,7 @@ COVARIANCE
 
 - Covariance indicates the direction of the relationship
   between two variables.
+- Covariance is the meausre of how much two random variables change together.
 
 - If covariance is:
   • Positive → variables increase together
@@ -434,6 +435,14 @@ COVARIANCE
   For sample:
 
     Cov(X, Y) = Σ[(X − x̄)(Y − ȳ)] / (n − 1)
+
+  Advantages: 
+    - Quantify the relationship between x and y.
+  
+  Disadvantages:
+    - Covariance does not have a fixed or specific range of values.
+      Therefore, it is not meaningful to directly compare covariances, such as
+      cov(A, B) > cov(B, C), in a reliable way.
 
 
 CORRELATION
@@ -454,3 +463,44 @@ CORRELATION
     r = Cov(X, Y) / (σx σy)
 
 - Correlation is independent of change of origin and scale.
+
+TYPES OF CORRELATION
+
+1. PEARSON CORRELATION
+
+- Pearson correlation limits the vlaues between -1 to +1.
+- It is based on actual data values.
+- The closer the value of r is to +1, the stronger the positive correlation
+  between variables X and Y.
+- The closer the value of r is to −1, the stronger the negative correlation
+  between variables X and Y.
+
+- Pearson correlation coefficient is given by:
+
+    r = Cov(X, Y) / (σx σy)
+
+- It assumes:
+  • Linear relationship
+  • Data is normally distributed
+
+
+2. SPEARMAN RANK CORRELATION
+
+- Spearman correlation measures the relationship
+  between the ranks of two variables.
+
+- It is a non-parametric measure of correlation.
+
+- It is used when data is not normally distributed
+  or when data is in ordinal form.
+
+- Spearman rank correlation coefficient is given by:
+
+    r = 1 − [ (6 Σd²) / (n (n² − 1)) ]
+
+  Where:
+  d = difference between ranks
+  n = number of observations
+
+  Usage in real-world scenarios:
+  - Feature selection 
