@@ -1,0 +1,82 @@
+PROBABILITY
+
+- Probability deals with determining the likelihood of occurrence of an event.
+
+- Example:
+  Likelihood of getting a head when a coin is tossed.
+  P(H) = 1 / 2
+
+
+---------------------------------------------------------------------
+
+MUTUALLY EXCLUSIVE EVENTS
+
+- Two events are said to be mutually exclusive if they cannot occur
+  at the same time.
+
+- Example:
+  Appearance of head and tail in a single toss of a coin.
+
+
+ADDITION RULE FOR MUTUALLY EXCLUSIVE EVENTS
+
+P(H or T) = P(H) + P(T)
+
+
+---------------------------------------------------------------------
+
+NON-MUTUALLY EXCLUSIVE EVENTS
+
+- Two events are said to be non-mutually exclusive if they can occur
+  at the same time.
+
+- Example:
+  Probability of drawing a King card or a Heart card from a deck of cards.
+
+
+ADDITION RULE FOR NON-MUTUALLY EXCLUSIVE EVENTS
+
+P(K or H) = P(K) + P(H) − P(K and H)
+
+          = (4 / 52) + (13 / 52) − (1 / 52)
+
+          = 16 / 52
+
+
+---------------------------------------------------------------------
+
+MULTIPLICATION RULE
+
+
+INDEPENDENT EVENTS
+
+- Two events are said to be independent if the occurrence of one event
+  does not affect the occurrence of the other.
+
+- Example:
+  Tossing a coin twice. The occurrence of Head in the first toss does not
+  affect the occurrence of Tail in the second toss.
+
+- Multiplication Rule for Independent Events:
+
+  P(H and T) = P(H) × P(T)
+             = (1 / 2) × (1 / 2)
+             = 1 / 4
+
+
+
+DEPENDENT EVENTS
+
+- Two events are said to be dependent if the occurrence of one event
+  affects the occurrence of the other.
+
+- Example:
+  Drawing a King from a deck of cards and then drawing a Queen
+  without replacement.
+
+- Multiplication Rule for Dependent Events:
+
+  P(K and Q) = P(K) × P(Q | K)
+             = (4 / 52) × (4 / 51)
+
+- Here, P(Q | K) represents conditional probability.
