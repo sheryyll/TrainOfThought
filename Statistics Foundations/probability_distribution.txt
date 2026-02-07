@@ -22,15 +22,22 @@ TYPES OF PROBABILITY DISTRIBUTION FUNCTIONS
 - It gives the probability that a discrete random variable X
   takes a specific value x.
 
+- Properties of PMF:
+  • 0 ≤ P(X = x) ≤ 1
+  • Σ P(X = x) = 1 (sum over all possible values)
+
 - Example:
   Rolling a fair die.
 
-  P(X = 1) = P(X = 2) = P(X = 3) = P(X = 4) = P(X = 5) = P(X = 6) = 1 / 6
+  P(X = 1) = P(X = 2) = P(X = 3) =
+  P(X = 4) = P(X = 5) = P(X = 6) = 1/6
 
 - In the graph:
   x-axis represents the possible values {1, 2, 3, 4, 5, 6}
   y-axis represents the corresponding probabilities {1/6}
 
+
+---------------------------------------------------------------------
 
 2. PROBABILITY DENSITY FUNCTION (PDF)
 
@@ -49,7 +56,6 @@ TYPES OF PROBABILITY DISTRIBUTION FUNCTIONS
   P(a ≤ X ≤ b) = ∫[a to b] f(x) dx
 
 
-
 PDF PROPERTIES
 
 - Non-negativity:
@@ -58,7 +64,7 @@ PDF PROPERTIES
 - Total area under the PDF curve is equal to 1:
   ∫[−∞ to +∞] f(x) dx = 1
 
-- The form of f(x) changes with different probability distributions.
+- The shape of f(x) depends on the type of distribution.
 
 
 ---------------------------------------------------------------------
@@ -71,10 +77,17 @@ CUMULATIVE DISTRIBUTION FUNCTION (CDF)
 - It is obtained by accumulating probabilities as we move
   from left to right along the x-axis.
 
-- In the graph (discrete case):
-  x-axis represents the values {1, 2, 3, 4, 5, 6}
-  y-axis represents cumulative probabilities
-  {1/6, 2/6, 3/6, 4/6, 5/6, 1}
+- CDF is denoted by:
+  F(x)
+
+- Definition:
+  F(x) = P(X ≤ x)
+
+- Range of CDF:
+  0 ≤ F(x) ≤ 1
+
+- In the discrete case:
+  CDF is a step function.
 
 - Example (discrete):
   P(X ≤ 2) = P(X = 1) + P(X = 2)
@@ -84,27 +97,15 @@ CUMULATIVE DISTRIBUTION FUNCTION (CDF)
 
 RELATION BETWEEN PDF AND CDF
 
-- Cumulative Distribution Function (CDF) is denoted by:
-  F(x)
+- CDF is the integral of PDF:
+  F(x) = ∫[−∞ to x] f(t) dt
 
-- CDF is defined as:
-  F(x) = P(X ≤ x)
-
-- Range of CDF:
-  0 ≤ F(x) ≤ 1
-
-- The graph of CDF generally takes an S-shape.
-
-- Relation between PDF and CDF:
+- PDF is the derivative of CDF:
   f(x) = dF(x) / dx
-  (PDF is the derivative or gradient of the CDF)
 
-- To calculate PDF from CDF:
-  f(x) = slope of the CDF curve
-
-- Slope formula:
-  slope = (F(x2) − F(x1)) / (x2 − x1)
-
+- Interpretation:
+  • CDF gives accumulated probability
+  • PDF gives density (rate of change of probability)
 
 - Example:
   P(X ≤ 40) = area under the PDF curve up to x = 40
@@ -112,21 +113,85 @@ RELATION BETWEEN PDF AND CDF
 
 ---------------------------------------------------------------------
 
-TYPES OD PROBABILITY DISTRIBUTION
-
-1. Bernouli Distribution: outcomes will be binary (PMF)
-
-- It is the simplest discrete probability distribution.
-- It represents the probability of a random variable that
-  has exactly two possible outcomes : success (p) and failure ( 1-p)
-- It id used to model binary outcomes, such as a coin flip or yes/no question.
+TYPES OF PROBABILITY DISTRIBUTIONS
 
 
+1. BERNOULLI DISTRIBUTION (PMF)
+
+- Bernoulli Distribution is the simplest discrete probability distribution.
+- It models experiments with exactly two possible outcomes:
+  success and failure.
+
+- Parameters:
+  p = P(success), where 0 ≤ p ≤ 1
+  q = 1 − p
+  k ∈ {0, 1}
+
+- Probability Mass Function (PMF):
+  P(X = k) = p^k (1 − p)^(1 − k)
+
+  If k = 1 (success): P(X = 1) = p  
+  If k = 0 (failure): P(X = 0) = 1 − p
 
 
-2. Binomial Distribution: (pmf)
-3. Normal / Gaussian Distribution: (pdf) (bell curve)
-4. Poisson Distribution : (pmf)
-5. Log Normal Distribution: (pdf)
-6. Uniform Distribution: (pmf)
+- Examples:
+  • Tossing a fair coin:
+    P(H) = 0.5, P(T) = 0.5
+  • Pass/Fail exam:
+    P(pass) = 0.4, P(fail) = 0.6
 
+
+MEASURES OF CENTRAL TENDENCY
+
+- Mean of Bernoulli Distribution:
+  • E(X) = Σ k · P(X = k),  k ∈ {0, 1}
+  • E(X) = 0·(1 − p) + 1·p = p
+
+- Median of Bernoulli Distribution:
+  • If p < 1/2, Median = 0
+  • If p = 1/2, Median ∈ [0, 1]
+  • If p > 1/2, Median = 1
+
+- Mode of Bernoulli Distribution:
+  • If p > q, Mode = 1
+  • If p < q, Mode = 0
+  • If p = q, both 0 and 1 are modes
+
+
+MEASURES OF DISPERSION
+
+- Variance of Bernoulli Distribution:
+  • Var(X) = σ² = p · q = p(1 − p)
+
+- Standard Deviation:
+  • σ = √(p · q)
+
+2. BINOMIAL DISTRIBUTION (PMF)
+
+- Models the number of successes in n independent Bernoulli trials.
+- Parameters: n (number of trials), p (probability of success).
+
+
+3. NORMAL / GAUSSIAN DISTRIBUTION (PDF)
+
+- Continuous distribution with a bell-shaped curve.
+- Defined by mean (μ) and standard deviation (σ).
+
+
+4. POISSON DISTRIBUTION (PMF)
+
+- Models the number of events occurring in a fixed interval of time
+  or space.
+- Parameter: λ (average rate of occurrence).
+
+
+5. LOG-NORMAL DISTRIBUTION (PDF)
+
+- A continuous distribution where the logarithm of the variable
+  follows a normal distribution.
+
+
+6. UNIFORM DISTRIBUTION
+
+- All outcomes are equally likely.
+- Can be discrete (PMF) or continuous (PDF).
