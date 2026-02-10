@@ -166,32 +166,239 @@ MEASURES OF DISPERSION
 - Standard Deviation:
   • σ = √(p · q)
 
+
 2. BINOMIAL DISTRIBUTION (PMF)
 
 - Models the number of successes in n independent Bernoulli trials.
-- Parameters: n (number of trials), p (probability of success).
+- It is a discrete probability distribution of the number of successes in a sequence
+  of n independent experiments, each asking a yes or no question, and each with
+  a binary outcome: success or failure.
+- A single success/failure experiment is called a Bernoulli trial (or Bernoulli experiment),
+  and a sequence of such trials is called a Bernoulli process.
+- For a single trial (n = 1), the binomial distribution reduces to the Bernoulli distribution.
+- It works with a discrete random variable.
+- Every outcome of the experiment is binary.
+- The experiment is performed for n trials.
+- Example: Tossing a coin 10 times.
+
+Notation: B(n, p)
+
+Parameters:
+• n : number of trials, n = 0, 1, 2, 3, ...
+• p : probability of success, 0 <= p <= 1
+• k : number of successes, k = 0, 1, 2, 3, ..., n
+
+PMF:
+
+• P(X = k) = nCk * p^k * (1 - p)^(n - k)
+
+for k = 0, 1, 2, ..., n where nCk = n! / (k! (n - k)!)
+
+Mean of Binomial Distribution:
+• Mean = n * p
+
+Variance of Binomial Distribution:
+• Variance = n * p * q
+(where q = 1 - p)
+
+Standard Deviation of Binomial Distribution:
+• Standard Deviation = √(n * p * q)
+
+Example:
+
+Consider a coin flipped 5 times.
+Number of trials (n) = 5
+Probability of success (p) = 0.5
+What is the probability of getting 3 heads in 5 flips?
+Solution :
+P(X = 3) = 5C3 * (0.5)^3 * (0.5)²
+         = 10 * 0.125 * 0.25
+         = 0.3125
 
 
-3. NORMAL / GAUSSIAN DISTRIBUTION (PDF)
+3. POISSON DISTRIBUTION (PMF)
 
-- Continuous distribution with a bell-shaped curve.
-- Defined by mean (μ) and standard deviation (σ).
+- Models the number of events occurring in a fixed interval of time or space.
+- It works with a discrete random variable.
+- It describes the number of events occurring in a fixed time interval.
+- Parameter: λ (lambda) = average rate of occurrence.
+- Support: x ∈ {0, 1, 2, 3, ...}
+
+Examples:
+- Number of individuals visiting a hospital every hour.
+- Number of individuals visiting a bank every hour.
+
+PMF:
+
+P(X = x) = (e^(-λ) * λ^x) / x!
+
+for x = 0, 1, 2, ...
+
+Mean of Poisson Distribution:
+• Mean = E(X) = λ * t
 
 
-4. POISSON DISTRIBUTION (PMF)
+4. NORMAL / GAUSSIAN DISTRIBUTION (PDF)
 
-- Models the number of events occurring in a fixed interval of time
-  or space.
-- Parameter: λ (average rate of occurrence).
+- A continuous probability distribution with a bell-shaped curve.
+- It is defined by mean (μ) and standard deviation (σ).
+- It is a symmetric distribution.
+- For a normal distribution:
+  Mean = Median = Mode.
+
+Notation:
+  N(μ, σ²)
+
+Parameters:
+- μ ∈ R        (mean)
+- σ² ∈ R, σ² > 0   (variance)
+
+- As σ² increases, the spread of the data increases.
+
+PDF:
+
+f(x) = (1 / (σ * sqrt(2π))) * exp( - (x - μ)² / (2σ²) )
+
+Mean of Normal / Gaussian Distribution:
+• Mean = μ
+
+Variance of Normal / Gaussian Distribution:
+• Variance = σ²
+
+Standard Deviation of Normal / Gaussian Distribution:
+• Standard Deviation = σ
+
+Empirical Rule of Normal / Gaussian Distribution
+(68 - 95 - 99.7 rule):
+
+P(μ - σ <= X <= μ + σ)     ≈ 68%
+P(μ - 2σ <= X <= μ + 2σ)   ≈ 95%
+P(μ - 3σ <= X <= μ + 3σ)   ≈ 99.7%
 
 
-5. LOG-NORMAL DISTRIBUTION (PDF)
+5. STANDARD NORMAL DISTRIBUTION AND Z-SCORE
 
-- A continuous distribution where the logarithm of the variable
-  follows a normal distribution.
+- Let X = {1, 2, 3, 4, 5}, μ = 3 and σ = 1.414.
+- If the above distribution is converted such that μ = 0 and σ = 1,
+  then the resulting distribution is called the Standard Normal Distribution.
+- In order to convert a normal distribution to a standard normal distribution,
+  we use the Z-score.
+
+Z-score formula:
+
+Z = (xi - μ) / σ
+
+- In short, the standard normal distribution is denoted as:
+  N(0, 1)
+
+Example:
+How many standard deviations is 4.25 away from the mean, if
+μ = 4 and σ = 1 ?
+
+Solution:
+Z = (4.25 - 4) / 1
+Z = 0.25
+
+
+Usage of Z-score:
+
+- To bring features to the same scale, standardization is used.
+- After standardization, most values lie in the range [-3, +3].
+- Z-score is used in clustering algorithms, linear regression and
+  logistic regression.
+
 
 
 6. UNIFORM DISTRIBUTION
 
 - All outcomes are equally likely.
-- Can be discrete (PMF) or continuous (PDF).
+- Uniform distribution can be discrete (PMF) or continuous (PDF).
+
+
+a) CONTINUOUS UNIFORM DISTRIBUTION
+
+- The continuous uniform distribution (also called rectangular distribution)
+  is a family of symmetric probability distributions.
+- It describes an experiment where the outcome lies between fixed bounds.
+- The bounds are defined by the parameters a and b, which represent the
+  minimum and maximum values.
+
+Notation:
+• U(a, b)
+
+Parameter:
+• -∞ < a < b < ∞
+
+PDF:
+
+• f(x) = 1 / (b - a),    if x ∈ [a, b]
+• f(x) = 0,              otherwise
+
+CDF:
+
+• F(x) = 0,                       if x < a
+• F(x) = (x - a) / (b - a),       if a <= x <= b
+• F(x) = 1,                       if x > b
+
+Mean:
+• (a + b) / 2
+
+Median:
+• (a + b) / 2
+
+Variance:
+• (b - a)^2 / 12
+
+
+Example:
+
+The number of candies sold daily at a shop is uniformly distributed
+with a minimum of 10 candies and a maximum of 40 candies.
+
+Find the probability that the daily sales fall between 15 and 30.
+
+Solution:
+
+P(15 <= X <= 30) = (30 - 15) / (40 - 10)
+                 = 15 / 30
+                 = 0.5
+
+
+
+b) DISCRETE UNIFORM DISTRIBUTION
+
+- A discrete uniform distribution is a symmetric probability distribution in which
+  a finite number of outcomes are equally likely.
+- Each outcome has the same probability.
+
+If there are n possible outcomes, then: P(X = x) = 1 / n
+
+Example:
+Rolling a fair die.
+
+Notation:
+• U(a, b)
+
+Parameter:
+• a,b where b >= a
+
+PMF:
+• 1/n
+
+Mean:
+• (a+b)/2
+
+Median:
+• (a+b)/2
+
+
+
+7. LOG-NORMAL DISTRIBUTION (PDF)
+
+- A continuous distribution where the logarithm of the variable
+  follows a normal distribution.
+- If the random variable X is log-normally distributed, 
+  then Y = ln X has a normal distribution.
+- Equivalently, if Y has a normal distribution, then the exponential 
+  function of Y, X = exp(Y), has a log-normal distribution.
+
