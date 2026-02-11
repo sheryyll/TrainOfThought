@@ -395,10 +395,122 @@ Median:
 
 7. LOG-NORMAL DISTRIBUTION (PDF)
 
-- A continuous distribution where the logarithm of the variable
-  follows a normal distribution.
-- If the random variable X is log-normally distributed, 
-  then Y = ln X has a normal distribution.
-- Equivalently, if Y has a normal distribution, then the exponential 
-  function of Y, X = exp(Y), has a log-normal distribution.
+- A continuous probability distribution in which the logarithm of the
+  random variable follows a normal distribution.
+- If a random variable X is log-normally distributed, then
+  Y = ln(X) follows a normal distribution.
+- Equivalently, if Y follows a normal distribution, then
+  X = exp(Y) follows a log-normal distribution.
+- Log-normal distribution is a right-skewed distribution.
+- Log-normal data becomes approximately normal after applying
+  a logarithmic transformation (can be verified using a Q–Q plot).
 
+Examples:
+- Wealth distribution in the world.
+- Length of comments in online discussion forums.
+- Dwell time on online articles.
+
+
+
+8. POWER LAW DISTRIBUTION
+
+- In statistics, a power law is a functional relationship between two quantities,
+  where one quantity varies as a power of another.
+- A relative change in one quantity results in a proportional relative change
+  in the other quantity raised to a constant exponent.
+- The relationship is independent of the initial size of the quantities.
+
+General form:
+
+P(X = x) ∝ x^(-α),   where α > 0
+
+- It is commonly associated with the 80–20 rule (Pareto principle).
+
+Examples:
+- In IPL, 20% of players contribute to 80% of wins.
+- 80% of wealth is owned by 20% of the population.
+- 80% of the total oil is held by 20% of the nations.
+- Frequencies of words in most languages.
+- 20% of major defects cause about 80% of the software problems.
+
+- Power-law distributed data can often be made closer to a normal distribution
+  using transformations such as the Box–Cox transform.
+- When data follows an 80–20 type power-law behaviour, it is commonly
+  referred to as following a Pareto-type distribution.
+
+
+
+9. PARETO DISTRIBUTION
+
+- A continuous probability distribution used to model phenomena
+  that follow the 80–20 rule.
+- It is a special case of power-law distribution.
+
+Parameters:
+- xm > 0   (scale or minimum value)
+- α > 0    (shape parameter)
+
+Support:
+x ≥ xm
+
+PDF:
+
+f(x) = α * xm^α / x^(α + 1),    for x ≥ xm
+
+Mean (for α > 1):
+
+Mean = α * xm / (α - 1)
+
+Variance (for α > 2):
+
+Variance = (α * xm^2) / ((α - 1)^2 * (α - 2))
+
+- Pareto distribution is right-skewed and heavy-tailed.
+
+Examples:
+- 80% of certain project is done by 20% of the team
+- 80% of defects can be solved if we solve 20% of main defects.
+- File sizes on the internet.
+
+
+---------------------------------------------------------------------
+
+CENTRAL LIMIT THEOREM
+
+- The Central Limit Theorem (CLT) is based on the concept of a sampling distribution.
+- A sampling distribution is the probability distribution of a statistic (such as the sample mean)
+  obtained from a large number of samples drawn from the same population.
+
+- The Central Limit Theorem states that the sampling distribution of the sample mean
+  will be approximately normally distributed, provided the sample size is sufficiently large.
+
+- This holds regardless of whether the original population distribution is normal,
+  Poisson, binomial, or any other distribution (with finite mean and variance).
+
+- If the population (random variable) follows a normal distribution, then the
+  sampling distribution of the sample mean is normal for any sample size.
+
+- If the population does not follow a normal (Gaussian) distribution, then for
+  sufficiently large sample size (commonly n >= 30), the sampling distribution of
+  the sample mean is approximately normal.
+
+---------------------------------------------------------------------
+
+ESTIMATES
+
+- An estimate is a numerical value calculated from sample data and is used to
+  estimate an unknown population parameter.
+
+TYPES OF ESTIMATES:
+
+1) POINT ESTIMATE
+
+- A single numerical value used to estimate an unknown population parameter.
+- Example:
+  The sample mean is a point estimate of the population mean.
+
+2) INTERVAL ESTIMATE
+
+- A range of values used to estimate an unknown population parameter.
+- This range is called a confidence interval.
+ 
