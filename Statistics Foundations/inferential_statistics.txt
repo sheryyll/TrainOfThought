@@ -1,0 +1,435 @@
+HYPOTHESIS TESTING
+
+- Hypothesis testing is a part of inferential statistics.
+- It deals with drawing conclusions about an unknown population parameter
+  based on sample data.
+
+
+HYPOTHESIS TESTING MECHANISM
+
+1) NULL HYPOTHESIS (H0)
+
+- The default assumption made at the beginning.
+- It represents no effect, no difference, or no change.
+
+Example (analogy):
+A person is assumed to be not guilty until proven guilty.
+
+
+2) ALTERNATIVE HYPOTHESIS (H1 or Ha)
+
+- This is the opposite of the null hypothesis.
+- It represents the presence of an effect or a difference.
+
+Example (analogy):
+The person is guilty.
+
+
+3) PERFORM EXPERIMENTS / STATISTICAL ANALYSIS
+
+- Collect sample data and compute the required test statistics.
+
+
+4) DECISION
+
+- Based on the result, we either:
+  reject the null hypothesis, or
+  fail to reject the null hypothesis.
+
+EXAMPLE OF HYPOTHESIS TESTING
+
+Problem:
+A coaching institute claims that the average score of its students is 70.
+• Let μ be the population mean score.
+- Step 1: Null hypothesis (H0)
+    H0 : μ = 70
+- Step 2: Alternative hypothesis (H1)
+    H1 : μ ≠ 70
+- Step 3: Collect sample data
+    A random sample of students is taken and the sample mean is calculated.
+- Step 4: Perform statistical test
+    Using an appropriate test (for example, a one-sample t-test), a test statistic
+and p-value are computed.
+
+- Step 5: Decision
+    - If p-value < significance level (for example, 0.05),
+        reject the null hypothesis.
+    - Otherwise,
+        fail to reject the null hypothesis.
+
+
+---------------------------------------------------------------------
+
+P-VALUE
+
+- The p-value is a number calculated from a statistical test that describes
+  how likely it is to observe the given data (or something more extreme),
+  assuming that the null hypothesis is true.
+- P-values are used in hypothesis testing to help decide whether to reject
+  the null hypothesis.
+
+
+Example: Testing whether a coin is fair
+
+Suppose we want to test whether a coin is fair by tossing it 100 times.
+
+Expected probabilities for a fair coin:
+P(H) = 0.5
+P(T) = 0.5
+
+If the observed proportion is close to 0.5 (for example,
+P(H) = 0.5 or P(H) = 0.6), the coin may still be considered fair.
+
+If the observed proportion is far from 0.5 (for example,
+P(H) = 0.7 and P(T) = 0.3), we perform hypothesis testing.
+
+Null hypothesis:
+H0 : The coin is fair (p = 0.5)
+
+Alternative hypothesis:
+H1 : The coin is not fair (p ≠ 0.5)
+
+Experiment:
+Toss the coin 100 times and record the number of heads.
+
+Significance level:
+α = 0.05
+
+Confidence level:
+1 − α = 0.95
+
+Interpretation using p-value:
+
+- After performing the statistical test, a p-value is obtained.
+- If p-value < 0.05, reject the null hypothesis.
+- If p-value ≥ 0.05, fail to reject the null hypothesis.
+
+
+---------------------------------------------------------------------
+
+Z-TEST (HYPOTHESIS TESTING WITH P-VALUE)
+
+- The population standard deviation (σ) must be known.
+- The sample size must be greater than or equal to 30.
+
+Example:
+
+The average height of all residents in a city is 168 cm with a population
+standard deviation of 3.9 cm.
+A doctor believes that the mean height is different.
+He measures the heights of 36 individuals and finds that the sample
+mean height is 169.5 cm.
+a) State the null and alternative hypotheses
+b) At a 95% confidence level, is there enough evidence to reject the null hypothesis?
+
+Given:
+
+Population mean, μ0 = 168  
+Population standard deviation, σ = 3.9  
+Sample size, n = 36  
+Sample mean, x̄ = 169.5  
+Significance level, α = 0.05
+
+Let μ be the population mean height.
+H0 : μ = 168 cm  
+H1 : μ ≠ 168 cm   (two-tailed test)
+Z-test statistic:
+
+Z = (x̄ − μ0) / (σ / √n)
+
+Z = (169.5 − 168) / (3.9 / √36)  
+Z = 1.5 / (3.9 / 6)  
+Z = 1.5 / 0.65  
+Z = 2.31   (approximately)
+
+P-value calculation (two-tailed test):
+p-value = 2 × P(Z ≥ 2.31)
+
+From the standard normal table:
+P(Z ≥ 2.31) ≈ 0.0104
+
+Therefore,
+
+p-value ≈ 2 × 0.0104  
+p-value ≈ 0.0208
+
+
+Decision using p-value:
+
+Since p-value = 0.0208 < α = 0.05,
+we reject the null hypothesis.
+
+
+Conclusion:
+
+At the 95% confidence level, there is sufficient evidence to conclude
+that the mean height of residents is different from 168 cm.
+
+
+---------------------------------------------------------------------
+
+STUDENT’S t DISTRIBUTION (t-TEST)
+
+- In Z-test statistics, the population standard deviation (σ) is known.
+- If the population standard deviation is not known, we use the Student’s t distribution
+  and the sample standard deviation.
+
+Test statistic:
+    t = (x̄ − μ0) / (s / √n)
+where:
+x̄  = sample mean
+μ0 = hypothesized population mean
+s  = sample standard deviation
+n  = sample size
+
+Degrees of freedom:
+dof = n − 1
+
+Example:
+
+In the population, the average IQ is 100.
+A team of researchers wants to test a new medication to see whether it has a positive
+or negative effect on intelligence (or no effect).
+A sample of 30 participants who have taken the medication has:
+Sample mean, x̄ = 140
+Sample standard deviation, s = 20
+Sample size, n = 30
+Confidence level = 95%
+(Significance level α = 0.05)
+
+Solution: 
+Let μ be the population mean IQ after taking the medication.
+
+H0 : μ = 100
+H1 : μ ≠ 100    (two-tailed test)
+
+Degrees of freedom:
+    dof = n − 1 = 29
+
+t = (x̄ − μ0) / (s / √n)
+
+t = (140 − 100) / (20 / √30)
+√30 ≈ 5.477
+
+t = 40 / (20 / 5.477)
+t = 40 / 3.651
+t ≈ 10.96
+
+For a two-tailed test at α = 0.05 and dof = 29:
+    tcritical ≈ ±2.045
+
+Since |t| = 10.96 > 2.045,
+we reject the null hypothesis.
+
+Conclusion:
+At the 95% confidence level, there is sufficient evidence to conclude
+that the medication has a statistically significant effect on intelligence.
+
+
+---------------------------------------------------------------------
+
+WHEN TO USE t-TEST VS Z-TEST
+
+- First, check whether the population standard deviation (σ) is known.
+- If the population standard deviation is NOT known,
+  use the Student’s t-test.
+- If the population standard deviation IS known, then check the sample size n.
+- If the sample size is small (n < 30),
+  use the Student’s t-test.
+- If the sample size is large (n ≥ 30),
+  use the Z-test.
+
+Summary:
+    1) σ unknown  →  t-test
+    2) σ known and n < 30  →  t-test
+    3) σ known and n ≥ 30 →  Z-test
+
+
+---------------------------------------------------------------------
+
+TYPE I AND TYPE II ERRORS
+
+In hypothesis testing, the null hypothesis (H0) can be either true or false in reality.
+Based on the sample data, we make a decision to either reject H0 or fail to reject H0.
+
+Possible outcomes:
+
+1) We reject the null hypothesis when, in reality, the null hypothesis is false.
+   -> Correct decision.
+2) We reject the null hypothesis when, in reality, the null hypothesis is true.
+   -> Type I error (α error).
+3) We fail to reject (retain) the null hypothesis when, in reality, the null hypothesis is false.
+   -> Type II error (β error).
+4) We fail to reject (retain) the null hypothesis when, in reality, the null hypothesis is true.
+   -> Correct decision.
+
+
+---------------------------------------------------------------------
+
+BAYES STATISTICS (BAYES' THEOREM)
+
+- Bayesian statistics is an approach to data analysis and parameter estimation
+  based on Bayes' theorem.
+
+Bayes' Theorem:
+
+P(A | B) = [ P(B | A) * P(A) ] / P(B)
+
+
+1) INDEPENDENT EVENTS
+
+- Two events are independent if the occurrence of one event does not affect
+  the probability of the other event.
+
+Example:
+Rolling a die.
+The event of getting 1 is independent of the event of getting 6.
+P(1) = 1/6
+P(6) = 1/6
+
+
+2) DEPENDENT EVENTS
+
+- Two events are dependent if the occurrence of one event affects the probability
+  of the other event.
+
+Example:
+A bag contains 3 white marbles and 2 red marbles.
+A red marble is drawn first and is not replaced.
+Then a second marble is drawn.
+The pobability of drawing a white marble in the second draw depends
+on the result of the first draw.
+Let R = first draw is red
+Let W = second draw is white
+P(R and W) = P(R) · P(W | R)
+P(R) = 2/5
+P(W | R) = 3/4
+P(R and W) = (2/5) × (3/4) = 3/10
+
+
+---------------------------------------------------------------------
+
+CONFIDENCE INTERVALS AND MARGIN OF ERROR
+
+- A confidence interval is given by:
+    • Point estimate ± Margin of error
+    • Margin of Error (for mean, using Z-test):
+
+    • Margin of Error = Z * (σ / √n)
+
+
+Therefore, the confidence interval for the population mean is:
+    x̄ ± Z * (σ / √n)
+
+
+Example (using Z–confidence interval formula)
+
+Given:
+
+Population standard deviation, σ = 100  
+Sample size, n = 30  
+Sample mean, x̄ = 520  
+Confidence level = 95%
+Z value for 95% confidence level = 1.96
+
+Formula:
+
+Confidence Interval = x̄ ± Z * (σ / √n)
+
+Solution:
+
+Margin of Error = Z * (σ / √n)
+                = 1.96 * (100 / √30)
+
+Margin of Error = 1.96 * 18.26
+                ≈ 35.79
+
+Confidence Interval:
+
+= 520 ± 35.79
+
+Lower limit = 520 − 35.79 = 484.21  
+Upper limit = 520 + 35.79 = 555.79
+
+95% Confidence Interval:
+(484.21 , 555.79)
+
+
+---------------------------------------------------------------------
+
+CHI-SQUARE TEST (GOODNESS OF FIT)
+
+- The chi-square goodness of fit test is used to test claims about
+  population proportions.
+- It is a non-parametric test.
+- It is applied to categorical data (nominal or ordinal data).
+- It checks whether the observed frequencies follow a given theoretical distribution.
+
+Example 1:
+
+There is a population of males who like different colours of bikes.
+Theoretical distribution (expected proportions):
+
+Yellow bike   : 1/3  
+Red bike      : 1/3  
+Orange bike   : 1/3  
+
+Observed sample data:
+
+Yellow bike   : 22  
+Red bike      : 17  
+Orange bike   : 59  
+
+The theoretical distribution is a categorical distribution
+and the sample data are the observed frequencies.
+
+
+Example 2:
+
+Given (2010 census – theoretical distribution):
+    < 50 kg    : 20%
+    50–75 kg   : 30%
+    > 75 kg    : 50%
+In 2020, a sample of n = 500 individuals was taken.
+Observed frequencies (O):
+    < 50 kg    : 140
+    50–75 kg   : 160
+    > 75 kg    : 200
+Using α = 0.05, would you conclude the population difference of weight changed 
+in last 10 years?
+
+Solution:
+
+Step 1: Hypotheses
+    H0 : The weight distribution in 2020 is the same as the 2010 distribution.
+    H1 : The weight distribution in 2020 is different from the 2010 distribution.
+
+Step 2: Expected frequencies (E)
+    E = n × theoretical proportion
+
+    < 50 kg    : 500 × 0.20 = 100
+    50–75 kg   : 500 × 0.30 = 150
+    > 75 kg    : 500 × 0.50 = 250
+
+Step 3: Chi-square statistic
+    χ² = Σ (O − E)² / E
+
+    χ² = (140 − 100)² / 100
+    + (160 − 150)² / 150
+    + (200 − 250)² / 250
+
+    χ² = 16 + 0.67 + 10
+    χ² ≈ 26.67
+
+Step 4: Degrees of freedom
+    dof = k − 1 = 3 − 1 = 2
+
+Step 5: Decision (at 5% level of significance)
+
+    Critical value χ²(0.05, 2) = 5.991
+    Since 26.67 > 5.991,
+    reject H0.
+    
+Conclusion:
+There is sufficient evidence to conclude that the weight distribution in 2020
+is different from the 2010 census distribution.
