@@ -433,3 +433,230 @@ Step 5: Decision (at 5% level of significance)
 Conclusion:
 There is sufficient evidence to conclude that the weight distribution in 2020
 is different from the 2010 census distribution.
+
+
+---------------------------------------------------------------------
+
+ANALYSIS OF VARIANCE (ANOVA)
+
+- ANOVA is a statistical method used to compare the means of two or more groups.
+- A factor is an independent variable whose effect is studied.
+- Levels are the different categories or values of a factor.
+
+Examples:
+- Medicine (factor) and dosage levels (levels)
+- Mode of payment (factor) and GPay, PhonePe, IMPS, NEFT (levels)
+
+
+ASSUMPTIONS OF ANOVA
+
+1) Normality of sampling distribution of the mean
+- The sampling distribution of the mean is approximately normally distributed.
+
+2) Absence of outliers
+- Extreme or outlying values should be identified and handled properly.
+
+3) Homogeneity of variance
+- The population variances across different levels of the factor are equal.
+- That is:
+  σ1² = σ2² = σ3² = ...
+
+4) Independence and random sampling
+- Samples are independent of each other.
+- Observations are randomly selected.
+
+
+TYPES OF ANOVA
+
+1) ONE-WAY ANOVA
+
+- One factor with at least two levels.
+- The levels are independent groups.
+Example:
+
+A doctor wants to test a new medication to reduce headache.
+Participants are divided into three dosage groups and asked to rate
+their headache on a scale of 1–10.
+
+Factor:
+Medication dosage
+
+Levels:
+10 mg, 20 mg, 30 mg
+
+Data (example):
+10 mg : 5, 3, 6, ...
+20 mg : 1, 5, 8, ...
+30 mg : 7, 9, 2, ...
+
+Here, we compare the mean headache score across the three dosage groups.
+
+
+2) REPEATED MEASURES ANOVA
+
+- One factor with at least two levels.
+- The levels are dependent (the same subjects are measured repeatedly).
+Example:
+
+Factor:
+Running / training day
+
+Levels:
+Day 1, Day 2, Day 3
+
+Same participants measured on all days:
+
+Day 1   Day 2   Day 3
+  8       5       4
+  7       4       9
+Here, the same people are measured on different days, so the samples
+are dependent.
+
+
+3) FACTORIAL ANOVA
+
+- Two or more factors.
+- Each factor has at least two levels.
+- The design can include independent groups, repeated measures, or both.
+Example:
+
+A researcher studies the effect of
+- medication type and
+- gender
+on pain reduction.
+
+Factor 1:
+Medication type → A, B
+
+Factor 2:
+Gender → Male, Female
+
+So the groups are:
+(A, Male), (A, Female), (B, Male), (B, Female)
+
+Factorial ANOVA is used to study:
+- the effect of each factor separately, and
+- the interaction effect between the factors.
+
+
+HYPOTHESIS TESTING IN ANOVA (Partitioning of variance in ANOVA)
+
+Null hypothesis H0 : μ1 = μ2 = μ3 = ... = μk
+Alternative hypothesis H1 : At least one population mean is different.
+
+Test statistic:
+
+F = Variance between groups / Variance within groups
+
+Small illustration:
+
+    x1   x2   x3
+     1    6    5
+     2    7    6
+     4    3    3
+     5    2    2
+     3    1    4
+
+    x̄1 = 3
+    x̄2 = 19 / 5
+    x̄3 = 4
+
+    H0 : μ1 = μ2 = μ3
+    H1 : At least one mean is different
+
+
+Main example:
+
+Doctors want to test a new medication to reduce headache.
+Participants are divided into three dosage groups:
+15 mg, 30 mg and 45 mg.
+They rate headache on a scale of 1–10.
+Test at α = 0.05.
+
+Data:
+15 mg   30 mg   45 mg
+  9       7       4
+  8       6       3
+  7       6       2
+  8       7       3
+  8       8       4
+  9       7       3
+  8       6       2
+Solution: 
+
+    Hypotheses:
+        H0 : μ15 = μ30 = μ45
+        H1 : At least one mean is different
+
+    Significance level:
+        α = 0.05   (Confidence level = 95%)
+
+    Sample sizes:
+        Total observations, N = 21
+        Groups, a = 3
+        Observations per group, n = 7
+
+    Degrees of freedom:
+        Between groups:
+            dof_between = a − 1 = 3 − 1 = 2
+
+        Within groups:
+            dof_within = N − a = 21 − 3 = 18
+
+        Total:
+            dof_total = N − 1 = 20
+
+    F distribution degrees of freedom: (2, 18)
+
+    Decision boundary: F critical = 3.5546
+
+    Decision rule: If F > 3.5546, reject H0.
+
+    Calculation of F test statistic:
+
+        Step 1: Group means
+            Mean(15 mg) = (9+8+7+8+8+9+8) / 7 = 8.14
+            Mean(30 mg) = (7+6+6+7+8+7+6) / 7 = 6.71
+            Mean(45 mg) = (4+3+2+3+4+3+2) / 7 = 3.00
+
+        Overall mean:
+            x̄ = (sum of all 21 observations) / 21
+            x̄ = 125 / 21 = 5.95
+        
+        Step 2: Sum of squares between groups (SSB)
+
+            SSB = Σ n (x̄i − x̄)^2
+            SSB = 7(8.14 − 5.95)^2 + 7(6.71 − 5.95)^2 + 7(3.00 − 5.95)^2
+            SSB ≈ 33.57 + 4.02 + 60.88
+            SSB ≈ 98.47
+
+        Step 3: Sum of squares within groups (SSW)
+
+            SSW = Σ Σ (xij − x̄i)^2
+            For 15 mg group: ≈ 2.86
+            For 30 mg group: ≈ 2.86
+            For 45 mg group: ≈ 4.00
+
+            SSW ≈ 2.86 + 2.86 + 4.00
+            SSW ≈ 9.72
+
+        Step 4: Mean squares
+
+            MSB = SSB / dof_between
+            MSB = 98.47 / 2 = 49.24
+
+            MSW = SSW / dof_within
+            MSW = 9.72 / 18 = 0.54
+
+        Step 5: F statistic
+
+            F = MSB / MSW
+            F = 49.24 / 0.54
+            F ≈ 91.19
+
+    Decision:
+        Since F = 91.19 > 3.5546,
+        reject the null hypothesis.
+
+    Conclusion: At α = 0.05, there is a statistically significant difference
+    between the three medication dosage groups.
