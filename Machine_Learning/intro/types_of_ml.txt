@@ -1,0 +1,129 @@
+3 Types of Machine Learning
+
+Machine Learning Techniques
+----------------------------
+
+1) Supervised Machine Learning
+2) Unsupervised Machine Learning
+3) Reinforcement Learning
+
+
+--------------------------------------------------
+1) Supervised Machine Learning 
+--------------------------------------------------
+
+Supervised Machine Learning is a type of machine learning in which the
+model is trained using labeled data.
+Each training example contains input features and the correct output.
+The goal is to learn a mapping between input and output so that the
+model can make accurate predictions for new, unseen data.
+
+Supervised ML techniques mainly include:
+- Regression
+- Classification
+
+
+Example – Regression (Predicting house price)
+
+Dataset:
+
+Independent features:
+- Size of house
+- Number of rooms
+
+Dependent / output feature:
+- Price
+
+Sample data:
+Size of house | No. of rooms | Price
+5000          | 5            | 450K
+6000          | 6            | 500K
+...           | ...          | ...
+
+Note:
+- Independent feature → input feature
+- Dependent feature → output feature
+
+If the dependent/output feature is continuous → Regression
+If the dependent/output feature is categorical → Classification
+
+
+Example – Classification
+
+Independent features:
+- Number of study hours
+- Number of play hours
+
+Dependent feature:
+- Result
+
+Sample data:
+
+Study hours | Play hours | Result
+7           | 3          | Pass
+2           | 6          | Fail
+...         | ...        | Maybe
+
+This can be:
+- Binary classification
+- Multi-class classification
+
+
+--------------------------------------------------
+2) Unsupervised Machine Learning 
+--------------------------------------------------
+
+Unsupervised Machine Learning is a type of machine learning in which the
+model is trained using unlabeled data.
+The algorithm tries to discover hidden patterns, structures, or groups
+in the data without knowing the correct output in advance.
+
+Example:
+Customer segmentation (clustering)
+
+Sample dataset:
+
+Salary | Spending score (1–10)
+20000  | 9
+45000  | 2
+...    | ...
+
+Goal:
+Group similar customers into clusters.
+
+Example use case:
+An e-commerce company groups customers into clusters and sends emails
+with similar offers or discounts to customers belonging to the same
+cluster.
+
+
+Unsupervised ML algorithms:
+- K-Means
+- Hierarchical clustering
+- DBSCAN clustering
+
+
+--------------------------------------------------
+Supervised ML algorithms
+--------------------------------------------------
+
+1) Linear Regression
+2) Ridge and Lasso
+3) ElasticNet
+4) Logistic Regression (Classification)
+5) Decision Tree   (Both classification and regression)
+6) Random Forest   (Both classification and regression)
+7) AdaBoost
+8) XGBoost
+
+
+--------------------------------------------------
+3) Reinforcement Learning 
+--------------------------------------------------
+
+Reinforcement Learning is a type of machine learning in which an agent
+learns by interacting with an environment.
+The agent takes actions and receives feedback in the form of rewards
+or penalties.
+The objective is to learn an optimal policy that maximizes the total
+cumulative reward over time.

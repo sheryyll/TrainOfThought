@@ -1,0 +1,45 @@
+AI vs ML vs DL vs DS
+
+1) Artificial Intelligence (AI)
+2) Machine Learning (ML)
+3) Deep Learning (DL)
+4) Data Science (DS)
+
+
+Artificial Intelligence (AI):
+AI is the concept of creating an application or system that can perform
+its own tasks without any human intervention.
+
+Example:
+- Netflix Recommendation System
+  User watches action movies
+  → System recommends action movies automatically
+
+
+Machine Learning (ML):
+Machine Learning is a subset of Artificial Intelligence.
+It allows systems to learn from data and improve performance
+without being explicitly programmed.
+
+
+Deep Learning (DL):
+Deep Learning is a subset of Machine Learning.
+It uses multi-layered neural networks.
+Deep Learning attempts to mimic the human brain
+using artificial neural networks.
+
+
+Data Science (DS):
+Data Science provides statistical tools to:
+- analyze data
+- visualize data
+- perform predictions
+- perform forecasting on data
+
+
+Relationship Summary:
+- Artificial Intelligence is the broadest field.
+- Machine Learning is a subset of AI.
+- Deep Learning is a subset of Machine Learning.
+- Data Science overlaps with AI and ML and focuses on data analysis
+  and decision-making using data.

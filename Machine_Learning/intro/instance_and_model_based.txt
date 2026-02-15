@@ -1,0 +1,162 @@
+INSTANCE BASED LEARNING VS MODEL BASED LEARNING
+
+
+LEARNING PIPELINE
+
+User
+  ↓
+ML Model
+  ↓
+Regression / Classification
+
+
+Learning can be broadly divided into
+
+1) Memorizing  →  Instance Based Learning
+2) Generalizing →  Model Based Learning
+
+
+--------------------------------------------------------------
+
+INSTANCE BASED LEARNING
+
+- Instance based learning is a learning approach in which the algorithm
+    does not build an explicit global model.
+- Instead, it stores (memorizes) the training data and makes predictions
+    for a new input by comparing it directly with the stored instances.
+
+Learning pattern:
+
+    DATA  →  OUTPUT
+    (No explicit generalized model is created)
+
+Important idea:
+    → Memorize the data
+    → Use similarity / distance at prediction time
+
+Training phase:
+- There is almost no training. The algorithm mainly stores the data.
+
+Prediction (scoring) phase:
+- For a new input,
+    the algorithm searches for similar examples in the stored data
+    and decides the output based on them.
+
+Example features (as shown in the figure):
+    No. of play hours
+    No. of study hours
+
+Example output:
+    Pass / Fail
+
+The decision is made using nearby points instead of a learned decision boundary.
+
+Common algorithm:
+    KNN (K Nearest Neighbours)
+
+    KNN – Working idea:
+        For a test point,
+        1) Find the K closest data points
+        2) Look at their labels
+        3) Assign the majority label
+
+
+Important characteristics:
+- Memorizes the complete training data
+- No explicit generalized model
+- Decision is made at test time
+- Highly dependent on distance / similarity measure
+- Prediction can be slow for large datasets
+- Storage requirement is high
+
+
+Instance based learning mainly depends on domain knowledge and similarity measures.
+
+--------------------------------------------------------------
+
+MODEL BASED LEARNING
+
+- Model based learning is a learning approach in which the algorithm
+    learns a generalized model from the training data.
+- It tries to discover patterns in the data
+    and represents those patterns in the form of a model.
+
+Learning pattern:
+    DATA  →  PATTERN  →  GENERALIZED MODEL
+
+Training phase:
+- A model is trained using the given data and model parameters are learned.
+
+Prediction (scoring) phase:
+- The learned model is directly used to predict the output for unseen data.
+
+The model represents a generalized form of the data.
+
+Important idea:
+    → Learn patterns
+    → Generalize
+    → Build a model
+    → Use the model for future predictions
+
+
+Example:
+A decision boundary is learned during training. At test time, the point is simply checked
+on which side of the boundary it lies.
+
+Important characteristics:
+
+- Explicit generalized model is created
+- Data can be discarded after training
+- Prediction is fast
+- Storage requirement is usually lower than instance based learning
+- Training time can be high
+
+
+--------------------------------------------------------------
+
+SIDE BY SIDE COMPARISON
+ _______________________________________________________________________________________________________________________________________________
+|   USUAL / CONVENTIONAL MACHINE LEARNING                          |    INSTANCE BASED LEARNING                                                 |
+|   (MODEL BASED LEARNING)                                         |                                                                            |
+|__________________________________________________________________|____________________________________________________________________________|
+|   Prepare the data for model training                            |    Prepare the data for model training                                     |
+|                                                                  |     (No major difference in data preparation)                              |
+|                                                                  |                                                                            |
+|   Train model from training data to estimate model parameters    |    Do not train a global model.                                            |
+|   and discover patterns                                          |    Pattern discovery is postponed until a scoring query is received        |
+|                                                                  |                                                                            |
+|   Store the model in suitable form                               |    There is no model to store                                              |
+|                                                                  |                                                                            |
+|   Generalize the rules in the form of a model                    |    No generalization before scoring. Only generalize                       |
+|   even before any scoring instance is seen                       |    for each scoring instance individually as and when seen                 |
+|                                                                  |                                                                            |
+|   Predict for unseen scoring instance using the model            |    Predict for unseen scoring instance using the                           |
+|                                                                  |    training data directly                                                  |
+|                                                                  |                                                                            |
+|   Training data can be discarded after model training            |    Input / training data must be kept                                      |
+|                                                                  |    since each query uses part or full set of training observations         |
+|                                                                  |                                                                            |
+|   Requires a known model form                                    |    May not have an explicit model form                                     |
+|                                                                  |                                                                            |
+|   Storing the model generally requires less storage              |    Storing training data generally requires more storage                   |
+|                                                                  |                                                                            |
+|   Scoring for new instance is generally fast                     |    Scoring for a new instance may be slow                                  |
+|                                                                  |                                                                            |
+|_______________________________________________________________________________________________________________________________________________|
+
+
+SUMMARY
+
+    Instance Based Learning
+        → Memorization
+        → No explicit model
+        → Example: KNN
+        → Heavy storage
+        → Slow prediction for large datasets
+
+    Model Based Learning
+        → Generalization
+        → Explicit trained model
+        → Learns patterns from data
+        → Lower storage
+        → Fast prediction

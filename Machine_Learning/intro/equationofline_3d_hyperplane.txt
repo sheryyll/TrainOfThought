@@ -1,0 +1,161 @@
+EQUATION OF LINE, PLANE AND HYPERPLANE (N-DIMENSION)
+
+
+EQUATION OF A STRAIGHT LINE (2D)
+
+Slope–intercept form:
+
+    y = mx + c
+        where,
+            m = slope (represents the unit movement in y axis with respect to unit movement in x axis)
+            c = intercept 
+
+General form of a line:
+
+    ax + by + c = 0
+
+    From this,
+        by = -ax - c  
+        y = (-a / b)x - (c / b)
+
+        So,
+        slope (m) = -a / b  
+        intercept = -c / b
+
+
+Another linear model form:
+    y = β0 + β1 x
+
+
+--------------------------------------------------
+
+VECTOR FORM OF A LINE IN 2D
+
+Let
+    x = [x1, x2]ᵀ  
+    w = [w1, w2]ᵀ  
+
+    Then the equation of a line is
+        w1x1 + w2x2 + b = 0  
+            or
+        wᵀx + b = 0
+
+
+--------------------------------------------------
+
+EQUATION OF A PLANE (3D)
+
+Let
+    x = [x1, x2, x3]ᵀ  
+    w = [w1, w2, w3]ᵀ  
+
+    Then the equation of a plane is
+        w1x1 + w2x2 + w3x3 + b = 0  
+            or
+        wᵀx + b = 0
+
+
+--------------------------------------------------
+
+EQUATION OF A HYPERPLANE (N-DIMENSION)
+
+In n-dimensional space,
+    w1x1 + w2x2 + w3x3 + ... + wnxn + b = 0  
+
+    Compact form:
+        wᵀx + b = 0  
+        This is called a hyperplane.
+        The vector w is the normal vector to the hyperplane.
+
+
+--------------------------------------------------
+
+HYPERPLANE PASSING THROUGH THE ORIGIN
+
+If the hyperplane passes through the origin, then
+    b = 0
+
+So the equation becomes
+    wᵀx = 0
+
+
+--------------------------------------------------
+
+DOT PRODUCT AND ORTHOGONALITY
+
+Let
+    w = [w1, w2, ..., wn]ᵀ  
+    x = [x1, x2, ..., xn]ᵀ  
+
+    Then
+        wᵀx = w1x1 + w2x2 + ... + wnxn
+
+    Using the dot product formula:
+        wᵀx = |w| |x| cos(θ)
+
+    If
+        wᵀx = 0
+    then
+        |w| |x| cos(θ) = 0  
+
+    So,
+        cos(θ) = 0  
+        θ = 90 degrees  
+
+    Hence,
+        w is perpendicular (orthogonal) to x.
+
+
+--------------------------------------------------
+
+GEOMETRIC MEANING
+
+The vector w is normal (perpendicular) to the line, plane or hyperplane
+defined by
+    wᵀx + b = 0
+
+When b = 0, the line, plane or hyperplane passes through the origin.
+
+
+--------------------------------------------------
+IMPORTANT OBSERVATIONS
+
+1) The vector w is perpendicular to the line, plane or hyperplane.
+2) The value b controls the intercept (shift from the origin).
+3) When b = 0, the line, plane or hyperplane passes through the origin.
+4) wᵀx = 0 represents a line (2D), a plane (3D) or a hyperplane (nD)
+   whose normal vector is w.
+
+--------------------------------------------------
+
+DISTANCE OF A POINT FROM A PLANE
+
+Let, 
+     wᵀx = 0  and  S(x1, x2, x3, ..., xn)
+    
+    The (signed) distance of the point S from the plane is given by
+        d =  wᵀS / |w|
+        where,
+             wᵀS = |w| |S| cos(θ)
+
+        If θ is less than 90°, then
+            cos(θ) > 0
+            and hence  wᵀS  will be positive
+            (point lies on the positive side of the plane)
+
+
+    For a point on the other side of the plane, say S′,
+    the (signed) distance is given by
+        d' =  wᵀS' / |w|
+        where,
+             wᵀS' = |w| |S'| cos(θ)
+
+        If θ is greater than 90°, then
+            cos(θ) < 0
+            and hence  wᵀS'  will be negative
+            (point lies on the negative side of the plane)
+
+    NOTE:
+        The actual (geometric) distance of a point from the plane is
+
+            distance = | wᵀS | / |w|
