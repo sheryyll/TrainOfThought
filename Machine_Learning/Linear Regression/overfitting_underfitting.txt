@@ -1,0 +1,192 @@
+OVERFITTING AND UNDERFITTING (BIAS AND VARIANCE)
+-----------------------------------------------
+
+While training a machine learning model, three important aspects must be considered:
+    1. Training data
+    2. Test data
+    3. Validation data
+
+
+
+Dataset usage
+-------------
+- The available dataset is first divided into two main parts:
+    - Training dataset
+    - Test dataset
+
+- Training dataset
+    - Used to train the model
+    - The model learns patterns from this data
+
+- Test dataset
+    - Used to evaluate the trained model
+    - Helps to check how well the model performs on unseen data
+
+
+
+Train–Validation–Test split
+----------------------------
+- In practice, the training data is often split further into:
+    - Train set
+    - Validation set
+
+Train set
+    - Used to learn model parameters
+
+Validation set
+    - Used to tune hyperparameters
+    - Used to select the best model
+
+Test set
+    - Used only for final evaluation
+
+
+
+Training phase
+--------------
+- The training phase consists of two main steps:
+
+    - Train
+    - Validate
+
+Train
+    - The model is fitted using the training data
+
+Validate
+    - The trained model is tested on the validation data
+    - Used to compare different models and settings
+
+
+
+Model building flow
+-------------------
+    1. Choose a model
+    2. Train the model on training data
+    3. Tune the model using validation data
+    4. Evaluate final performance on test data
+
+
+
+Training error and test error
+-----------------------------
+Training error
+    - Error computed on the training dataset
+
+Test error
+    - Error computed on the test dataset
+
+The relation between these two errors gives important insight into model behaviour.
+
+
+
+Underfitting
+------------
+A model is said to underfit when it is too simple to capture the underlying pattern in the data.
+
+Typical characteristics
+    - High training error
+    - High test error
+    - Poor performance on both seen and unseen data
+
+This situation is usually caused by:
+    - Very simple model
+    - Important features not used
+    - Insufficient training time
+
+This behaviour is associated with:
+    - High bias
+    - Low variance
+
+
+
+Overfitting
+-----------
+A model is said to overfit when it learns the training data too well, including noise.
+
+Typical characteristics
+    - Very low training error
+    - High test error
+    - Poor generalisation to new data
+
+This situation is usually caused by:
+    - Very complex model
+    - Too many features
+    - Model memorising the training data
+
+This behaviour is associated with:
+    - Low bias
+    - High variance
+
+
+
+Good fit
+--------
+A good model achieves a balance between underfitting and overfitting.
+
+Typical characteristics
+    - Low training error
+    - Low test error
+    - Small gap between training and test error
+
+Such a model generalises well to unseen data.
+
+
+
+Bias and variance
+-----------------
+Bias
+    - Error caused by overly simple assumptions in the model
+    - High bias leads to underfitting
+
+Variance
+    - Error caused by sensitivity to small changes in the training data
+    - High variance leads to overfitting
+
+
+
+Visual intuition
+----------------
+Underfitting
+    - The model cannot follow the trend of the data
+    - Predictions remain too simple
+
+Overfitting
+    - The model follows almost every data point
+    - Predictions fluctuate heavily
+
+Good fit
+    - The model follows the general pattern without fitting noise
+
+
+
+Relation between model complexity and errors
+--------------------------------------------
+As model complexity increases:
+    - Training error usually decreases
+    - Test error decreases initially, then starts increasing
+
+The minimum test error corresponds to the best model complexity.
+
+
+
+How to reduce underfitting
+--------------------------
+    - Use a more complex model
+    - Add relevant features
+    - Reduce regularisation
+
+
+
+How to reduce overfitting
+-------------------------
+    - Use more training data
+    - Apply regularisation
+    - Reduce model complexity
+    - Perform proper hyperparameter tuning
+
+
+
+Final note
+----------
+- Underfitting and overfitting describe two extreme behaviours of a model.
+- The main goal of machine learning is to achieve good generalisation by finding a proper balance between bias and variance.

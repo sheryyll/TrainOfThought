@@ -1,0 +1,134 @@
+ORDINARY LEAST SQUARES (OLS) FOR SIMPLE LINEAR REGRESSION
+--------------------------------------------------------
+
+Simple linear regression models the relationship between one input feature and one output variable.
+
+Model form
+----------
+    ŷ = β₀ + β₁ x
+    where,
+        β₀  → intercept
+        β₁  → slope (coefficient)
+        x   → input feature
+        ŷ  → predicted output
+
+
+Objective of OLS
+----------------
+- The aim of Ordinary Least Squares is to find the values of β₀ and β₁ such that the total squared prediction error is minimum.
+
+
+Residual and error
+------------------
+For each data point i,
+    residual ei = yi − ŷi
+                 = yi − (β₀ + β₁ xi)
+
+
+
+Cost function
+-------------
+The OLS cost function is
+    S(β₀ , β₁) = (1 / n) Σ (yi − β₀ − β₁ xi)²
+        where
+            n → number of data points
+
+
+
+Why squared error is used
+------------------------
+    - Positive and negative errors do not cancel out
+    - Larger errors are penalised more
+    - The cost surface becomes smooth and convex
+
+
+
+Optimisation idea
+-----------------
+- To minimise S(β₀ , β₁), take partial derivatives with respect to β₀ and β₁ and set them equal to zero.
+
+
+
+Partial derivative with respect to β₀
+-------------------------------------
+    ∂S / ∂β₀ = (2 / n) Σ (yi − β₀ − β₁ xi)(−1)
+
+Setting it equal to zero,
+    Σ (yi − β₀ − β₁ xi) = 0
+
+Expanding,
+    Σ yi − nβ₀ − β₁ Σ xi = 0
+
+Rearranging,
+    β₀ = ( Σ yi / n ) − β₁ ( Σ xi / n )
+
+Using mean notation,
+    β₀ = ȳ − β₁ x̄
+
+
+
+Partial derivative with respect to β₁
+-------------------------------------
+    ∂S / ∂β₁ = (2 / n) Σ (yi − β₀ − β₁ xi)(−xi)
+
+Setting it equal to zero,
+    Σ xi (yi − β₀ − β₁ xi) = 0
+
+Substituting β₀ = ȳ − β₁ x̄ and simplifying leads to
+    Σ (xi − x̄)(yi − ȳ) − β₁ Σ (xi − x̄)² = 0
+
+
+
+Closed-form solution for slope
+-------------------------------
+    β₁ =  Σ (xi − x̄)(yi − ȳ)
+          --------------------
+             Σ (xi − x̄)²
+
+
+
+Closed-form solution for intercept
+----------------------------------
+    β₀ = ȳ − β₁ x̄
+
+
+
+Interpretation of the formulas
+------------------------------
+Slope β₁
+
+    - Measures how much y changes for one unit change in x
+    - Depends on how x and y vary together
+
+Intercept β₀
+
+    - Predicted value of y when x = 0
+    - Shifts the regression line up or down
+
+
+
+Geometric intuition
+-------------------
+- The OLS solution corresponds to the lowest point of a bowl-shaped error surface formed by the squared error.
+- At this point, the total squared vertical distance between data points and the fitted line is minimum.
+
+
+
+Important properties
+--------------------
+    - The fitted line always passes through the point (x̄ , ȳ)
+    - The solution is unique when Σ (xi − x̄)² ≠ 0
+    - The cost function is convex for simple linear regression
+
+
+
+Summary
+-------
+OLS estimates the regression line
+    ŷ = β₀ + β₁ x
+by minimising the average squared residuals.
+
+The final parameters are
+
+    β₁ = Σ (xi − x̄)(yi − ȳ) / Σ (xi − x̄)²
+    β₀ = ȳ − β₁ x̄

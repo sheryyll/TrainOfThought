@@ -1,0 +1,114 @@
+PERFORMANCE METRICS USED IN LINEAR REGRESSION
+--------------------------------------------
+
+Two commonly used evaluation metrics are:
+
+1. R-squared (R²)
+2. Adjusted R-squared
+
+
+R-squared (R²)
+--------------
+
+- R-squared represents how well the independent variables explain the variation in the target variable.
+- It tells us what fraction of the total variation in the output is captured by the model.
+
+Mathematical form:
+    R² = 1 − (SS_res / SS_tot)
+
+    where
+        SS_res  = Σ (yi − ŷi)²  
+        SS_tot  = Σ (yi − ȳ)²  
+
+            yi   → actual value  
+            ŷi   → predicted value  
+            ȳ    → mean of actual values
+
+Meaning of the terms
+    - SS_res measures the error made by the model.  
+    - SS_tot measures the total variation present in the data.
+
+
+Range of R-squared
+------------------
+- 0 ≤ R² ≤ 1
+
+If R² is closer to 1, the model explains most of the variation.  
+If R² is closer to 0, the model explains very little variation.
+
+
+Interpretation example
+----------------------
+- R² = 0.85  
+- This means 85% of the variation in the output is explained by the input features.
+
+
+Important observation
+---------------------
+- When more features are added to the model, the value of R² never decreases.
+- It either increases or stays the same, even if the new feature is not useful.
+
+
+Why this can be misleading
+--------------------------
+- R² alone cannot detect overfitting.
+- If unnecessary or random features are added, R² may still increase, even though the model is not really improving.
+- Because of this, R² is not reliable when comparing models that use different numbers of input features.
+
+
+Training and testing perspective
+--------------------------------
+- Usually we compute:
+    R² on training data  
+    R² on testing data
+- If training R² is very high but testing R² is much lower, the model is likely overfitting.
+
+------------------------------------------------------------------------------------------------------------
+
+Adjusted R-squared
+------------------
+- Adjusted R-squared is an improved version of R².
+- It penalizes the model for adding unnecessary features.
+
+
+Formula:
+- Adjusted R² = 1 − (1 − R²) × (N − 1) / (N − P − 1)
+
+    Meaning of symbols
+        N → number of data points  
+        P → number of independent features
+
+
+Key property
+------------
+- Unlike R², Adjusted R² can decrease if a newly added feature does not improve the model.
+
+
+Why Adjusted R-squared is preferred
+-----------------------------------
+- It balances:
+    • goodness of fit  
+    • number of features used
+- This makes it more reliable when comparing multiple linear regression models with different numbers of input variables.
+
+
+Simple comparison
+-----------------
+- R-squared
+  - Always increases when features are added
+  - Cannot detect unnecessary features
+
+- Adjusted R-squared
+  - Increases only when a new feature truly improves the model
+  - Penalizes complexity
+
+
+Quick numeric example
+---------------------
+- R² = 0.85  → 85% of the variance is explained  
+- Adjusted R² might be slightly lower, depending on how many features are used and how many samples are available.
+
+
+Final note
+----------
+- For multiple linear regression, Adjusted R-squared is generally a better indicator of model quality than R-squared, especially when feature count is high.

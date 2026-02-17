@@ -1,0 +1,148 @@
+ERROR BASED METRICS USED IN LINEAR REGRESSION
+--------------------------------------------
+
+The commonly used error based performance measures are:
+1. Mean Squared Error (MSE)
+2. Mean Absolute Error (MAE)
+3. Root Mean Squared Error (RMSE)
+
+
+
+Mean Squared Error (MSE)
+-----------------------
+- MSE measures the average of the squared differences between actual and predicted values.
+
+- Mathematical form:
+    MSE = (1 / m) Σ (yi − ŷi)²
+        yi  → actual value
+        ŷi  → predicted value
+        m   → number of samples
+
+Important idea
+    - Errors are squared before averaging.
+    - Larger errors get much more weight than smaller errors.
+
+
+Relation with the learning objective
+------------------------------------
+- In linear regression, the commonly used cost function is:
+    J(θ) = (1 / 2m) Σ (yi − ŷi)²
+
+- This is the same as MSE, except for the constant factor 1/2.
+- The goal of training is to find θ such that this cost becomes minimum.
+
+
+Behaviour of MSE
+----------------
+    - Heavily penalises large errors
+    - Very sensitive to outliers
+    - Produces a smooth and convex loss surface for linear regression
+    - Easy to optimise using gradient descent
+
+
+Geometric intuition
+-------------------
+- The squared error produces a bowl-shaped curve.
+- The minimum point corresponds to the best parameter values.
+
+
+
+Mean Absolute Error (MAE)
+------------------------
+- MAE measures the average absolute difference between actual and predicted values.
+- Mathematical form:
+    MAE = (1 / m) Σ |yi − ŷi|
+
+
+Behaviour of MAE
+----------------
+- Treats all errors equally
+- Does not square the errors
+- Less sensitive to outliers compared to MSE
+
+
+Optimisation aspect
+-------------------
+- The absolute value function is not differentiable at zero
+- Optimisation becomes slightly harder compared to MSE
+
+
+Interpretation
+--------------
+- MAE tells how far, on average, the predictions are from the actual values in absolute terms.
+
+
+Root Mean Squared Error (RMSE)
+------------------------------
+- RMSE is the square root of MSE.
+- Mathematical form:
+    RMSE = √( (1 / m) Σ (yi − ŷi)² )
+
+
+Behaviour of RMSE
+-----------------
+- Penalises large errors more than small errors
+- Sensitive to outliers, similar to MSE
+- Keeps the same unit as the target variable
+
+
+Why RMSE is often preferred over MSE
+------------------------------------
+- MSE produces squared units (for example, price²), which are hard to interpret.
+- RMSE converts the error back to the original unit of the target variable, making it easier to understand.
+
+
+
+Comparison of MSE, MAE and RMSE
+-------------------------------
+
+MSE
+    - Strongly penalises large errors
+    - Very sensitive to outliers
+    - Smooth and easy to optimise
+
+MAE
+    - More robust to outliers
+    - All errors contribute linearly
+    - Harder to optimise due to non-smooth point
+
+RMSE
+    - Similar behaviour to MSE
+    - Easier to interpret because of original scale
+
+
+
+Important relationship
+----------------------
+- For the same predictions:
+    RMSE ≥ MAE
+-RMSE becomes much larger when a few large errors are present.
+
+
+
+Effect of outliers
+------------------
+    - MSE and RMSE increase sharply when a single large error occurs
+    - MAE increases only proportionally to the size of the error
+
+
+
+Which metric to choose
+----------------------
+Use MAE
+    - when robustness to outliers is important
+
+Use MSE
+    - when large errors must be strongly penalised
+    - when smooth optimisation is required
+
+Use RMSE
+    - when interpretability in the original unit is preferred
+    - when large errors should still be penalised
+
+
+
+Final note
+----------
+- MSE, MAE and RMSE measure prediction error directly, while R-squared measures how well the model explains the variance in the data.
+- Both types of metrics are usually analysed together to judge the quality of a linear regression model.

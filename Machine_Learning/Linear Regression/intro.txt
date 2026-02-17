@@ -1,0 +1,237 @@
+SIMPLE LINEAR REGRESSION
+
+
+WHAT IS MACHINE LEARNING?
+
+Machine Learning is a field of AI where a system learns patterns from data
+and makes predictions without being explicitly programmed.
+
+---------------------------------------------------------------------------
+
+SUPERVISED LEARNING
+
+Supervised learning is a type of machine learning where the dataset
+contains both:
+• input values (x)
+• output values (y)
+
+The model learns the relationship between x and y.
+
+
+---------------------------------------------------------------------------
+
+REGRESSION
+
+Regression is a supervised learning problem where the output is a
+continuous value (for example: height, price, salary, temperature).
+
+
+---------------------------------------------------------------------------
+
+SIMPLE LINEAR REGRESSION
+
+Simple linear regression is a regression technique used when there is
+only ONE input feature and ONE output.
+
+
+DATASET
+    Input feature (x) → for example: weight
+    Output feature (y) → for example: height
+
+    Example:
+
+        x (weight)    y (height)
+        74            170 cm
+        80            180 cm
+        75            175 cm
+        ...
+
+
+MODEL
+A model is a mathematical function that maps the input to the output.
+
+
+---------------------------------------------------------------------------
+
+HYPOTHESIS FUNCTION
+
+- The hypothesis function represents our model.
+
+- hθ(x) = θ0 + θ1 x
+    where:
+        θ0 = intercept (value of y when x = 0)
+        θ1 = slope or coefficient (controls how fast y changes with x)
+
+    If x = 0:
+        hθ(x) = θ0
+
+
+---------------------------------------------------------------------------
+
+PREDICTION
+- Predicted value:
+    ŷ = hθ(x)
+
+Actual value from dataset: y
+
+
+ERROR (RESIDUAL)
+- Error is the difference between predicted value and actual value.
+- Error = (ŷ − y)
+
+
+COST FUNCTION
+- The cost function tells us how good or bad our model is.
+- We use Mean Squared Error (MSE).
+    J(θ0, θ1) = (1 / 2m) * Σ ( hθ(x(i)) − y(i) )²
+             i = 1 to m
+            
+        where: 
+            m = number of training examples
+
+
+WHY SQUARED ERROR?
+• Squaring removes negative values
+• Penalizes large errors more
+• Makes the function smooth and differentiable
+
+
+---------------------------------------------------------------------------
+
+FINAL AIM
+- Our goal is to find θ0 and θ1 such that the cost is minimum.
+-Minimize
+    J(θ0, θ1) = (1 / 2m) * Σ ( hθ(x(i)) − y(i) )²
+
+
+---------------------------------------------------------------------------
+
+SMALL EXAMPLE (θ0 = 0)
+
+Given dataset:
+    x   y
+    1   1
+    2   2
+    3   3
+
+    Assume:
+    θ0 = 0
+
+    hθ(x) = θ1 x
+
+    If θ1 = 1:
+        h(1)=1 , h(2)=2 , h(3)=3
+
+    J(θ1) = (1 / 2*3) [ (1−1)² + (2−2)² + (3−3)² ]
+    J(θ1) = 0
+
+
+    If θ1 = 0.5:
+        h(1)=0.5 , h(2)=1 , h(3)=1.5
+
+    J(θ1) = (1 / 2*3) [ (0.5−1)² + (1−2)² + (1.5−3)² ]
+    J(θ1) ≈ 0.58
+
+
+    If θ1 = 0:
+        h(1)=0 , h(2)=0 , h(3)=0
+
+    J(θ1) = (1 / 2*3) [ (0−1)² + (0−2)² + (0−3)² ]
+    J(θ1) ≈ 2.33
+
+    So the minimum error occurs when θ1 = 1.
+
+
+---------------------------------------------------------------------------
+
+OPTIMIZATION
+
+- Optimization means finding the best parameters (θ values)
+that minimize the cost function.
+
+
+---------------------------------------------------------------------------
+
+GRADIENT DESCENT
+
+- Gradient Descent is an optimization algorithm used to minimize the cost
+function by updating parameters step by step.
+
+
+---------------------------------------------------------------------------
+
+CONVERGENCE ALGORITHM
+
+Repeat until convergence:
+
+    θj := θj − α * ( ∂J(θ) / ∂θj )
+
+    where:
+        j = 0 and 1
+        α = learning rate
+
+
+---------------------------------------------------------------------------
+
+LEARNING RATE (α)
+
+- The learning rate controls how big a step we take in each update.
+- Basically controls the speed of convergence. 
+Small α  → slow learning
+Large α  → may overshoot the minimum
+
+Example:
+α = 0.001
+
+
+---------------------------------------------------------------------------
+
+INTUITION OF GRADIENT DESCENT
+
+- If the slope of J is positive,
+we move left.
+
+- If the slope of J is negative,
+we move right.
+
+- We always move in the direction of steepest decrease of J.
+
+
+---------------------------------------------------------------------------
+
+DERIVATIVES
+
+Cost function:
+    J(θ0, θ1) = (1 / 2m) Σ ( hθ(x(i)) − y(i) )²
+
+Hypothesis:
+    hθ(x) = θ0 + θ1 x
+
+
+PARTIAL DERIVATIVE WITH RESPECT TO θ0
+    ∂J / ∂θ0 = (1 / m) Σ ( hθ(x(i)) − y(i) )
+
+
+PARTIAL DERIVATIVE WITH RESPECT TO θ1
+    ∂J / ∂θ1 = (1 / m) Σ ( hθ(x(i)) − y(i) ) x(i)
+
+
+---------------------------------------------------------------------------
+
+FINAL PARAMETER UPDATE RULES
+
+Repeat until convergence:
+
+θ0 := θ0 − α * (1 / m) Σ ( hθ(x(i)) − y(i) )
+
+θ1 := θ1 − α * (1 / m) Σ ( hθ(x(i)) − y(i) ) x(i)
+
+---------------------------------------------------------------------------
+
+FINAL CONCLUSION
+
+- Simple Linear Regression models the relationship between one input and one
+    output using a straight line.
+- Gradient Descent is used to find the best values of θ0 and θ1.
+- The cost function of linear regression is convex (bowl shaped),
+    so gradient descent converges to a global minimum.

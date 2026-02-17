@@ -1,0 +1,107 @@
+MULTIPLE LINEAR REGRESSION
+
+Definition:
+- Multiple Linear Regression is a supervised machine learning algorithm used to predict a continuous output variable using two or more independent input variables.
+
+
+Independent Variable (Input Feature)
+------------------------------------
+The variables used to predict the output.
+They are also called predictors or features.
+
+Example:
+Weight, number of rooms, size of house, location, etc.
+
+
+Dependent Variable (Output Feature)
+-----------------------------------
+The variable that we want to predict using the inputs.
+
+Example:
+Height, price of a house, etc.
+
+
+Simple Linear Regression Hypothesis
+-----------------------------------
+h(x) = θ₀ + θ₁x
+
+Where,
+h(x)  → predicted output
+x     → input feature
+θ₀    → intercept (bias term)
+θ₁    → slope (coefficient)
+
+
+Interpretation:
+θ₀ represents the value of the output when x = 0.
+θ₁ represents how much the output changes for one unit change in x.
+
+
+House Price Dataset Example
+---------------------------
+
+Independent features:
+1. Number of rooms
+2. Size of the house
+3. Location
+
+Output feature:
+Price
+
+
+Multiple Linear Regression Hypothesis
+-------------------------------------
+
+h(x) = θ₀ + θ₁x₁ + θ₂x₂ + θ₃x₃
+
+Where,
+x₁ → number of rooms
+x₂ → size of house
+x₃ → location
+
+θ₀ → intercept
+θ₁, θ₂, θ₃ → coefficients (weights)
+
+
+Explanation:
+The model combines multiple input features to predict the output.
+Each feature has its own coefficient that shows its importance.
+
+
+Parameters
+----------
+
+θ₀, θ₁, θ₂, θ₃ are called model parameters.
+
+θ₀  → intercept
+θ₁, θ₂, θ₃ → coefficients
+
+
+Cost Function
+-------------
+
+J(θ₀, θ₁, …, θn)
+
+The cost function measures how far the predicted values are from the actual values.
+
+Its purpose is to find the best values of θ such that the prediction error is minimum.
+
+
+Geometric Interpretation
+------------------------
+
+In multiple linear regression, the cost function forms a bowl-shaped surface.
+
+The lowest point in this surface represents the minimum error.
+
+Optimization algorithms (like gradient descent) move towards this minimum point to find the best parameters.
+
+
+Summary
+-------
+
+Multiple Linear Regression predicts a continuous output using more than one input feature.
+
+It extends simple linear regression by adding more variables into the hypothesis function.
+
+The goal is to minimize the cost function by learning the optimal values of the parameters.
