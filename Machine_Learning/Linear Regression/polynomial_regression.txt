@@ -1,0 +1,114 @@
+POLYNOMIAL REGRESSION
+--------------------
+
+Polynomial regression is used when the relationship between the input and output is not linear.
+It models a curved relationship by adding higher-power terms of the input features to a linear model.
+
+
+
+Linear and non-linear relationships
+-----------------------------------
+
+Simple linear regression
+    h(x) = β0 + β1 x
+This represents a straight line relationship between x and y.
+
+
+Multiple linear regression
+    h(x) = β0 + β1 x1 + β2 x2 + β3 x3
+This is still linear in the parameters and models multiple input features.
+
+
+When the straight line cannot fit the data well, a polynomial form is used.
+
+
+
+Polynomial regression model
+---------------------------
+
+Polynomial regression extends linear regression by adding powers of the input feature.
+General form for one input feature x
+
+    h(x) = β0 + β1 x + β2 x² + β3 x³ + … + βd x^d
+        d is called the degree of the polynomial.
+
+
+
+Meaning of polynomial degree
+----------------------------
+
+The degree decides the highest power of the input variable.
+    degree = 0  → constant model
+    degree = 1  → simple linear regression
+    degree = 2  → quadratic model
+    degree = d  → polynomial model of degree d
+
+
+
+Special cases
+-------------
+Degree 0
+    h(x) = β0
+The prediction is a constant value.
+
+
+Degree 1
+    h(x) = β0 + β1 x
+This becomes simple linear regression.
+
+
+Degree 2
+    h(x) = β0 + β1 x + β2 x²
+
+
+Degree n
+    h(x) = β0 + β1 x + β2 x² + … + βn x^n
+
+
+
+Important observation
+---------------------
+Although polynomial regression models a non-linear relationship between x and y, the model is still linear in the parameters β.
+This means it can be trained using ordinary least squares, just like linear regression.
+
+
+
+Simple polynomial regression
+----------------------------
+Simple polynomial regression uses:
+    - one input feature
+    - one output feature
+Only the powers of the same input variable are added.
+
+
+
+Multiple input polynomial regression
+------------------------------------
+Polynomial regression can also be applied when there are multiple input features.
+
+For two input features x1 and x2, a polynomial model can be written as
+    h(x) = β0 + β1 x1 + β2 x2 + β3 x1² + β4 x2²
+
+These are still treated as independent features after transformation.
+
+
+
+Geometric intuition
+-------------------
+As the degree increases, the model becomes more flexible and can fit more complex curves.
+A very small degree may underfit the data.
+A very large degree may overfit and start fitting noise instead of the true pattern.
+
+
+
+Effect of increasing degree
+----------------------------
+    - Low degree  → high bias, simple curve
+    - Moderate degree → better fit
+    - Very high degree → high variance and overfitting
+
+
+
+Final note
+----------
+Polynomial regression is a feature transformation technique that allows linear regression models to capture non-linear relationships by using polynomial features.
