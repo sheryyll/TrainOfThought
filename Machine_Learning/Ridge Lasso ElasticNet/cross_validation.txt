@@ -1,0 +1,128 @@
+Types of Cross Validation
+
+- Dataset:
+    Total data = 1000 rows
+- First split:
+    Training set
+    Test set
+- Purpose:
+    To evaluate the performance of the model.
+
+Two main steps
+    1) Training the model
+    2) Hyperparameter tuning
+
+
+-----------------------------------------------------------------------
+
+Hold-Out Cross Validation
+- Data is split only once.
+
+Example:
+    Train = 80%
+    Test = 20%
+
+- Training → Validation → Test
+- Training data is used to train the model.
+- Validation data is used for tuning.
+- Test data is used for final evaluation.
+
+
+-----------------------------------------------------------------------
+
+1) Leave One Out Cross Validation (LOOCV)
+- If total samples = N
+- For each experiment:
+    Take 1 sample as test
+    Remaining N − 1 samples as training
+
+- Repeat this for every sample.
+
+- Example:
+    Exp 1 → train on all except sample 1, test on sample 1
+    Exp 2 → train on all except sample 2, test on sample 2
+    …
+    Exp N → train on all except sample N, test on sample N
+
+    Final accuracy is the average of all experiments.
+
+- Another variant is Leave P Out Cross Validation
+
+- Disadvantage:
+- Very slow when dataset is large.
+
+
+2) K-Fold Cross Validation
+- Data is divided into K equal parts (folds).
+- Example:
+
+    K = 5
+    Total data = 500 samples
+    Each fold = 100 samples
+
+    For each experiment:
+        One fold is used as validation
+        Remaining folds are used for training
+        Exp 1 → Fold 1 = validation, others = training
+        Exp 2 → Fold 2 = validation, others = training
+        …
+        Exp 5 → Fold 5 = validation, others = training
+
+        Final accuracy = average of all fold accuracies.
+
+
+3) Stratified K-Fold Cross Validation
+- Used mainly for classification problems.
+- Ensures that each fold has the same class proportion
+    as the original dataset.
+
+Example:
+    If the dataset has
+    60% class A and 40% class B
+
+    Each fold will also have approximately
+    60% class A and 40% class B.
+
+    This avoids biased splits.
+
+
+4) Time Series Cross Validation
+- Used for time-dependent data.
+- Data is split based on time order.
+- Past data is used for training.
+- Future data is used for validation.
+
+Example:
+    Jan to Day 1 → training
+    Day 2 → validation
+
+    Jan to Day 2 → training
+    Day 3 → validation
+
+    Jan to Day 3 → training
+    Day 4 → validation
+
+    And so on.
+
+Important rule:
+- Never shuffle the data in time series cross validation.
+
+
+-----------------------------------------------------------------------
+
+Summary
+
+Hold-out CV
+- Single split of data.
+
+LOOCV
+- Uses one sample as test at a time.
+
+K-Fold CV
+- Splits data into K parts and rotates the validation set.
+
+Stratified K-Fold
+- Maintains class distribution in every fold.
+
+Time Series CV
+- Respects time order of the data.

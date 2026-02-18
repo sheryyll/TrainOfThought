@@ -1,0 +1,89 @@
+1) Ridge Regression (L2 Regularization)
+- Used to reduce overfitting.
+- New cost function:
+    J(θ) = (1 / 2m) * Σ (hθ(x(i)) − y(i))²
+        + (λ / 2m)  * Σ (θj)²
+
+Note:
+• The bias term θ0 is NOT regularized.
+• Regularization is applied only to θ1, θ2, ..., θn.
+
+So,
+    J(θ) = (1 / 2m) * Σ (hθ(x(i)) − y(i))²
+        + (λ / 2m)  * Σ (from j = 1 to n) (θj)²
+
+Effect:
+    • Shrinks coefficients
+    • Reduces model complexity
+    • Reduces overfitting
+    • Keeps all features
+
+Hyperparameter:
+    λ (lambda)
+    - If λ = 0 → same as linear regression  
+    - If λ is large → coefficients become very small
+
+Problem solved:
+    High variance
+
+
+2) Lasso Regression (L1 Regularization)
+- Used for feature selection.
+- New cost function:
+    J(θ) = (1 / 2m) * Σ (hθ(x(i)) − y(i))²
+        + (λ / m)  * Σ |θj|
+
+Note:
+    • θ0 is not included in regularization
+    • Absolute value of coefficients is used
+
+So,
+    J(θ) = (1 / 2m) * Σ (hθ(x(i)) − y(i))²
+        + (λ / m) * Σ (from j = 1 to n) |θj|
+
+Effect:
+    • Some coefficients become exactly 0
+    • Automatically selects features
+    • Produces sparse model
+
+Problem solved:
+    Feature selection and overfitting
+
+Hyperparameter:
+    λ (lambda)
+
+
+3) Elastic Net Regression
+- Combination of Ridge and Lasso.
+
+- New cost function:
+    J(θ) = (1 / 2m) * Σ (hθ(x(i)) − y(i))²
+        + (λ1 / m) * Σ |θj|
+        + (λ2 / 2m) * Σ (θj)²
+
+- This includes:
+    • L1 penalty (Lasso)
+    • L2 penalty (Ridge)
+
+- Effect:
+    • Reduces overfitting
+    • Performs feature selection
+    • Works well when features are correlated
+
+
+Summary
+
+    Ridge Regression:
+    → L2 penalty
+    → reduces overfitting
+    → keeps all features
+
+    Lasso Regression:
+    → L1 penalty
+    → performs feature selection
+    → some coefficients become zero
+
+    Elastic Net:
+    → combination of L1 and L2
+    → reduces overfitting
+    → performs feature selection
