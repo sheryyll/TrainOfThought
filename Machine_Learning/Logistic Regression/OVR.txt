@@ -1,0 +1,79 @@
+LOGISTIC REGRESSION (ONE VS REST)
+
+- Logistic Regression can be extended to solve Multiclass Classification problems.
+- The important technique used is called One Versus Rest (OVR), also known as One Vs All (OVA).
+- It allows Logistic Regression (which is originally binary) to handle multiple classes.
+
+--------------------------------------------------------------------
+
+WHAT IS ONE VS REST?
+
+In One Vs Rest:
+- For K classes, we create K separate binary classification models.
+- Each model learns to distinguish:
+    One class vs All other classes.
+
+--------------------------------------------------------------------
+
+Example:
+
+f1   f2   f3   Output
+-    -    -    O1
+-    -    -    O2
+-    -    -    O3
+-    -    -    O1
+-    -    -    O3
+-    -    -    O2
+
+There are 3 classes: O1, O2, O3
+
+So we create 3 models:
+
+Model M1 → O1 vs (O2, O3)
+Model M2 → O2 vs (O1, O3)
+Model M3 → O3 vs (O1, O2)
+
+Each model is a binary logistic regression model.
+
+--------------------------------------------------------------------
+
+HOW TRAINING WORKS
+
+- For Model M1:
+    O1 is labeled as 1
+    O2 and O3 are labeled as 0
+
+- For Model M2:
+    O2 is labeled as 1
+    O1 and O3 are labeled as 0
+
+- For Model M3:
+    O3 is labeled as 1
+    O1 and O2 are labeled as 0
+
+This is similar to performing One Hot Encoding on the output labels.
+
+--------------------------------------------------------------------
+
+HOW PREDICTION WORKS
+
+When a new test data point is passed:
+- All models calculate probability.
+- The model that gives the highest probability wins.
+
+Example:
+
+M1      M2      M3
+0.25    0.20    0.55
+
+Since M3 gives highest probability (0.55),
+Final predicted class = O3
+
+--------------------------------------------------------------------
+
+KEY POINTS
+
+- One Vs Rest converts multiclass into multiple binary problems.
+- Number of models = Number of classes.
+- Final prediction is based on highest probability.
+- Commonly used in Logistic Regression and Linear Classifiers.

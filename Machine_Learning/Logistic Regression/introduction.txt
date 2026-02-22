@@ -1,0 +1,111 @@
+LOGISTIC REGRESSION 
+
+- Logistic Regression is a supervised learning algorithm used for binary classification problems.
+- It predicts the probability that a given input belongs to a particular class (0 or 1).
+
+Example:
+    Input  : Study Hours
+    Output : Pass (1) or Fail (0)
+
+-Unlike Linear Regression, Logistic Regression outputs probabilities between 0 and 1.
+ 
+
+--------------------------------------------------------------------
+
+2. Why Not Use Linear Regression for Classification?
+
+1) Linear regression can produce outputs less than 0 or greater than 1.
+2) Classification requires outputs strictly between 0 and 1 (probabilities).
+3) Linear regression cost function becomes non-convex when used with classification.
+
+Therefore, we use Logistic Regression.
+
+
+--------------------------------------------------------------------
+
+3. Sigmoid (Logistic) Function
+
+- The sigmoid function maps any real value to a value between 0 and 1.
+
+-  Sigmoid Function:
+
+        σ(z) = 1 / (1 + e^(-z))
+
+Properties:
+- If z → +∞, σ(z) → 1
+- If z → -∞, σ(z) → 0
+- If z = 0,  σ(z) = 0.5
+
+
+--------------------------------------------------------------------
+
+4. Hypothesis Function
+
+First compute:
+    z = θ0 + θ1x1 + θ2x2 + ... + θnxn
+
+Then apply sigmoid:
+    hθ(x) = σ(z)
+           = 1 / (1 + e^(-z))
+
+This gives probability:
+    P(y = 1 | x; θ)
+
+Decision Rule:
+    If hθ(x) ≥ 0.5 → Predict 1
+    If hθ(x) < 0.5 → Predict 0
+
+
+--------------------------------------------------------------------
+
+5. Cost Function
+
+- We cannot use Mean Squared Error because it makes the cost function non-convex.
+- Instead, we use Log Loss (Binary Cross Entropy):
+
+For one training example:
+
+If y = 1:
+    Cost = -log(hθ(x))
+
+If y = 0:
+    Cost = -log(1 - hθ(x))
+
+Combined form:
+
+    Cost(hθ(x), y) =
+        -[ y log(hθ(x)) + (1 - y) log(1 - hθ(x)) ]
+
+Total Cost Function:
+
+    J(θ) = -(1/m) Σ [ y(i) log(hθ(x(i))) + (1 - y(i)) log(1 - hθ(x(i))) ]
+
+This cost function is convex, so gradient descent will find global minimum.
+
+
+--------------------------------------------------------------------
+
+6. Gradient Descent
+
+To minimize cost:
+
+Repeat until convergence:
+
+    θj := θj - α * ( ∂J(θ) / ∂θj )
+
+Where:
+- α = learning rate
+- j = 0, 1, 2, ..., n
+
+
+--------------------------------------------------------------------
+
+7. Key Points Summary
+
+- Used for binary classification.
+- Uses sigmoid activation function.
+- Outputs probability between 0 and 1.
+- Uses log loss (cross entropy).
+- Optimized using gradient descent.
+- Decision boundary at 0.5 threshold.
+

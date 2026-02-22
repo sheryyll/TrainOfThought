@@ -1,0 +1,152 @@
+PERFORMANCE METRICS: ACCURACY, PRECISION, RECALL, F-BETA SCORE
+
+Topics Covered:
+1) Confusion Matrix
+2) Accuracy
+3) Precision
+4) Recall
+5) F-Beta Score
+
+
+--------------------------------------------------------------------
+
+1. CONFUSION MATRIX
+
+- In binary classification, predictions are compared with actual values.
+
+                Actual
+               1        0
+Pred 1         TP       FP
+Pred 0         FN       TN
+
+Where:
+TP = True Positive  (Correctly predicted positive)
+FP = False Positive (Incorrectly predicted positive)
+FN = False Negative (Incorrectly predicted negative)
+TN = True Negative  (Correctly predicted negative)
+
+
+--------------------------------------------------------------------
+
+2. ACCURACY
+
+- Accuracy measures overall correctness of the model.
+
+- Formula:
+        Accuracy = (TP + TN) / (TP + FP + FN + TN)
+
+Example:
+If TP = 3, TN = 1, FP = 2, FN = 1
+    Accuracy = (3 + 1) / (3 + 2 + 1 + 1)
+             = 4 / 7
+
+Limitation:
+- Accuracy is not reliable for imbalanced datasets.
+
+Example:
+    If dataset has:
+    900 → Class 0
+    100 → Class 1
+
+    If model predicts all as 0:
+    Accuracy = 90%
+    But model fails to detect Class 1.
+
+
+--------------------------------------------------------------------
+
+3. PRECISION
+
+- Precision answers:
+    Out of all predicted positives, how many are actually correct?
+
+Formula:
+    Precision = TP / (TP + FP)
+
+Focus:
+- Precision reduces False Positives.
+
+Example: Spam Classification
+    If model predicts "Spam",
+    Precision tells how many predicted spam emails are actually spam.
+
+
+--------------------------------------------------------------------
+
+4. RECALL
+
+Recall answers:
+Out of all actual positives, how many were correctly predicted?
+
+Formula:
+
+    Recall = TP / (TP + FN)
+
+Focus:
+Recall reduces False Negatives.
+
+Example: Disease Detection
+If patient actually has disease,
+Recall measures how many sick patients were correctly detected.
+
+
+--------------------------------------------------------------------
+
+5. PRECISION vs RECALL TRADE-OFF
+
+Increasing Precision may decrease Recall.
+Increasing Recall may decrease Precision.
+
+Choice depends on application:
+
+    Spam Detection:
+        Avoid marking important email as spam.
+        Precision is more important.
+
+    Medical Diagnosis:
+        Avoid missing a disease.
+        Recall is more important.
+
+    Stock Market Prediction:
+        Depends on whether avoiding false alarms or missing opportunities is more critical.
+
+
+--------------------------------------------------------------------
+
+6. F-BETA SCORE
+
+F-Beta Score combines Precision and Recall.
+
+General Formula:
+
+    Fβ = (1 + β^2) * (Precision * Recall) 
+         / (β^2 * Precision + Recall)
+
+β controls importance of Recall vs Precision.
+
+Case 1: β = 1
+- Equal importance to Precision and Recall.
+
+    F1 Score = 2 * (Precision * Recall) 
+               / (Precision + Recall)
+        F1 Score is the Harmonic Mean of Precision and Recall.
+
+Case 2: β < 1
+- Precision is more important.
+- Example: β = 0.5
+
+Case 3: β > 1
+- Recall is more important.
+- Example: β = 2
+
+
+--------------------------------------------------------------------
+
+SUMMARY
+
+- Confusion Matrix is the base for evaluation.
+- Accuracy measures overall correctness.
+- Precision focuses on False Positives.
+- Recall focuses on False Negatives.
+- F-Beta Score balances Precision and Recall.
+- Metric selection depends on real-world application.
