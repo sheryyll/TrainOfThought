@@ -1,0 +1,115 @@
+SVM KERNELS – NOTES
+
+- Support Vector Machine (SVM) is a supervised learning algorithm mainly used for
+    binary classification.
+
+
+------------------------------------------------------------
+
+LINEAR SVM (LINEARLY SEPARABLE DATA)
+
+- When the data can be separated using a straight line (in 2D),
+    SVM finds a line (hyperplane) that separates the two classes.
+
+- Goal:
+    Find the maximum margin hyperplane.
+
+- Margin:
+    Distance between the two parallel supporting planes.
+
+- This is called:
+    Linear SVC (Support Vector Classifier).
+
+
+------------------------------------------------------------
+
+NON-LINEAR DATA PROBLEM
+
+- Sometimes data cannot be separated using a straight line.
+
+- Example:
+    Points form a circular pattern.
+    A straight line cannot separate the classes.
+
+    This is called:
+        Non-linearly separable data.
+
+
+------------------------------------------------------------
+
+IDEA OF SVM KERNEL
+
+- Instead of separating the data in the original space,
+    SVM transforms the data into a higher-dimensional space.
+
+- This transformation helps the data become linearly separable.
+
+- Important concept:
+    We do NOT explicitly compute the transformation.
+
+- We use a mathematical formula called a kernel.
+
+------------------------------------------------------------
+
+KERNEL TRICK
+
+- Kernel trick allows SVM to compute inner products in a higher
+    dimensional space without explicitly transforming the data.
+
+- So,
+    Original space  →  Transformed space
+        (using a mathematical formula)
+
+------------------------------------------------------------
+
+TRANSFORMATION EXAMPLE
+
+1D data  →  2D data
+
+Example transformation:
+    x  →  (x , x²)
+    After transformation,
+    a non-linear pattern in 1D becomes linearly separable in 2D.
+
+
+------------------------------------------------------------
+
+HIGHER DIMENSION SEPARATION
+
+In 2D space:
+    Data is not linearly separable.
+
+After mapping to 3D space:
+    A plane (hyperplane) can separate the data.
+
+This separator in higher dimension is called:
+    Linear SVC in transformed space
+
+But in original space it appears as:
+    Non-linear decision boundary.
+
+
+------------------------------------------------------------
+
+INNER SVC
+
+- SVM actually builds a linear classifier in the transformed
+    (feature) space.
+
+- This is often referred to as:
+    Inner SVC (inside the feature space).
+
+
+------------------------------------------------------------
+
+SUMMARY
+
+- SVM Kernel = a function that implicitly maps data into a
+    higher-dimensional space so that a linear separator can be found.
+
+------------------------------------------------
+COMMONLY USED SVM KERNELS
+
+1. Polynomial Kernel
+2. RBF Kernel (Radial Basis Function)
+3. Sigmoid Kernel

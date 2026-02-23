@@ -1,0 +1,27 @@
+SUPPORT VECTOR REGRESSION (SVR)
+
+Goal:
+- Fit a regression line within epsilon margin.
+
+Hyperplane:
+  w^T x + b
+
+Epsilon-insensitive region:
+  | y_i - (w^T x_i + b) | <= epsilon
+
+If error exceeds epsilon:
+- Slack variable (ξ_i) is introduced.
+
+Objective Function:
+  Minimize:
+    (||w||^2)/2 + C * sum(ξ_i)
+
+    Where:
+      epsilon = tolerance margin
+      ξ_i = error beyond epsilon
+      C = penalty parameter
+
+Effect of C in SVR:
+  Large C  → low tolerance to errors
+  Small C  → high tolerance to errors
+

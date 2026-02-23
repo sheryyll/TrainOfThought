@@ -1,0 +1,113 @@
+SUPPORT VECTOR MACHINES (SVM)
+
+1) Types of SVM
+----------------
+• SVC  → Support Vector Classifier
+• SVR  → Support Vector Regressor
+
+--------------------------------------------------
+
+2) Support Vector Machine (SVC)
+
+Goal:
+- Find a hyperplane that separates two classes with maximum margin.
+
+Hyperplane equation:
+- w^T x + b = 0
+    Where:
+        w → weight vector
+        b → bias
+        x → input vector
+
+Points:
+    w^T x + b > 0  → above the plane (positive class)
+    w^T x + b < 0  → below the plane (negative class)
+
+--------------------------------------------------
+
+3) Margin
+
+- Margin = Distance between hyperplane and closest data points.
+
+- Distance of a point from hyperplane:
+    |w^T x + b| / ||w||
+
+    For support vectors:
+        w^T x + b = +1
+        w^T x + b = -1
+
+- Total margin = 2 / ||w||
+- To maximize margin:
+    Minimize ||w||
+
+--------------------------------------------------
+
+4) Hard Margin SVM
+
+- Used when data is perfectly separable.
+
+- Constraint:
+    For all i:
+        y_i (w^T x_i + b) ≥ 1
+
+- Optimization problem:
+
+    Minimize:
+        ||w|| / 2
+
+    Subject to:
+        y_i (w^T x_i + b) ≥ 1
+
+--------------------------------------------------
+
+5) Soft Margin SVM
+
+- Used when data is not perfectly separable.
+- Introduce slack variables (ξ_i):
+    ξ_i ≥ 0
+
+- New constraint:
+    y_i (w^T x_i + b) ≥ 1 − ξ_i
+
+- Optimization problem:
+
+- Minimize:
+    (1/2) ||w||^2 + C Σ ξ_i
+
+    Where:
+        C → penalty parameter
+        ξ_i → error term (slack variable / hinge loss) (summation of distance of the 
+                incorrect fata point from the marginal plane)
+
+Higher C → less margin violations
+Lower C → more tolerance to violations
+
+--------------------------------------------------
+
+6) Support Vectors
+
+Support vectors are:
+• The closest points to the hyperplane
+• Points that define the margin
+• Points satisfying:
+  w^T x + b = ±1
+
+--------------------------------------------------
+
+7) Decision Function
+
+f(x) = w^T x + b
+
+Prediction rule:
+If f(x) ≥ 0 → Class +1
+If f(x) < 0 → Class -1
+
+--------------------------------------------------
+
+8) Summary
+
+• SVM finds optimal separating hyperplane.
+• Hard margin → no misclassification allowed.
+• Soft margin → allows some misclassification.
+• Objective → maximize margin (minimize ||w||).
+• Only support vectors affect final model.
