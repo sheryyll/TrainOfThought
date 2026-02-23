@@ -1,0 +1,129 @@
+VARIANTS OF KNN (FASTER NEIGHBOUR SEARCH)
+
+------------------------------------------------------------
+
+INTRODUCTION
+
+- In basic KNN, distance is computed with all training points.
+- This makes prediction slow for large datasets.
+
+- To speed up neighbour search,
+    special tree-based data structures are used.
+
+
+------------------------------------------------------------
+
+1. KD-TREE (K-DIMENSIONAL TREE)
+
+- A binary tree used to organize points in a k-dimensional space.
+
+- Each level of the tree splits the data using one feature
+    (alternating dimensions).
+
+- At the root:
+    data is split using the first dimension.
+
+- At the next level:
+    data is split using the second dimension, and so on.
+
+
+------------------------------------------------------------
+
+KD-TREE CONSTRUCTION
+
+- Choose a dimension.
+
+- Sort points along that dimension.
+
+- Select the median point.
+
+- Points on the left of the median go to the left subtree.
+- Points on the right of the median go to the right subtree.
+
+- This process is repeated recursively for all subtrees.
+
+
+------------------------------------------------------------
+
+NEAREST NEIGHBOUR SEARCH USING KD-TREE
+
+- Start from the root and move down the tree to a leaf.
+
+- Keep track of the current best distance.
+
+- While returning back through the tree (backtracking):
+    check whether the other branch can contain a closer point.
+
+- If yes:
+    explore that branch also.
+
+
+------------------------------------------------------------
+
+TIME COMPLEXITY (KD-TREE)
+
+- Average case search time:
+    O(log n)
+
+- Worst case:
+    O(n)
+
+
+------------------------------------------------------------
+
+2. BALL TREE
+
+- A tree structure that partitions data using hyperspheres (balls).
+
+- Each node represents:
+    a center point and a radius.
+
+- All points inside the node lie within the ball.
+
+
+------------------------------------------------------------
+
+BALL TREE CONSTRUCTION
+
+- Data is split into two groups.
+
+- For each group:
+    a bounding ball is created.
+
+- This process is repeated recursively.
+
+
+------------------------------------------------------------
+
+NEAREST NEIGHBOUR SEARCH USING BALL TREE
+
+- Distance is computed from the query point to the ball.
+
+- If the distance to a ball is larger than the current best distance,
+    that entire node can be skipped.
+
+- This reduces the number of distance calculations.
+
+
+------------------------------------------------------------
+
+TIME COMPLEXITY (BALL TREE)
+
+- Average case search time:
+    O(log n)
+
+- Performance is usually better than KD-tree
+    when the dimension is high.
+
+
+------------------------------------------------------------
+
+SUMMARY
+
+- KD-tree
+    → splits space using axis-aligned hyperplanes.
+    → works well for low-dimensional data.
+
+- Ball tree
+    → splits space using hyperspheres.
+    → works better for higher-dimensional data.

@@ -1,0 +1,140 @@
+K-NEAREST NEIGHBOURS (KNN)
+
+------------------------------------------------------------
+
+INTRODUCTION
+
+- K-Nearest Neighbours (KNN) is a supervised learning algorithm.
+
+- It can be used for:
+    classification
+    regression
+
+- It is a non-parametric and instance-based (lazy) learning method.
+
+
+------------------------------------------------------------
+
+KNN FOR CLASSIFICATION
+
+- Given a new data point,
+    KNN finds the K nearest data points from the training set.
+
+- The class is decided using:
+    majority voting among the K neighbours.
+
+- Example:
+    If K = 5,
+        and 3 neighbours belong to class A,
+        and 2 neighbours belong to class B,
+    then the predicted class is A.
+
+
+------------------------------------------------------------
+
+CHOICE OF K
+
+- K is the number of nearest neighbours considered.
+
+- If K is very small (for example K = 1):
+    the model becomes sensitive to noise.
+
+- If K is very large:
+    the model becomes biased and may ignore local patterns.
+
+- Usually:
+    K is chosen using validation.
+
+
+------------------------------------------------------------
+
+KNN FOR REGRESSION
+
+- Given a new data point,
+    KNN finds the K nearest neighbours.
+
+- The predicted value is:
+    the average of the target values of the K neighbours.
+
+
+------------------------------------------------------------
+
+DISTANCE METRIC
+
+- KNN uses distance to measure closeness between points.
+
+- Most commonly used distance:
+    Euclidean distance.
+
+- For two points (x1 , y1) and (x2 , y2):
+
+    distance = √( (x2 − x1)² + (y2 − y1)² )
+
+
+------------------------------------------------------------
+
+OTHER DISTANCE MEASURES
+
+- Manhattan distance
+
+- Cosine distance
+
+
+------------------------------------------------------------
+
+WORKING STEPS
+
+- Store the entire training dataset.
+
+- For a new input point:
+    compute distance between the input and all training points.
+
+- Select the K nearest neighbours.
+
+- Perform:
+    majority voting (classification)
+    averaging (regression)
+
+
+------------------------------------------------------------
+
+TIME COMPLEXITY
+
+- During prediction,
+    KNN computes distance to all training samples.
+
+- So prediction time is high for large datasets.
+
+
+------------------------------------------------------------
+
+EFFECT OF NOISE AND OUTLIERS
+
+- KNN is sensitive to noisy data.
+
+- Outliers can strongly affect the prediction,
+    especially when K is small.
+
+
+------------------------------------------------------------
+
+FEATURE SCALING
+
+- Distance based methods are affected by scale.
+
+- Features must be scaled before applying KNN
+    (for example using normalization or standardization).
+
+
+------------------------------------------------------------
+
+SUMMARY
+
+- KNN is simple and intuitive.
+
+- It does not require a training phase.
+
+- Performance depends heavily on:
+    choice of K
+    distance metric
+    feature scaling
