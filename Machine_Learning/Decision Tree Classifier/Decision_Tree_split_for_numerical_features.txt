@@ -1,0 +1,122 @@
+DECISION TREE SPLIT FOR NUMERICAL FEATURES
+
+------------------------------------------------------------
+
+INTRODUCTION
+
+- When a feature is numerical, a decision tree cannot directly
+    split using categories.
+- It uses a threshold based split.
+- The split is of the form:
+    Feature ≤ threshold
+    Feature > threshold
+
+
+------------------------------------------------------------
+
+STEP 1 : SORT THE FEATURE VALUES
+
+- Sort the data based on the selected numerical feature.
+- Keep the corresponding class labels in the same order.
+
+
+------------------------------------------------------------
+
+STEP 2 : SELECT CANDIDATE THRESHOLDS
+
+- Possible thresholds are chosen between consecutive
+    sorted values.
+- A common way:
+    take the mid-point between two adjacent values.
+
+
+------------------------------------------------------------
+
+STEP 3 : CREATE BINARY SPLIT
+
+- For each candidate threshold t:
+    Left node  → feature ≤ t
+    Right node → feature > t
+
+
+------------------------------------------------------------
+
+STEP 4 : COMPUTE SPLIT SCORE
+
+- For every threshold,
+    compute the split quality using:
+    Information Gain
+    or
+    Gini impurity
+
+
+------------------------------------------------------------
+
+STEP 5 : SELECT BEST THRESHOLD
+
+- The threshold that gives:
+    maximum Information Gain
+    or
+    minimum weighted Gini impurity
+  is selected for the split.
+
+
+------------------------------------------------------------
+
+EXAMPLE IDEA (PLAY TENNIS – TEMPERATURE)
+
+- Temperature values are sorted.
+- Candidate thresholds are tested
+    (for example: 23, 36, etc.).
+- For each threshold:
+    Temperature ≤ t
+    Temperature > t
+- Class counts are computed on both sides.
+
+
+------------------------------------------------------------
+
+COMPARING THRESHOLDS
+
+- Example thresholds:
+    t = 23
+    t = 36
+- For each threshold:
+    left and right class distributions are formed.
+- Information gain is calculated for both.
+
+
+------------------------------------------------------------
+
+FINAL SPLIT
+- The threshold with the higher information gain
+    is selected.
+- This produces a better and purer split.
+
+
+------------------------------------------------------------
+
+IMPORTANT OBSERVATION
+
+- For a numerical feature with many unique values:
+    number of candidate thresholds increases.
+- This increases computation during training.
+
+
+------------------------------------------------------------
+
+TIME COMPLEXITY NOTE
+
+- Sorting the feature values is required.
+- This increases training time for numerical splits.
+
+
+------------------------------------------------------------
+
+SUMMARY
+
+- Numerical features are split using thresholds.
+- Data is sorted before testing splits.
+- Multiple thresholds are evaluated.
+- Best threshold is selected using
+    Information Gain or Gini impurity.

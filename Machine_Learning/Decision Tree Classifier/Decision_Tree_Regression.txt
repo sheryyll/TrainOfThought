@@ -1,0 +1,164 @@
+DECISION TREE REGRESSION
+
+------------------------------------------------------------
+
+INTRODUCTION
+
+- Decision Tree can be used for:
+    classification
+    regression
+- In regression:
+    the target variable is continuous.
+- Instead of entropy or gini,
+    regression trees use variance reduction.
+- Goal:
+    minimize prediction error in child nodes.
+
+
+------------------------------------------------------------
+
+REGRESSION TREE IDEA
+
+- Each split divides the dataset into subsets.
+- For each subset:
+    prediction is the mean of target values.
+- The best split:
+    minimizes variance (or MSE).
+- Final leaf node output:
+    average of target values in that node.
+
+
+------------------------------------------------------------
+
+MEAN (PREDICTION VALUE)
+
+- For a node with N samples:
+    Mean = (1 / N) Σ yᵢ
+- This mean becomes:
+    the predicted value of that node.
+
+
+------------------------------------------------------------
+
+VARIANCE
+
+- Variance measures how spread out the target values are.
+- Formula:
+    Variance(S) = (1 / N) Σ (yᵢ − mean)²
+- Lower variance:
+    more pure node.
+
+
+------------------------------------------------------------
+
+MEAN SQUARED ERROR (MSE)
+
+- MSE is same as variance in regression trees.
+- Formula:
+    MSE = (1 / N) Σ (yᵢ − ŷ)²
+- Where:
+    ŷ is the mean of the node.
+
+
+------------------------------------------------------------
+
+VARIANCE REDUCTION
+
+- When a split is made:
+    Parent → Left Child + Right Child
+- Weighted variance after split:
+    Var_split = (N_L / N) Var(L)
+              + (N_R / N) Var(R)
+- Variance Reduction:
+    VR = Var(parent) − Var_split
+- Best split:
+    maximum variance reduction.
+
+
+------------------------------------------------------------
+
+HOW SPLIT IS CHOSEN
+
+- For each feature:
+    try different threshold values.
+- For each possible split:
+    compute left variance
+    compute right variance
+    compute weighted variance
+- Choose the split with:
+    minimum weighted variance
+    or
+    maximum variance reduction.
+
+
+------------------------------------------------------------
+
+EXAMPLE IDEA
+
+- Suppose we have target values:
+    10, 12, 14, 18, 20
+- Parent mean is calculated.
+- Compute parent variance.
+- Try a split:
+    Left → 10, 12, 14
+    Right → 18, 20
+- Compute variance of left and right.
+- Calculate weighted variance.
+- Compare with other possible splits.
+- Choose split with lowest total variance.
+
+
+------------------------------------------------------------
+
+TREE STRUCTURE IN REGRESSION
+
+- Root node:
+    contains all samples.
+- Internal node:
+    contains decision rule
+    (example: Feature ≤ threshold)
+- Leaf node:
+    contains mean value of targets.
+- Output of tree:
+    numeric prediction.
+
+
+------------------------------------------------------------
+
+IMPURE VS PURE NODE (REGRESSION)
+
+- In regression:
+    purity means
+    low variance.
+- A perfectly pure node:
+    all target values are equal.
+- If variance = 0:
+    no further split required.
+
+
+------------------------------------------------------------
+
+STOPPING CRITERIA
+
+- Stop splitting when:
+    variance is very small
+    minimum samples reached
+    maximum depth reached
+- Leaf node prediction:
+    mean of that subset.
+
+
+------------------------------------------------------------
+
+SUMMARY
+
+- Decision Tree Regression predicts continuous values.
+- Instead of entropy or gini:
+    it uses variance or MSE.
+- Best split:
+    maximum variance reduction.
+- Each leaf node:
+    predicts the mean value.
+- Goal:
+    minimize prediction error
+    by creating low-variance nodes.

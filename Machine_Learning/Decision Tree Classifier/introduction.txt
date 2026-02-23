@@ -1,0 +1,158 @@
+DECISION TREE CLASSIFIER
+
+------------------------------------------------------------
+
+INTRODUCTION
+
+- Decision Tree is a supervised learning algorithm.
+
+- It is used for:
+    classification
+    regression
+- Common decision tree algorithms:
+    ID3
+    CART
+- A decision tree consists of:
+    root node
+    internal decision nodes
+    leaf nodes (final output)
+
+
+------------------------------------------------------------
+
+SPLITTING CRITERIA
+
+- At each node, the dataset is split based on a feature.
+- The goal of splitting:
+    to create purer child nodes.
+- Two common split measures:
+    Entropy
+    Gini Impurity
+
+
+------------------------------------------------------------
+
+PURITY OF A NODE
+
+- A node is called:
+    pure node
+    when all samples in the node belong to the same class.
+- A node is called:
+    impure node
+    when it contains samples from multiple classes.
+
+
+------------------------------------------------------------
+
+ENTROPY
+
+- Entropy measures the amount of uncertainty in a node.
+- Formula:
+    H(S) = − Σ pᵢ log₂(pᵢ)
+- Where:
+    pᵢ is the proportion of class i in the node.
+
+
+------------------------------------------------------------
+
+GINI IMPURITY
+
+- Gini impurity measures how often a randomly chosen sample
+    would be incorrectly classified.
+- Formula:
+
+    Gini(S) = 1 − Σ (pᵢ)²
+
+
+------------------------------------------------------------
+
+INFORMATION GAIN
+
+- Information Gain measures the reduction in entropy
+    after a dataset is split.
+- Formula:
+    IG(S, A) = H(S) − Σ ( |Sᵥ| / |S| ) × H(Sᵥ)
+- Where:
+    A is the feature used for splitting.
+    Sᵥ is the subset created by feature A.
+
+
+------------------------------------------------------------
+
+GINI INDEX (GINI GAIN)
+
+- For CART trees, Gini impurity is used instead of entropy.
+- The best split is the one that gives the
+    minimum weighted Gini impurity.
+
+
+------------------------------------------------------------
+
+HOW A SPLIT IS CHOSEN
+
+- For each feature:
+    calculate the split score (Entropy or Gini).
+- Compare all features.
+- Choose the feature that gives:
+    maximum Information Gain
+    or
+    minimum Gini impurity.
+
+
+------------------------------------------------------------
+
+EXAMPLE IDEA OF A SPLIT
+
+- Root node contains mixed labels.
+- After a split:
+    child nodes become more pure.
+- If a node becomes fully pure:
+    it becomes a leaf node.
+
+
+------------------------------------------------------------
+
+IMPURE SPLIT VS PURE SPLIT
+
+- Impure split:
+    child nodes still contain mixed classes.
+- Pure split:
+    child nodes contain samples from only one class.
+
+
+------------------------------------------------------------
+
+TREE STRUCTURE
+
+- Each internal node:
+    tests a feature.
+- Each branch:
+    represents a decision outcome.
+- Each leaf:
+    represents a class label.
+
+
+------------------------------------------------------------
+
+ENTROPY VS GINI IMPURITY
+
+- Entropy uses logarithms.
+- Gini impurity uses squared probabilities.
+- Both aim to measure node purity.
+- For small datasets:
+    entropy and gini give similar results.
+- In practice:
+    Gini is faster to compute than entropy.
+
+
+------------------------------------------------------------
+
+SUMMARY
+
+- Decision Tree splits data recursively based on features.
+- The best feature is chosen using:
+    Information Gain (Entropy)
+    or
+    Gini Impurity.
+- The goal is to build a tree with:
+    high purity in leaf nodes.
