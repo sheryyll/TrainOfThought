@@ -1,0 +1,173 @@
+NAIVE BAYES ALGORITHM (CLASSIFICATION)
+
+------------------------------------------------------------
+
+INTRODUCTION
+
+- Naive Bayes is a probabilistic supervised learning algorithm
+    mainly used for classification problems.
+
+- It is based on:
+    Bayes’ Theorem
+
+- Called "Naive" because it assumes that all features are
+    independent of each other.
+
+
+------------------------------------------------------------
+
+INDEPENDENT EVENTS
+
+- Two events A and B are independent if:
+    P(A ∩ B) = P(A) × P(B)
+
+- Meaning:
+    Occurrence of one event does NOT affect the other.
+
+
+------------------------------------------------------------
+
+DEPENDENT EVENTS
+
+- Two events are dependent if:
+    P(A ∩ B) ≠ P(A) × P(B)
+
+- Conditional Probability:
+    P(A | B) = Probability of A given B
+
+
+------------------------------------------------------------
+
+CONDITIONAL PROBABILITY
+
+- Formula:
+    P(A | B) = P(A ∩ B) / P(B)
+
+- Where:
+    P(A ∩ B) → Joint probability
+    P(B)     → Probability of event B
+
+
+------------------------------------------------------------
+
+BAYES THEOREM
+
+- Bayes Theorem formula:
+
+    P(A | B) = (P(B | A) × P(A)) / P(B)
+
+- Where:
+    P(A | B) → Posterior probability
+    P(B | A) → Likelihood
+    P(A)     → Prior probability
+    P(B)     → Evidence
+
+- Posterior Probability:
+    Probability of a class after observing the data, i.e., P(Class | Data).
+
+- Prior Probability:
+    Probability of a class before seeing any data, i.e., P(Class).
+
+- Likelihood:
+    Probability of the data given a class, i.e., P(Data | Class).
+
+- Evidence:
+    Overall probability of the data across all classes, i.e., P(Data).
+
+------------------------------------------------------------
+
+NAIVE BAYES FORMULATION
+
+- For multiple features x₁, x₂, x₃, ..., xₙ :
+
+    P(y | x₁, x₂, x₃, ..., xₙ)
+      = (P(y) × P(x₁ | y) × P(x₂ | y) × ... × P(xₙ | y))
+        --------------------------------------------------
+                   P(x₁, x₂, x₃, ..., xₙ)
+
+- Since denominator is constant:
+    We maximize only the numerator.
+
+
+------------------------------------------------------------
+
+NAIVE ASSUMPTION
+
+- Features are conditionally independent given the class.
+
+- So,
+
+    P(x₁, x₂, ..., xₙ | y)
+      = P(x₁ | y) × P(x₂ | y) × ... × P(xₙ | y)
+
+
+------------------------------------------------------------
+
+FINAL NAIVE BAYES EQUATION
+
+- Decision rule:
+
+    y = argmax [ P(y) × Π P(xᵢ | y) ]
+
+- Choose the class y with the highest probability.
+
+
+------------------------------------------------------------
+
+EXAMPLE: PLAY TENNIS DATASET
+
+Target Variable:
+    Play Tennis (Yes / No)
+
+Features:
+    Outlook
+    Temperature
+    Humidity
+    Wind
+
+
+PRIOR PROBABILITY
+
+- P(Yes) = Number of Yes / Total samples
+- P(No)  = Number of No  / Total samples
+
+
+LIKELIHOOD CALCULATION
+
+Example:
+    P(Outlook = Sunny | Yes)
+    P(Humidity = High | No)
+    P(Wind = Weak | Yes)
+
+- Calculated using frequency counts from data.
+
+
+POSTERIOR PROBABILITY
+
+- For a test sample:
+
+    P(Yes | x) ∝ P(Yes) × P(x₁ | Yes) × P(x₂ | Yes) × ...
+    P(No  | x) ∝ P(No)  × P(x₁ | No)  × P(x₂ | No)  × ...
+
+- Compare both values.
+
+
+FINAL PREDICTION
+
+- If:
+    P(Yes | x) > P(No | x)
+        → Predict: Yes
+
+- Else:
+        → Predict: No
+
+
+------------------------------------------------------------
+
+SUMMARY
+
+- Naive Bayes is fast and efficient.
+- Works well with high-dimensional data.
+- Performs well even with small datasets.
+- Independence assumption simplifies computation.
+

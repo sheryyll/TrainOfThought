@@ -1,0 +1,101 @@
+VARIANTS OF NAIVE BAYES
+
+------------------------------------------------------------
+
+1. BERNOULLI NAIVE BAYES
+
+- Used when input features follow a Bernoulli distribution.
+- Works with binary features (0 or 1).
+
+- Feature meaning:
+    1 → feature is present
+    0 → feature is absent
+
+- Commonly used when data represents:
+    presence / absence of something.
+
+- Example type of data:
+    Email contains word “offer” → 1
+    Email does not contain word “offer” → 0
+
+
+------------------------------------------------------------
+
+DATASET TYPE (BERNOULLI NB)
+
+- All feature values are binary.
+
+- Example:
+
+    X1   X2   X3   →  Class
+    1    0    1        Yes
+    0    1    0        No
+    1    1    0        Yes
+
+
+------------------------------------------------------------
+
+2. MULTINOMIAL NAIVE BAYES
+
+- Used when input features represent counts or frequencies.
+
+- Works with discrete numeric values.
+
+- Commonly used in:
+    text classification
+    document classification
+    spam filtering
+
+- Feature meaning:
+    how many times a word appears.
+
+
+------------------------------------------------------------
+
+DATASET TYPE (MULTINOMIAL NB)
+
+- Features are word counts or term frequencies.
+
+- Example (text data):
+
+    word1  word2  word3  →  Class
+      3      0      1        Spam
+      0      2      0        Not Spam
+
+
+------------------------------------------------------------
+
+3. GAUSSIAN NAIVE BAYES
+
+- Used when input features follow a continuous distribution.
+
+- Assumes that each feature follows a normal (Gaussian) distribution.
+
+- Commonly used when features are real-valued.
+
+
+------------------------------------------------------------
+
+DATASET TYPE (GAUSSIAN NB)
+
+- Features are continuous values.
+
+- Example:
+
+    Age   Height   Salary   →  Class
+     25    165      35000        A
+     40    170      60000        B
+
+
+------------------------------------------------------------
+
+SUMMARY
+
+- Bernoulli Naive Bayes
+    → best for binary features (0 / 1).
+
+- Multinomial Naive Bayes
+    → best for count based features (especially text data).
+
+- Gaussian Naive Bayes
+    → best for continuous features following normal distribution.
