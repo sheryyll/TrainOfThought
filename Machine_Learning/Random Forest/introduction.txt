@@ -1,0 +1,228 @@
+RANDOM FOREST – CLASSIFICATION AND REGRESSION
+
+------------------------------------------------------------
+
+INTRODUCTION
+
+- Random Forest is an ensemble learning method.
+- It builds multiple decision trees
+    and combines their predictions.
+- Each tree is trained on a different random sample of the data
+    and a random subset of features.
+
+
+------------------------------------------------------------
+
+BASIC IDEA
+
+- From the original dataset:
+    multiple bootstrap samples are created
+    (sampling with replacement).
+- For each sample:
+    a separate decision tree is trained.
+- Each tree is built using:
+    random subset of features at every split.
+
+
+------------------------------------------------------------
+
+RANDOM SAMPLING (BOOTSTRAP SAMPLING)
+
+- Training samples are drawn:
+    with replacement.
+- Some data points may appear multiple times.
+- Some data points may not appear at all in a sample.
+
+
+------------------------------------------------------------
+
+RANDOM FEATURE SELECTION
+
+- At every split in a tree,
+    only a random subset of features is considered.
+- This makes trees:
+    less correlated with each other.
+
+
+------------------------------------------------------------
+
+RANDOM FOREST FOR CLASSIFICATION
+
+- Each decision tree predicts a class label.
+- Final prediction is obtained by:
+    majority voting among all trees.
+
+
+------------------------------------------------------------
+
+RANDOM FOREST FOR REGRESSION
+
+- Each decision tree predicts a numeric value.
+- Final prediction is obtained by:
+    averaging the outputs of all trees.
+
+
+------------------------------------------------------------
+
+SUMMARY OF OUTPUT COMBINATION
+
+- Classification
+    → majority vote classifier
+- Regression
+    → average of all model outputs
+
+
+------------------------------------------------------------
+
+WHY RANDOM FOREST INSTEAD OF A SINGLE DECISION TREE
+
+- A single decision tree:
+    tends to overfit
+    has high variance
+- Training accuracy is usually high.
+- Test accuracy can be unstable.
+
+
+------------------------------------------------------------
+
+RANDOM FOREST AS A GENERALIZED MODEL
+
+- Random Forest reduces variance by:
+    training many trees
+    using different data samples
+    using different feature subsets
+
+- This makes the model:
+    more stable
+    less sensitive to noise
+
+
+------------------------------------------------------------
+
+BIAS – VARIANCE VIEW
+
+- Decision Tree:
+    low bias
+    high variance
+- Random Forest:
+    low bias
+    much lower variance
+
+
+------------------------------------------------------------
+
+TIME COMPLEXITY NOTE
+
+- Training many trees increases computation.
+- But trees are independent,
+    so training can be parallelized.
+
+
+------------------------------------------------------------
+
+OUT-OF-BAG (OOB) EVALUATION
+
+------------------------------------------------------------
+
+INTRODUCTION
+
+- In Random Forest, each tree is trained using
+    a bootstrap sample.
+- The data points that are NOT selected
+    for that tree are called:
+
+    out-of-bag samples.
+
+
+------------------------------------------------------------
+
+OUT-OF-BAG DATA
+
+- For each tree:
+    training data  → bootstrap sample
+    remaining data → out-of-bag data
+- On average:
+    about 1/3 of the original dataset
+    becomes out-of-bag data for a tree.
+
+
+------------------------------------------------------------
+
+OOB PREDICTION
+
+- For a given data point:
+    consider only those trees
+    for which this point was out-of-bag.
+- Collect predictions from those trees.
+
+
+------------------------------------------------------------
+
+OOB SCORE
+
+- For classification:
+    majority voting is used on OOB predictions.
+- For regression:
+    average of OOB predictions is used.
+- OOB score is the overall accuracy (or error)
+    computed using only out-of-bag predictions.
+
+
+------------------------------------------------------------
+
+WHY OOB EVALUATION IS USEFUL
+
+- It acts like an internal validation set.
+- No separate validation dataset is required.
+- It gives a reliable estimate of generalization performance.
+
+
+------------------------------------------------------------
+
+RELATION TO TRAIN–VALIDATION SPLIT
+
+- Traditional approach:
+    dataset
+        → train
+        → validation
+        → test
+- OOB approach:
+    validation is implicitly created
+    using out-of-bag samples.
+
+
+------------------------------------------------------------
+
+INTUITION
+
+- Each data point is evaluated by trees
+    that never saw it during training.
+- This avoids optimistic bias.
+
+
+------------------------------------------------------------
+
+PRACTICAL NOTE
+
+- In common libraries,
+    OOB evaluation can be enabled
+    using an out-of-bag option.
+- The reported OOB score represents
+    validation performance.
+
+
+------------------------------------------------------------
+
+FINAL SUMMARY
+
+- Random Forest trains many decision trees
+    using random data and random features.
+- Classification:
+    majority voting.
+- Regression:
+    averaging.
+- It reduces overfitting and variance
+    compared to a single decision tree.
+- Out-of-bag evaluation provides
+    an internal and efficient way
+    to estimate model performance.
