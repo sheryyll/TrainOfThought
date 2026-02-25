@@ -1,0 +1,157 @@
+ADABOOST (Adaptive Boosting) – Notes
+------------------------------------
+
+---- Overview ----
+    • AdaBoost is an ensemble learning algorithm.
+    • It combines many weak learners to form a strong learner.
+    • Most commonly uses decision trees with depth = 1 (decision stumps).
+    • Each model is trained sequentially.
+    • More importance is given to previously misclassified samples.
+
+---- Ensemble Learning ----
+    • Technique of combining multiple models to improve performance.
+    • Main idea:
+        - Many weak models → one strong model
+
+---- Weak Learner ----
+    • A model that performs only slightly better than random guessing.
+    • Example:
+        - Decision stump (one-level decision tree)
+
+---- Decision Stump ----
+    • A decision tree with only one split.
+    • Has:
+        - one root node
+        - two leaf nodes
+    • Used as base learner in AdaBoost.
+
+---- Why Boosting is Needed ----
+    • Single simple model may underfit.
+    • Boosting focuses on difficult samples.
+    • Each next model corrects the mistakes of previous models.
+
+---- Basic Working of AdaBoost ----
+    Step 1
+        • Assign equal weights to all training samples.
+
+    Step 2
+        • Train a weak learner using the weighted dataset.
+
+    Step 3
+        • Compute the weighted error of the model.
+
+    Step 4
+        • Compute model importance (alpha).
+
+    Step 5
+        • Increase weights of misclassified samples.
+        • Decrease weights of correctly classified samples.
+
+    Step 6
+        • Normalize the weights.
+
+    Step 7
+        • Repeat for T rounds.
+
+    Step 8
+        • Final prediction is a weighted vote of all weak learners.
+
+---- Weighted Error ----
+    • Error is not simple accuracy error.
+    • It is calculated using sample weights.
+
+    weighted_error =
+        sum of weights of misclassified samples
+
+---- Model Weight (Alpha) ----
+    • Measures how important a weak learner is.
+
+    alpha =
+        1/2 * ln( (1 - error) / error )
+
+    • Smaller error → larger alpha
+    • Larger alpha → more influence in final prediction
+
+---- Weight Update Rule ----
+    • For each sample i:
+
+        w_i(new) = w_i(old) * exp( - alpha * y_i * h_i(x_i) )
+
+    where
+        y_i       → true label
+        h_i(x_i)  → prediction of current model
+
+    • Misclassified sample:
+        - weight increases
+
+    • Correctly classified sample:
+        - weight decreases
+
+---- Normalization of Weights ----
+    • After updating all weights:
+
+        w_i = w_i / sum(w)
+
+    • Ensures all weights sum to 1.
+
+---- Final Prediction Rule ----
+    • For binary classification:
+
+        final(x) =
+            sign( alpha1*h1(x)
+                + alpha2*h2(x)
+                + ...
+                + alphaT*hT(x) )
+
+---- Important Property ----
+    • Weak learners are trained sequentially.
+    • Each learner uses a different weighted version of the same dataset.
+    • Earlier mistakes influence future training.
+
+---- Key Characteristics ----
+    • Sensitive to noisy data.
+    • Sensitive to outliers.
+    • Works well when weak learners are slightly better than random.
+
+---- Example (Conceptual) ----
+    Initial weights:
+        w1 = w2 = w3 = ... = 1/N
+
+    First stump:
+        • Misclassifies some points
+        • Those points get higher weights
+
+    Second stump:
+        • Trained more strongly on those hard points
+
+    Continue until T stumps are trained.
+
+---- Comparison: Bagging vs Boosting ----
+    Bagging
+        • Models are trained independently
+        • Uses bootstrap samples
+        • Focus is on variance reduction
+
+    Boosting
+        • Models are trained sequentially
+        • Uses reweighted samples
+        • Focus is on difficult samples and bias reduction
+
+---- AdaBoost Objective Intuition ----
+    • Tries to minimize exponential loss
+    • Penalizes wrong predictions heavily
+    • Encourages correct classification with large margins
+
+---- Practical Notes ----
+    • Base estimator usually:
+        - DecisionTreeClassifier(max_depth=1)
+    • Number of estimators:
+        - controls how many weak learners are used
+    • Learning rate:
+        - scales the alpha values
+
+---- Summary ----
+    • AdaBoost builds a strong classifier by combining many weak learners.
+    • It increases attention on misclassified samples.
+    • Each learner has a weight based on its error.
+    • Final decision is a weighted combination of all learners.
