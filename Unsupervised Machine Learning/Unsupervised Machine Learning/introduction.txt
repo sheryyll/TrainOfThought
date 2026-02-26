@@ -1,0 +1,67 @@
+UNSUPERVISED MACHINE LEARNING
+
+------------------------------------------------------------
+
+Definition:
+
+Unsupervised ML → Learning without labeled output.
+
+Supervised ML:
+Input  → Features (F1, F2, F3, ...)
+Output → Dependent variable (Y)
+
+Unsupervised ML:
+Input  → Features only
+No target / No output column
+
+
+------------------------------------------------------------
+
+Example Dataset
+
+ID    Experience    Salary
+--------------------------------
+1     --            --
+2     --            --
+3     --            --
+4     --            -- 
+
+(No target column)
+
+Goal → Group or cluster the data.
+
+
+------------------------------------------------------------
+
+CLUSTERING
+
+Clustering means:
+Group similar data points together.
+
+Example:
+Data points are divided into:
+
+Cluster 1  (e.g., Blue Circle)
+Cluster 2  (e.g., Green Circle)
+
+Points inside a cluster are similar.
+Points in different clusters are dissimilar.
+
+
+------------------------------------------------------------
+
+COMMON UNSUPERVISED ALGORITHMS
+
+1) K-Means Clustering
+   - Divides data into K clusters
+   - Uses centroids
+   - Minimizes within-cluster distance
+
+2) Hierarchical Clustering
+   - Builds tree-like structure (Dendrogram)
+   - Agglomerative (bottom-up)
+   - Divisive (top-down)
+
+3) DBSCAN (Density-Based Spatial Clustering)
+   - Groups dense regions
+   - Detects noise/outliers
