@@ -1,0 +1,114 @@
+GRADIENT BOOSTING ALGORITHM
+
+------------------------------------------------------------
+
+1) REGRESSION
+2) CLASSIFICATION
+
+
+Example Dataset
+
+Experience    Degree    Salary (Y)
+------------------------------------
+2             BE        5L
+3             Masters   7L
+5             Masters   8L
+6             PhD       10L
+
+
+------------------------------------------------------------
+STEPS
+
+1) CREATE A BASE MODEL
+
+Initial prediction (mean of target):
+
+F0 = (5 + 7 + 8 + 10) / 4
+F0 = 30 / 4
+F0 = 7.5
+
+This is the starting prediction for all samples.
+
+
+------------------------------------------------------------
+
+2) COMPUTE RESIDUALS (ERROR)
+
+Residual = Actual - Predicted
+
+For each data point:
+
+R1 = 5  - 7.5 = -2.5
+R2 = 7  - 7.5 = -0.5
+R3 = 8  - 7.5 =  0.5
+R4 = 10 - 7.5 =  2.5
+
+
+------------------------------------------------------------
+
+3) CONSTRUCT A DECISION TREE
+
+Train a decision tree using:
+Input  → X
+Target → Residuals (R)
+
+h1(x) = First weak learner
+
+
+------------------------------------------------------------
+
+4) UPDATE THE MODEL
+
+New prediction:
+
+F1(x) = F0(x) + learning_rate * h1(x)
+
+Example:
+If learning rate = 0.1
+
+F1(x) = 7.5 + 0.1 * (-2.5)
+F1(x) = 7.5 - 0.25
+F1(x) = 7.25
+
+
+------------------------------------------------------------
+
+5) REPEAT THE PROCESS
+
+- Compute new residuals
+- Train next tree h2(x)
+- Update model again
+
+F2(x) = F1(x) + learning_rate * h2(x)
+
+Continue for M trees.
+
+
+------------------------------------------------------------
+
+FINAL MODEL
+
+F(x) = F0(x) 
+       + h1(x) 
+       + h2(x) 
+       + h3(x) 
+       + ...
+       + hM(x)
+
+More formally:
+
+F(x) = SUM (i = 0 to M) hi(x)
+
+This is called the Final Boosted Model.
+
+
+------------------------------------------------------------
+
+KEY IDEA
+
+- Start with a simple model (mean).
+- Calculate errors (residuals).
+- Train a weak learner on residuals.
+- Add it to the model.
+- Repeat to reduce error step by step.
+
