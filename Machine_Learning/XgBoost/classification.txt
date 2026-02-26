@@ -1,0 +1,154 @@
+XGBOOST ML ALGORITHM (CLASSIFICATION)
+
+------------------------------------------------------------
+
+INTRODUCTION
+
+- XGBoost stands for Extreme Gradient Boosting.
+- It is an advanced implementation of Gradient Boosting.
+- Works for:
+    classification
+    regression
+
+- It builds trees sequentially.
+- Each new tree corrects errors of previous trees.
+- Uses regularization to prevent overfitting.
+
+
+------------------------------------------------------------
+
+WORKING PRINCIPLE
+
+1) Start with initial prediction (usually 0.5 for classification).
+2) Compute residuals (actual - predicted).
+3) Build a decision tree on residuals.
+4) Calculate leaf output values.
+5) Update predictions.
+6) Repeat for multiple trees.
+
+
+------------------------------------------------------------
+
+OBJECTIVE FUNCTION
+
+Objective = Loss Function + Regularization Term
+
+Obj = Σ L(yᵢ , ŷᵢ) + Σ Ω(fₖ)
+
+Where:
+- L = Loss function
+- Ω = Regularization term
+- fₖ = kth tree
+
+Regularization:
+
+Ω(f) = γT + ½ λ Σ w²
+
+Where:
+- T = number of leaves
+- w = leaf weights
+- γ = complexity penalty
+- λ = L2 regularization term
+
+
+------------------------------------------------------------
+
+TREE STRUCTURE
+
+Each tree consists of:
+- Root node
+- Internal nodes
+- Leaf nodes (output value)
+
+Leaf output weight:
+
+w = - (Σ residuals) / (Σ Hessian + λ)
+
+
+------------------------------------------------------------
+
+SIMILARITY SCORE
+
+Similarity Score (for a leaf):
+
+Score = ( (Σ residuals)² ) / (Σ Hessian + λ)
+
+Used to evaluate split quality.
+
+
+------------------------------------------------------------
+
+GAIN (FOR SPLITTING)
+
+Gain = Left Score + Right Score - Parent Score - γ
+
+If Gain > 0 → split is accepted
+If Gain ≤ 0 → do not split
+
+
+------------------------------------------------------------
+
+PRUNING
+
+- XGBoost grows tree fully first.
+- Then removes splits with negative gain.
+- Called backward pruning.
+
+
+------------------------------------------------------------
+
+SHRINKAGE (LEARNING RATE)
+
+After computing tree output:
+
+New Prediction =
+Old Prediction + η (Tree Output)
+
+Where:
+- η = learning rate (e.g., 0.1, 0.01)
+
+Smaller η:
+    - Slower learning
+    - Better generalization
+
+
+------------------------------------------------------------
+
+REGULARIZATION PARAMETERS
+
+λ (lambda):
+    - Controls L2 regularization
+    - Prevents large leaf weights
+
+γ (gamma):
+    - Minimum loss reduction required to split
+
+α (alpha):
+    - L1 regularization (optional)
+
+
+------------------------------------------------------------
+
+CLASSIFICATION (LOGISTIC)
+
+For binary classification:
+
+ŷ = 1 / (1 + e^(-score))
+
+Prediction:
+    If ŷ > 0.5 → Class 1
+    Else → Class 0
+
+
+------------------------------------------------------------
+
+ADVANTAGES
+
+- Handles missing values automatically
+- Built-in regularization
+- Faster than traditional Gradient Boosting
+- Parallel processing supported
+- High accuracy
+
+
+------------------------------------------------------------

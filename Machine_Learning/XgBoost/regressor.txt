@@ -1,0 +1,182 @@
+XGBOOST REGRESSION ML ALGORITHM
+
+------------------------------------------------------------
+
+INTRODUCTION
+
+- XGBoost = Extreme Gradient Boosting
+- Used for regression and classification.
+- In regression, output is continuous.
+- Trees are built sequentially.
+- Each new tree reduces previous prediction errors.
+
+------------------------------------------------------------
+
+LOSS FUNCTION (REGRESSION)
+
+For regression, commonly used loss:
+
+1) Mean Squared Error (MSE)
+
+L = Σ (y - ŷ)²
+
+Where:
+- y  = actual value
+- ŷ  = predicted value
+
+------------------------------------------------------------
+
+OBJECTIVE FUNCTION
+
+Objective = Loss + Regularization
+
+Obj = Σ L(yᵢ , ŷᵢ) + Σ Ω(fₖ)
+
+Regularization term:
+
+Ω(f) = γT + ½ λ Σ w²
+
+Where:
+- T = number of leaves
+- w = leaf weights
+- γ = complexity penalty
+- λ = L2 regularization parameter
+
+------------------------------------------------------------
+
+GRADIENT & HESSIAN (REGRESSION)
+
+For squared error loss:
+
+Loss = (y - ŷ)²
+
+Gradient (gᵢ) = ∂L/∂ŷ = 2(ŷ - y)
+
+Hessian (hᵢ) = 2
+
+These are used to compute leaf weights and similarity score.
+
+------------------------------------------------------------
+
+SIMILARITY SCORE (LEAF SCORE)
+
+Similarity Score = ( (Σ gᵢ)² ) / (Σ hᵢ + λ)
+
+Used to measure quality of a node.
+
+------------------------------------------------------------
+
+LEAF OUTPUT VALUE
+
+Leaf weight:
+
+w = - (Σ gᵢ) / (Σ hᵢ + λ)
+
+This value is added to prediction.
+
+------------------------------------------------------------
+
+GAIN (FOR SPLITTING)
+
+Gain = Left Score + Right Score - Parent Score - γ
+
+If Gain > 0:
+    Perform split
+Else:
+    Do not split
+
+------------------------------------------------------------
+
+WORKING STEPS (REGRESSION)
+
+Step 1:
+Initialize prediction (usually mean of y)
+
+Step 2:
+Compute residuals:
+Residual = y - ŷ
+
+Step 3:
+Compute gradient and hessian
+
+Step 4:
+Build tree using similarity score and gain
+
+Step 5:
+Calculate leaf weights
+
+Step 6:
+Update prediction:
+
+New Prediction =
+Old Prediction + η (Leaf Output)
+
+Where:
+η = learning rate
+
+------------------------------------------------------------
+
+SHRINKAGE (LEARNING RATE)
+
+New ŷ = Old ŷ + η * Tree Output
+
+Smaller η:
+    - Slower learning
+    - Better generalization
+
+------------------------------------------------------------
+
+EXAMPLE CONCEPT (SIMPLIFIED)
+
+Given residuals:
+
+Σ gᵢ = -10
+Σ hᵢ = 8
+λ = 1
+
+Leaf weight:
+
+w = -(-10) / (8 + 1)
+w = 10 / 9
+w ≈ 1.11
+
+Similarity score:
+
+Score = (-10)² / (8 + 1)
+Score = 100 / 9
+Score ≈ 11.11
+
+------------------------------------------------------------
+
+DIFFERENCE FROM CLASSIFICATION
+
+Regression:
+    - Uses squared error loss
+    - Output is continuous
+    - No sigmoid function
+
+Classification:
+    - Uses logistic loss
+    - Applies sigmoid function
+
+------------------------------------------------------------
+
+ADVANTAGES
+
+- High accuracy
+- Handles missing values
+- Built-in regularization
+- Fast and scalable
+- Prevents overfitting
+
+------------------------------------------------------------
+
+SUMMARY
+
+- XGBoost Regression minimizes squared error.
+- Uses gradient and hessian.
+- Uses similarity score to evaluate splits.
+- Uses gain to decide splitting.
+- Uses learning rate to update predictions.
+
+------------------------------------------------------------
