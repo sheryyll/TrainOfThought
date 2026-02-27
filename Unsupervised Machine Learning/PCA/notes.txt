@@ -1,0 +1,177 @@
+PRINCIPAL COMPONENT ANALYSIS (PCA) – Notes
+-----------------------------------------
+
+---- Overview ----
+    • PCA is a dimensionality reduction technique.
+    • It transforms high-dimensional data into a lower-dimensional space.
+    • The new axes are called principal components.
+    • These components capture maximum variance in the data.
+    • PCA is an unsupervised method (does not use labels).
+
+---- Why Dimensionality Reduction is Needed ----
+    • High dimensional data is hard to visualize.
+    • High dimensional data increases computation cost.
+    • Many features may be correlated or redundant.
+    • Reducing dimensions helps in:
+        - faster training
+        - noise reduction
+        - better visualization
+
+---- Two Broad Goals of Dimensionality Reduction ----
+    • Feature selection
+        - select a subset of original features
+    • Feature extraction
+        - create new features from old ones
+    • PCA belongs to feature extraction.
+
+---- Important Idea ----
+    • PCA finds new directions in feature space.
+    • These directions:
+        - are orthogonal (perpendicular)
+        - capture maximum variance
+    • Data is projected onto these directions.
+
+---- Principal Components ----
+    • First principal component (PC1):
+        - direction with maximum variance
+    • Second principal component (PC2):
+        - direction with next maximum variance
+        - orthogonal to PC1
+    • And so on...
+
+---- Intuition (Geometric View) ----
+    • Original axes are replaced by rotated axes.
+    • New axes align with the spread of the data.
+    • Projection is done onto these new axes.
+
+---- Variance and Spread ----
+    • PCA tries to preserve information.
+    • Information is measured using variance.
+    • Higher variance → more information.
+
+---- Correlated Features ----
+    • If features are strongly correlated:
+        - PCA can compress them into fewer components.
+
+---- Step 1 – Standardization ----
+    • Each feature must be scaled.
+    • Mean = 0 and standard deviation = 1.
+    • Important because PCA depends on variance.
+
+---- Step 2 – Mean Centering ----
+    • Subtract mean of each feature from the data.
+    • New data is centered around the origin.
+
+---- Step 3 – Covariance Matrix ----
+    • Covariance shows how features vary together.
+
+    Cov(X, Y) =
+        (1 / (n - 1)) * Σ (xi - x̄)(yi - ȳ)
+
+    • Covariance matrix shape:
+        d × d   (d = number of features)
+
+---- Covariance Matrix Properties ----
+    • Diagonal entries → variance of features
+    • Off-diagonal entries → covariance between features
+    • Matrix is symmetric
+
+---- Step 4 – Eigen Decomposition ----
+    • Compute eigenvalues and eigenvectors of covariance matrix.
+    • Eigenvectors define directions.
+    • Eigenvalues define how much variance lies along that direction.
+
+---- Eigenvectors ----
+    • Each eigenvector is a principal direction.
+    • They are orthogonal to each other.
+    • They form the new coordinate system.
+
+---- Eigenvalues ----
+    • Each eigenvalue corresponds to one eigenvector.
+    • Larger eigenvalue → more variance captured.
+
+---- Step 5 – Sort Components ----
+    • Sort eigenvectors in descending order of eigenvalues.
+    • First k eigenvectors are selected.
+
+---- Step 6 – Projection ----
+    • Project original data onto selected eigenvectors.
+
+    Z = X · W
+
+    where
+        X → standardized data
+        W → matrix of selected eigenvectors
+        Z → reduced representation
+
+---- How Many Components to Keep ----
+    • Choose k such that most variance is retained.
+    • Explained variance ratio:
+
+        explained_variance_ratio_i =
+            eigenvalue_i / sum(all eigenvalues)
+
+---- Cumulative Explained Variance ----
+    • Used to decide k.
+    • Example:
+        - keep components until 95% variance is covered.
+
+---- PCA as Optimization Problem ----
+    • PCA finds a direction that maximizes:
+
+        Var( Xw )
+
+    subject to:
+
+        ||w|| = 1
+
+---- PCA and Reconstruction ----
+    • Reduced data can be projected back.
+    • Reconstruction is approximate.
+    • Information loss occurs if k < d.
+
+---- 2D to 1D Example ----
+    • Original space: 2 features
+    • PCA finds one best direction.
+    • Data is projected onto that line.
+    • Resulting data has only one feature.
+
+---- PCA is a Linear Method ----
+    • PCA only captures linear structure.
+    • It cannot capture non-linear manifolds.
+
+---- PCA and Noise ----
+    • Small eigenvalues often represent noise.
+    • Removing low-variance components can reduce noise.
+
+---- PCA and Feature Selection (Difference) ----
+    Feature selection
+        • keeps original features
+    PCA
+        • creates new transformed features
+
+---- PCA and Data Visualization ----
+    • Often used to reduce data to:
+        - 2D
+        - 3D
+    • Used for plotting and inspection.
+
+---- PCA Using SVD (Practical Note) ----
+    • In practice, PCA is often implemented using SVD.
+    • SVD is numerically more stable.
+
+---- Important Limitations ----
+    • Components are hard to interpret.
+    • Sensitive to feature scaling.
+    • Works poorly when structure is non-linear.
+    • Outliers can distort directions.
+
+---- Summary ----
+    • PCA reduces dimensionality by projecting data onto new orthogonal axes.
+    • These axes maximize variance.
+    • PCA is unsupervised and linear.
+    • It is mainly used for:
+        - compression
+        - visualization
+        - noise reduction
+        - decorrelation of features
