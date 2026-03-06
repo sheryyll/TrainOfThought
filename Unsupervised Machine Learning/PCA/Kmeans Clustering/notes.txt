@@ -1,0 +1,123 @@
+K-MEANS CLUSTERING – Notes
+------------------------
+
+---- Overview ----
+    • K-Means is an unsupervised clustering algorithm.
+    • It groups data into K clusters.
+    • Each cluster is represented by a centroid (mean of points).
+    • Goal: minimize intra-cluster variance.
+
+---- Basic Idea ----
+    • Similar points should belong to the same cluster.
+    • Each point is assigned to the nearest centroid.
+    • Centroids are updated as the mean of assigned points.
+
+---- Terminology ----
+    • K  → number of clusters
+    • Centroid → center of a cluster
+    • Intra-cluster distance → distance between points inside the same cluster
+
+---- Algorithm Steps ----
+    Step 1 – Initialization
+        • Choose K initial centroids.
+        • Usually chosen randomly from the dataset.
+
+    Step 2 – Assignment Step
+        • Assign each data point to the nearest centroid.
+
+    Step 3 – Update Step
+        • Recompute each centroid as the mean of its assigned points.
+
+    Step 4 – Repeat
+        • Repeat assignment and update steps until convergence.
+
+---- Distance Measure ----
+    • Most commonly Euclidean distance is used.
+
+    dist(x, μ) =
+        sqrt( Σ (xi − μi)² )
+
+---- Objective Function (Loss) ----
+    • Also called Within-Cluster Sum of Squares (WCSS).
+
+    J =
+        Σ over clusters k
+            Σ over points x in cluster k
+                || x − μk ||²
+
+---- Convergence ----
+    • Algorithm converges when:
+        - centroids do not change
+        - or assignments do not change
+        - or maximum iterations reached
+
+---- How to Choose K ----
+    • Elbow method is commonly used.
+
+---- Elbow Method ----
+    • Run K-Means for different values of K.
+    • Plot K vs WCSS.
+    • Choose K at the “elbow point”.
+
+---- Properties of K-Means ----
+    • Works best when clusters are:
+        - spherical
+        - similar in size
+        - well separated
+
+---- Important Observations ----
+    • K-Means is sensitive to:
+        - initialization
+        - outliers
+        - scaling of features
+
+---- Initialization Problem ----
+    • Random initialization can give different results.
+    • Poor initialization may lead to bad local minima.
+
+---- K-Means++ (Initialization Improvement) ----
+    • A smarter way to initialize centroids.
+    • First centroid is chosen randomly.
+    • Next centroids are chosen far away from existing centroids.
+    • Reduces chances of bad clustering.
+
+---- Local Minimum Issue ----
+    • K-Means does not guarantee global optimum.
+    • It converges to a local minimum of the objective.
+
+---- Complexity ----
+    • Rough time complexity:
+        O(n × k × d × i)
+
+    where
+        n → number of points
+        k → number of clusters
+        d → number of features
+        i → number of iterations
+
+---- K-Means and Feature Scaling ----
+    • Always scale features before applying K-Means.
+    • Otherwise one feature can dominate distance.
+
+---- When K-Means Fails ----
+    • Non-spherical clusters.
+    • Clusters with different densities.
+    • Presence of many outliers.
+
+---- Hard Clustering ----
+    • Each point belongs to exactly one cluster.
+
+---- Soft Clustering (Contrast) ----
+    • Points can belong to multiple clusters with probabilities.
+    • Example:
+        - Gaussian Mixture Models.
+
+---- Random Initialization Trick ----
+    • Run K-Means multiple times with different initial seeds.
+    • Choose the solution with the lowest WCSS.
+
+---- Summary ----
+    • K-Means partitions data into K clusters by minimizing squared distance to centroids.
+    • It is simple and fast.
+    • It depends heavily on the choice of K and initialization.
+    • Best suited for compact, well-separated clusters.
