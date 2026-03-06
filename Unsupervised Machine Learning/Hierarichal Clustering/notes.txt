@@ -1,0 +1,136 @@
+HIERARCHICAL CLUSTERING – Notes
+-------------------------------
+
+---- Overview ----
+    • Hierarchical Clustering is an unsupervised learning algorithm.
+    • It builds clusters in a hierarchical (tree-like) structure.
+    • Instead of choosing K at the start, clusters are formed step by step.
+    • The result is represented using a dendrogram.
+
+---- Key Idea ----
+    • Objects are grouped based on similarity.
+    • Similar points are merged first.
+    • Less similar clusters merge later.
+
+---- Two Types of Hierarchical Clustering ----
+
+    1) Agglomerative Clustering (Bottom-Up)
+        • Each data point starts as its own cluster.
+        • Closest clusters are merged repeatedly.
+        • Process continues until all points belong to one cluster.
+
+    2) Divisive Clustering (Top-Down)
+        • Start with all points in one cluster.
+        • Recursively split clusters.
+        • Continue until each point becomes its own cluster.
+
+    • Agglomerative clustering is more commonly used.
+
+---- Agglomerative Clustering Algorithm ----
+
+    Step 1
+        • Start with N clusters (each data point is its own cluster).
+
+    Step 2
+        • Compute distance between all clusters.
+
+    Step 3
+        • Merge the two closest clusters.
+
+    Step 4
+        • Update the distance matrix.
+
+    Step 5
+        • Repeat until only one cluster remains.
+
+---- Distance Between Clusters (Linkage Methods) ----
+
+    1) Single Linkage
+        • Distance between the closest points of two clusters.
+
+        dist(A,B) =
+            min(distance between points in A and B)
+
+    2) Complete Linkage
+        • Distance between the farthest points of two clusters.
+
+        dist(A,B) =
+            max(distance between points in A and B)
+
+    3) Average Linkage
+        • Average distance between all pairs of points.
+
+    4) Ward Linkage
+        • Minimizes increase in variance after merging clusters.
+
+---- Dendrogram ----
+    • A tree diagram used to visualize hierarchical clustering.
+
+    Properties
+        • Leaves represent data points.
+        • Branches represent cluster merges.
+        • Height represents distance between clusters.
+
+---- Choosing Number of Clusters ----
+    • Cut the dendrogram at a certain height.
+    • Each cut forms clusters.
+
+    Example
+        • Horizontal cut across dendrogram
+        • Number of branches crossed = number of clusters
+
+---- Distance Matrix ----
+    • Stores pairwise distances between all data points.
+
+    Example
+
+        P1  P2  P3  P4
+    P1  0   d12 d13 d14
+    P2  d21 0   d23 d24
+    P3  d31 d32 0   d34
+    P4  d41 d42 d43 0
+
+---- Advantages ----
+    • No need to specify number of clusters initially.
+    • Dendrogram provides clear visualization.
+    • Works well for smaller datasets.
+
+---- Disadvantages ----
+    • Computationally expensive for large datasets.
+    • Once clusters merge, they cannot be undone.
+    • Sensitive to noise and outliers.
+
+---- Complexity ----
+    • Time complexity is roughly:
+
+        O(n² log n)
+
+    • Memory complexity:
+
+        O(n²)
+
+---- Difference: K-Means vs Hierarchical Clustering ----
+
+    K-Means
+        • Need to choose K beforehand
+        • Flat clustering
+        • Fast for large datasets
+
+    Hierarchical Clustering
+        • No need to choose K initially
+        • Produces tree structure
+        • More computationally expensive
+
+---- Example Intuition ----
+    • Imagine grouping animals.
+    • Start by pairing most similar animals.
+    • Gradually merge groups:
+        cats + lions → felines
+        dogs + wolves → canines
+    • Eventually everything merges into one group.
+
+---- Summary ----
+    • Hierarchical clustering builds a hierarchy of clusters.
+    • Uses dendrogram to visualize merging.
+    • Common method: Agglomerative clustering.
+    • Clusters are formed by merging closest groups step by step.

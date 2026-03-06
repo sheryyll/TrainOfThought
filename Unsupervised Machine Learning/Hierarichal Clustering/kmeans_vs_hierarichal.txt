@@ -1,0 +1,135 @@
+K-MEANS vs HIERARCHICAL CLUSTERING – Notes
+------------------------------------------
+
+---- Key Comparison Idea ----
+    • Both K-Means and Hierarchical Clustering are unsupervised learning algorithms.
+    • They group similar data points together.
+    • The main difference lies in scalability, flexibility, and clustering approach.
+
+------------------------------------------------
+
+---- 1. Scalability (Dataset Size) ----
+
+    Large Dataset
+        → K-Means is preferred.
+
+        Reason:
+            • Computationally efficient
+            • Works well with large datasets
+            • Faster convergence
+
+    Small Dataset
+        → Hierarchical Clustering is preferred.
+
+        Reason:
+            • More detailed cluster structure
+            • Visualization possible using dendrogram
+
+------------------------------------------------
+
+---- 2. Type of Data ----
+
+    K-Means
+        • Works best with numerical data.
+        • Uses mean (centroid) calculations.
+        • Distance usually measured using Euclidean distance.
+
+    Hierarchical Clustering
+        • Can work with a variety of data types.
+        • Can use different similarity measures:
+            - Euclidean distance
+            - Manhattan distance
+            - Cosine similarity
+            - Correlation similarity
+
+------------------------------------------------
+
+---- 3. Cluster Representation ----
+
+    K-Means
+        • Uses centroids to represent clusters.
+        • Each cluster is defined by its center.
+
+    Hierarchical Clustering
+        • Uses nested clusters.
+        • Clusters are represented in a tree structure (dendrogram).
+
+------------------------------------------------
+
+---- 4. Determining Number of Clusters ----
+
+    K-Means
+        • Number of clusters (K) must be specified beforehand.
+        • Methods like the Elbow Method help determine optimal K.
+
+    Hierarchical Clustering
+        • No need to specify number of clusters initially.
+        • Number of clusters can be chosen by cutting the dendrogram.
+
+------------------------------------------------
+
+---- 5. Algorithm Structure ----
+
+    K-Means
+        • Iterative optimization algorithm.
+        • Steps:
+            1. Initialize centroids
+            2. Assign points to nearest centroid
+            3. Update centroid positions
+            4. Repeat until convergence
+
+    Hierarchical Clustering
+        • Builds cluster hierarchy.
+        • Two approaches:
+            - Agglomerative (bottom-up)
+            - Divisive (top-down)
+
+------------------------------------------------
+
+---- 6. Flexibility ----
+
+    K-Means
+        • Less flexible.
+        • Assumes clusters are spherical and similar in size.
+
+    Hierarchical Clustering
+        • More flexible.
+        • Can capture more complex cluster structures.
+
+------------------------------------------------
+
+---- 7. Computational Cost ----
+
+    K-Means
+        • Time complexity approximately:
+            O(n × k × d × i)
+
+    Hierarchical Clustering
+        • Time complexity approximately:
+            O(n² log n)
+
+    • Hence hierarchical clustering becomes expensive for large datasets.
+
+------------------------------------------------
+
+---- 8. Visualization ----
+
+    K-Means
+        • Does not provide hierarchical structure.
+
+    Hierarchical Clustering
+        • Provides dendrogram for visualization of cluster relationships.
+
+------------------------------------------------
+
+---- Summary ----
+
+    K-Means
+        • Fast and scalable
+        • Best for large numerical datasets
+        • Requires predefined number of clusters
+
+    Hierarchical Clustering
+        • Provides hierarchical structure
+        • Better for smaller datasets
+        • Does not require predefined K
