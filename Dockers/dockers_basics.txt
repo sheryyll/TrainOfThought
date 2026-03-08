@@ -1,0 +1,198 @@
+DOCKER BASICS
+
+Topics
+1. What is Docker?
+2. What are Containers?
+3. Difference between Docker and Virtual Machines
+4. Docker Images vs Containers
+5. Docker Image Structure
+6. Docker Layers
+
+--------------------------------------------------
+
+WHAT IS DOCKER?
+
+Docker is a platform used to build, package, and run applications using containers.
+
+It helps developers:
+- Package applications with all required dependencies
+- Ensure the app runs the same in every environment
+- Simplify deployment
+
+--------------------------------------------------
+
+WHY CONTAINERS?
+
+Containers provide a way to package applications with all the necessary components.
+
+Advantages:
+1. Portable – can run on any environment
+2. Lightweight compared to virtual machines
+3. Consistent environments across development and production
+4. Faster startup time
+
+Example Problem:
+Your app works on your machine but fails on another machine because dependencies differ.
+
+Solution:
+Package the app + dependencies inside a container.
+
+
+Characteristics:
+- Portable
+- Lightweight
+- Isolated execution environment
+- Runs consistently across systems
+
+Example Flow:
+
+Dev Environment
+      ↓
+Build container
+      ↓
+Push to Docker Hub
+      ↓
+Pull in Production
+      ↓
+Run container
+
+--------------------------------------------------
+
+DOCKER IMAGES AND CONTAINERS
+
+Docker Image:
+A read-only template used to create containers.
+
+Docker Container:
+A running instance of a Docker image.
+
+Example:
+Docker Image → Blueprint
+Container → Running application
+
+--------------------------------------------------
+
+DOCKER IMAGE STRUCTURE
+
+Docker Image contains:
+
+Application
+Dependencies
+Libraries
+Runtime
+OS components
+
+Images are built using layers.
+
+Example Layers:
+
+Layer 1 → Base OS
+Layer 2 → Dependencies
+Layer 3 → Libraries
+Layer 4 → Application
+
+All layers together form the Docker Image.
+
+--------------------------------------------------
+
+DOCKER IMAGE vs CONTAINER
+
+Docker Image
+------------
+- Template of an application
+- Static
+- Used to create containers
+
+Container
+---------
+- Running instance of an image
+- Executes the application
+- Share the host OS kernel
+
+Example:
+
+Docker Image
+     ↓
+Run
+     ↓
+Containers (multiple instances)
+
+--------------------------------------------------
+
+DOCKER vs VIRTUAL MACHINES
+
+Virtual Machines
+----------------
+
+Hardware
+   ↓
+Host OS
+   ↓
+Hypervisor
+   ↓
+Guest OS
+   ↓
+Application
+
+Characteristics:
+- Each VM has its own OS
+- Heavy
+- High resource usage
+- Slower startup
+
+Docker Containers
+-----------------
+
+Hardware
+   ↓
+Host OS
+   ↓
+Docker Engine
+   ↓
+Containers
+   ↓
+Applications
+
+Characteristics:
+- Containers share host OS
+- Lightweight
+- Faster startup
+- Efficient resource usage
+
+--------------------------------------------------
+
+COMPARISON
+
+Virtual Machine
+- Contains full OS
+- Larger in size (GBs)
+- Slower startup
+- More resource consumption
+
+Docker Container
+- Shares host OS
+- Smaller in size (MBs)
+- Faster startup
+- Lightweight
+
+--------------------------------------------------
+
+KEY DIFFERENCES
+
+1. Docker containers share the host OS kernel
+2. Virtual machines require a full guest OS
+3. Docker images are portable
+4. Containers start much faster than VMs
+
+--------------------------------------------------
+
+COMPATIBILITY
+
+Virtual Machines:
+- Can run different operating systems
+
+Docker:
+- Containers share the same OS kernel
+
+Example:
+Linux containers run best on Linux hosts.
