@@ -1,0 +1,153 @@
+DBSCAN CLUSTERING – Notes
+-------------------------
+
+---- Overview ----
+    • DBSCAN stands for Density-Based Spatial Clustering of Applications with Noise.
+    • It is an unsupervised clustering algorithm.
+    • It groups together points that are closely packed.
+    • Points in low-density areas are treated as noise (outliers).
+    • Unlike K-Means, DBSCAN can detect clusters of arbitrary shapes.
+
+---- Key Idea ----
+    • Clusters are defined based on density of points.
+    • Regions with high density form clusters.
+    • Regions with low density are considered noise.
+
+------------------------------------------------
+
+---- Important Parameters ----
+
+    1) eps (ε)
+        • Radius of the neighborhood.
+        • Defines how close points must be to be considered neighbors.
+
+    2) minPts
+        • Minimum number of points required to form a dense region.
+        • Determines whether a point is a core point.
+
+------------------------------------------------
+
+---- Types of Points in DBSCAN ----
+
+    1) Core Point
+        • A point is a core point if:
+            number of points within radius ε ≥ minPts
+
+        Example
+            minPts = 4
+            If a point has 4 or more neighbors within ε
+            → it becomes a core point.
+
+    2) Border Point
+        • A point that lies within the ε radius of a core point
+        • But does not have enough neighbors to be a core point.
+
+        Condition
+            neighbors < minPts
+            but reachable from a core point.
+
+    3) Outlier (Noise)
+        • A point that is not reachable from any core point.
+        • Lies in a low-density region.
+
+------------------------------------------------
+
+---- DBSCAN Clustering Process ----
+
+    Step 1
+        • Pick an unvisited point.
+
+    Step 2
+        • Find all points within ε radius.
+
+    Step 3
+        • If neighbors ≥ minPts
+            → mark as core point
+            → start forming a cluster.
+
+    Step 4
+        • Expand the cluster by adding density-reachable points.
+
+    Step 5
+        • Continue until cluster cannot expand further.
+
+    Step 6
+        • Repeat for remaining unvisited points.
+
+------------------------------------------------
+
+---- Density Reachability ----
+
+    • A point P is directly density reachable from point Q if:
+        - Q is a core point
+        - distance(P, Q) ≤ ε
+
+    • A point P is density reachable from Q if:
+        - there exists a chain of core points connecting them.
+
+------------------------------------------------
+
+---- Cluster Shape ----
+
+    • DBSCAN can detect:
+        - curved clusters
+        - irregular shapes
+        - non-linear clusters
+
+    • Example shapes DBSCAN handles well:
+        - spiral clusters
+        - moon-shaped clusters
+        - uneven density groups
+
+------------------------------------------------
+
+---- Advantages ----
+
+    • No need to specify number of clusters beforehand.
+    • Can detect arbitrarily shaped clusters.
+    • Identifies outliers automatically.
+    • Works well with spatial data.
+
+------------------------------------------------
+
+---- Disadvantages ----
+
+    • Choosing ε and minPts can be difficult.
+    • Performance decreases with high-dimensional data.
+    • Struggles when clusters have very different densities.
+
+------------------------------------------------
+
+---- DBSCAN vs K-Means ----
+
+    K-Means
+        • Requires number of clusters K.
+        • Works best for spherical clusters.
+        • Sensitive to outliers.
+
+    DBSCAN
+        • No need to specify number of clusters.
+        • Detects arbitrary cluster shapes.
+        • Handles noise and outliers well.
+
+------------------------------------------------
+
+---- Example Use Cases ----
+
+    • Geospatial clustering
+    • Anomaly detection
+    • Image processing
+    • Pattern recognition
+    • Noise filtering in datasets
+
+------------------------------------------------
+
+---- Summary ----
+
+    • DBSCAN groups points based on density.
+    • Uses two parameters: ε (radius) and minPts (minimum neighbors).
+    • Points are categorized as:
+        - core points
+        - border points
+        - outliers
+    • It is powerful for detecting irregular cluster shapes and noise.
