@@ -1,0 +1,135 @@
+SILHOUETTE SCORE (Clustering Evaluation) – Notes
+------------------------------------------------
+
+---- Overview ----
+    • Silhouette Score is a metric used to evaluate clustering quality.
+    • It measures how well a data point fits within its cluster.
+    • Also checks how far it is from points in other clusters.
+    • Commonly used with clustering algorithms like:
+        - K-Means
+        - Hierarchical Clustering
+        - DBSCAN
+
+------------------------------------------------
+
+---- Key Idea ----
+    • A good clustering should satisfy:
+        1) Points inside the same cluster are close together.
+        2) Points from different clusters are far apart.
+
+    • Silhouette score measures this balance.
+
+------------------------------------------------
+
+---- Important Terms ----
+
+    a(i)
+        • Average distance between point i and all other points in the same cluster.
+        • Measures cluster cohesion (how tightly points are grouped).
+
+    b(i)
+        • Average distance between point i and all points in the nearest neighboring cluster.
+        • Measures cluster separation.
+
+------------------------------------------------
+
+---- Silhouette Score Formula ----
+
+                b(i) - a(i)
+    S(i) = -----------------------
+            max(a(i), b(i))
+
+    where
+        a(i) = intra-cluster distance
+        b(i) = nearest-cluster distance
+
+------------------------------------------------
+
+---- Interpretation of Silhouette Value ----
+
+    Range of Silhouette Score
+        -1  ≤  S(i)  ≤  1
+
+    S(i) ≈ 1
+        • Point is well matched to its own cluster.
+        • Far away from other clusters.
+        • Ideal clustering.
+
+    S(i) ≈ 0
+        • Point lies near the boundary between clusters.
+
+    S(i) < 0
+        • Point is probably assigned to the wrong cluster.
+
+------------------------------------------------
+
+---- Example Interpretation ----
+
+    High Score (~0.8 to 1)
+        → Very clear cluster separation.
+
+    Medium Score (~0.5)
+        → Acceptable clustering.
+
+    Low Score (~0 to 0.25)
+        → Weak cluster structure.
+
+    Negative Score
+        → Possible misclassification.
+
+------------------------------------------------
+
+---- Cluster Silhouette Score ----
+
+    • Average silhouette score across all points:
+
+        S = (1/n) * Σ S(i)
+
+    • Used to evaluate the overall clustering performance.
+
+------------------------------------------------
+
+---- Use Case ----
+    • Used to determine the optimal number of clusters (K).
+
+    Process
+        1) Run clustering with different K values.
+        2) Compute silhouette score for each K.
+        3) Choose K with the highest score.
+
+------------------------------------------------
+
+---- Example Intuition ----
+
+    Good Clustering
+        • Points tightly grouped within cluster.
+        • Large gap between clusters.
+
+    Poor Clustering
+        • Clusters overlap.
+        • Points from different clusters are close.
+
+------------------------------------------------
+
+---- Advantages ----
+
+    • Easy to interpret.
+    • Works with many clustering algorithms.
+    • Helps determine optimal number of clusters.
+
+------------------------------------------------
+
+---- Limitations ----
+
+    • Computationally expensive for very large datasets.
+    • Not ideal for clusters with irregular shapes.
+    • Sensitive to distance metric used.
+
+------------------------------------------------
+
+---- Summary ----
+
+    • Silhouette Score evaluates clustering quality.
+    • It compares intra-cluster distance and inter-cluster distance.
+    • Values range from -1 to 1.
+    • Higher value → better clustering structure.
