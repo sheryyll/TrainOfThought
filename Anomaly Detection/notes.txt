@@ -1,0 +1,160 @@
+ANOMALY DETECTION (Isolation Forest) – Notes
+--------------------------------------------
+
+---- Overview ----
+    • Anomaly Detection is used to identify unusual data points (outliers).
+    • Outliers are observations that deviate significantly from the majority of the data.
+    • Common use cases include:
+        - Fraud detection
+        - Network intrusion detection
+        - Fault detection in systems
+        - Financial risk monitoring
+
+------------------------------------------------
+
+---- Key Idea ----
+    • Normal data points occur frequently and form dense regions.
+    • Anomalies are rare and isolated from the rest of the data.
+    • Isolation Forest isolates anomalies rather than profiling normal points.
+
+------------------------------------------------
+
+---- Isolation Forest ----
+
+    • Isolation Forest is an ensemble-based anomaly detection algorithm.
+    • It uses multiple random decision trees called Isolation Trees.
+    • The idea is:
+        anomalies are easier to isolate than normal points.
+
+------------------------------------------------
+
+---- Isolation Tree Construction ----
+
+    Step 1
+        • Randomly select a feature.
+
+    Step 2
+        • Randomly choose a split value within the range of that feature.
+
+    Step 3
+        • Split the data into two parts.
+
+    Step 4
+        • Continue splitting recursively until:
+            - point is isolated
+            - or maximum tree depth is reached.
+
+------------------------------------------------
+
+---- Important Observation ----
+
+    • Anomalies require fewer splits to isolate.
+    • Normal points require more splits because they are surrounded by many other points.
+
+------------------------------------------------
+
+---- Path Length ----
+
+    • Path length = number of edges from the root node to the data point in the tree.
+
+    Example
+        anomaly
+            → isolated quickly
+            → short path length
+
+        normal point
+            → deeper in the tree
+            → longer path length
+
+------------------------------------------------
+
+---- Ensemble of Trees ----
+
+    • Isolation Forest builds many isolation trees.
+    • For each point:
+        path length is computed in every tree.
+    • The average path length is used to determine anomaly score.
+
+------------------------------------------------
+
+---- Anomaly Score Formula ----
+
+    S(x, n) = 2 ^ ( - E(h(x)) / c(n) )
+
+    where
+
+        x       = data point
+        n       = number of data points
+        h(x)    = path length of x
+        E(h(x)) = average path length across isolation trees
+        c(n)    = average path length of unsuccessful search in BST
+
+------------------------------------------------
+
+---- Meaning of Terms ----
+
+    E(h(x))
+        • Average number of splits required to isolate point x.
+
+    c(n)
+        • Normalization factor based on dataset size.
+
+------------------------------------------------
+
+---- Interpreting the Anomaly Score ----
+
+    S(x, n) ≈ 1
+        → Highly likely anomaly (outlier)
+
+    S(x, n) ≈ 0.5
+        → Normal data point
+
+    S(x, n) < 0.5
+        → Very normal / deep inside cluster
+
+------------------------------------------------
+
+---- Important Insight ----
+
+    If
+
+        E(h(x)) << c(n)
+
+    then
+
+        S(x, n) → close to 1
+        → point is an anomaly.
+
+    If
+
+        E(h(x)) ≈ c(n)
+
+    then
+
+        S(x, n) → around 0.5
+        → normal data.
+
+------------------------------------------------
+
+---- Advantages ----
+
+    • Efficient for large datasets.
+    • Works well with high-dimensional data.
+    • Does not require distance calculations.
+    • Automatically detects anomalies.
+
+------------------------------------------------
+
+---- Limitations ----
+
+    • Random splits may occasionally isolate normal points early.
+    • Performance depends on number of trees.
+    • Sensitive if dataset is very small.
+
+------------------------------------------------
+
+---- Summary ----
+
+    • Isolation Forest detects anomalies by isolating data points using random splits.
+    • Anomalies have shorter path lengths in isolation trees.
+    • The anomaly score determines whether a point is normal or an outlier.

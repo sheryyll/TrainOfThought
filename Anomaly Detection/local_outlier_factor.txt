@@ -1,0 +1,169 @@
+LOCAL OUTLIER FACTOR (LOF) – ANOMALY DETECTION
+
+------------------------------------------------------------
+
+INTRODUCTION
+
+Local Outlier Factor (LOF) is an unsupervised anomaly detection algorithm.
+
+It detects points that have significantly lower density compared to their neighbors.
+
+Used to identify:
+1) Local Outliers
+2) Global Outliers
+
+------------------------------------------------------------
+
+OUTLIER TYPES
+
+1) Global Outlier
+   - A data point that is far away from all other points.
+   - Clearly different from the entire dataset.
+
+2) Local Outlier
+   - A data point that is far from its nearby neighbors
+   - But may still lie within the overall dataset range.
+
+LOF mainly detects LOCAL OUTLIERS.
+
+------------------------------------------------------------
+
+CORE IDEA
+
+LOF compares the local density of a point with the density of its neighbors.
+
+If the density of a point is much lower than its neighbors,
+then the point is considered an OUTLIER.
+
+------------------------------------------------------------
+
+K-NEAREST NEIGHBORS (KNN)
+
+LOF uses K nearest neighbors.
+
+K = number of nearby points used for comparison.
+
+Example:
+K = 5
+
+This means each point is compared with its 5 nearest neighbors.
+
+------------------------------------------------------------
+
+STEPS IN LOF ALGORITHM
+
+Step 1:
+Choose K (number of nearest neighbors).
+
+Step 2:
+Compute K-distance for each point.
+
+Step 3:
+Find K-nearest neighbors of each point.
+
+Step 4:
+Compute Reachability Distance.
+
+Step 5:
+Compute Local Reachability Density (LRD).
+
+Step 6:
+Compute LOF score.
+
+------------------------------------------------------------
+
+REACHABILITY DISTANCE
+
+Reachability Distance =
+
+max (K-distance of neighbor, actual distance)
+
+This prevents extremely small distance values.
+
+------------------------------------------------------------
+
+LOCAL REACHABILITY DENSITY (LRD)
+
+LRD measures how dense the neighborhood is.
+
+LRD = 1 / (average reachability distance)
+
+High LRD → high density  
+Low LRD → low density
+
+------------------------------------------------------------
+
+LOF SCORE
+
+LOF compares density of point with density of neighbors.
+
+LOF(p) = Average (LRD of neighbors / LRD of point)
+
+Interpretation:
+
+LOF ≈ 1
+Point is normal.
+
+LOF > 1
+Point is an outlier.
+
+LOF >> 1
+Strong outlier.
+
+------------------------------------------------------------
+
+VISUAL INTERPRETATION
+
+Dense cluster
+→ normal points
+
+Sparse region
+→ potential outliers
+
+Points with much lower density than neighbors
+→ Local Outliers
+
+Points far away from entire dataset
+→ Global Outliers
+
+------------------------------------------------------------
+
+ADVANTAGES
+
+- Detects local anomalies effectively
+- Works well with complex datasets
+- No need for labeled data
+
+------------------------------------------------------------
+
+LIMITATIONS
+
+- Sensitive to choice of K
+- Computationally expensive for large datasets
+- Performance decreases in very high dimensions
+
+------------------------------------------------------------
+
+APPLICATIONS
+
+- Fraud detection
+- Network intrusion detection
+- Fault detection in machines
+- Medical anomaly detection
+- Credit card fraud detection
+
+------------------------------------------------------------
+
+SUMMARY
+
+LOF is a density-based anomaly detection method.
+
+It:
+- Uses K-nearest neighbors
+- Computes local density
+- Compares density with neighbors
+- Assigns LOF score
+
+Higher LOF score → Higher chance of anomaly.
+
+------------------------------------------------------------
