@@ -1,0 +1,96 @@
+DOCKER COMPOSE
+
+1. What is Docker Compose?
+Docker Compose is a tool used to define and run multi-container Docker applications.
+Instead of running multiple docker run commands, you define all services in one YAML file.
+
+It helps manage applications that require multiple containers
+(example: web app + database + cache).
+
+2. Main File
+Docker Compose uses a file called:
+
+docker-compose.yml
+
+This file defines:
+- services
+- networks
+- volumes
+- container configurations
+
+3. Basic Structure
+
+version: "3"
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+
+4. Key Components
+
+services
+Defines the containers that make up the application.
+
+image
+Specifies the Docker image to use.
+
+build
+Builds the image from a Dockerfile.
+
+ports
+Maps container ports to host ports.
+
+volumes
+Stores persistent data outside the container.
+
+environment
+Sets environment variables inside containers.
+
+depends_on
+Specifies dependency order between services.
+
+5. Important Docker Compose Commands
+
+Build containers
+docker-compose build
+
+Start containers
+docker-compose up
+
+Start in background
+docker-compose up -d
+
+Stop containers
+docker-compose down
+
+View running services
+docker-compose ps
+
+View logs
+docker-compose logs
+
+6. Advantages of Docker Compose
+
+- Manages multiple containers easily
+- Uses a single configuration file
+- Simplifies development environments
+- Easy to start/stop entire application
+- Good for microservices architecture
+
+7. Example Use Case
+
+Flask Web App + PostgreSQL Database
+
+Services:
+- web (Flask application)
+- db (PostgreSQL container)
+
+Both are defined in docker-compose.yml and run together using:
+
+docker-compose up

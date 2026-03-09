@@ -1,0 +1,79 @@
+DOCKER ESSENTIAL COMMANDS
+
+1. Check Docker Version
+docker --version
+
+2. Check Docker Information
+docker info
+
+3. Pull an Image from Docker Hub
+docker pull image_name
+
+Example:
+docker pull python:3.8
+
+4. List Available Images
+docker images
+
+5. Build a Docker Image
+docker build -t image_name .
+
+Example:
+docker build -t welcome-app .
+
+6. Run a Container
+docker run image_name
+
+Example:
+docker run welcome-app
+
+7. Run Container with Port Mapping
+docker run -p host_port:container_port image_name
+
+Example:
+docker run -p 5000:5000 welcome-app
+
+8. Run Container in Detached Mode (Background)
+docker run -d image_name
+
+9. List Running Containers
+docker ps
+
+10. List All Containers (running + stopped)
+docker ps -a
+
+11. Stop a Container
+docker stop container_id
+
+12. Start a Stopped Container
+docker start container_id
+
+13. Restart a Container
+docker restart container_id
+
+14. Remove a Container
+docker rm container_id
+
+15. Remove an Image
+docker rmi image_name
+
+16. View Container Logs
+docker logs container_id
+
+17. Execute Command Inside Container
+docker exec -it container_id /bin/sh
+
+18. Tag an Image
+docker tag image_name username/repository:tag
+
+Example:
+docker tag welcome-app sheryyll/welcome-app:latest
+
+19. Push Image to Docker Hub
+docker push username/repository:tag
+
+Example:
+docker push sheryyll/welcome-app:latest
+
+20. Remove Unused Resources
+docker system prune
