@@ -1,0 +1,106 @@
+DEEP LEARNING – BEGINNER NOTES
+
+1. INTRODUCTION
+Deep Learning is a subset of Machine Learning that uses Artificial Neural Networks (ANNs) to solve complex problems. It is inspired by how the human brain works.
+
+2. KEY CONCEPTS
+- Neural Network: A group of connected neurons (nodes)
+- Layers:
+  Input Layer: Takes input data
+  Hidden Layers: Perform computations
+  Output Layer: Gives final result
+- Weights: Importance of each input
+- Bias: Helps adjust output
+- Activation Function: Adds non-linearity
+
+3. WHY DEEP LEARNING?
+- Works well with large datasets
+- Automatically learns features
+- Used in:
+  Image Recognition
+  Speech Recognition
+  Natural Language Processing
+
+4. TYPES OF NEURAL NETWORKS
+- ANN: Basic neural network
+- CNN: Used for image processing
+- RNN: Used for sequential data
+
+5. TRAINING PROCESS
+- Forward Propagation: Input moves through network
+- Loss Function: Calculates error
+- Backpropagation: Updates weights
+- Optimizer: Improves learning (e.g., Gradient Descent)
+
+--------------------------------------------------
+
+ACTIVATION FUNCTIONS
+
+Activation functions decide whether a neuron should activate or not.
+
+1. SIGMOID FUNCTION
+
+Formula:
+σ(x) = 1 / (1 + e^(-x))
+
+Range:
+0 to 1
+
+Properties:
+- Smooth and differentiable
+- Output behaves like probability
+
+Advantages:
+- Good for binary classification
+
+Disadvantages:
+- Vanishing gradient problem
+- Not zero-centered
+
+Behavior:
+- S-shaped curve
+- Large negative input → output near 0
+- Large positive input → output near 1
+
+--------------------------------------------------
+
+2. TANH FUNCTION
+
+Formula:
+tanh(x) = (e^x - e^(-x)) / (e^x + e^(-x))
+
+Range:
+-1 to 1
+
+Properties:
+- Zero-centered
+- Stronger gradients than sigmoid
+
+Advantages:
+- Faster learning than sigmoid
+- Better for hidden layers
+
+Disadvantages:
+- Still has vanishing gradient issue
+
+Behavior:
+- S-shaped curve centered at 0
+- Negative input → negative output
+- Positive input → positive output
+
+--------------------------------------------------
+
+SIGMOID vs TANH
+
+Sigmoid:
+Range: 0 to 1
+Not zero-centered
+Slower learning
+Used in output layer
+
+Tanh:
+Range: -1 to 1
+Zero-centered
+Faster learning
+Used in hidden layers
+
