@@ -104,3 +104,113 @@ Zero-centered
 Faster learning
 Used in hidden layers
 
+--------------------------------------------------
+
+3. RELU (Rectified Linear Unit)
+
+Formula:
+f(x) = max(0, x)
+
+Range:
+0 to infinity
+
+Properties:
+- Very simple and fast
+- Outputs 0 for negative values
+
+Advantages:
+- Reduces vanishing gradient problem
+- Computationally efficient
+- Speeds up training
+
+Disadvantages:
+- "Dying ReLU" problem (neurons can become inactive)
+- Not zero-centered
+
+Behavior:
+- Negative input → 0
+- Positive input → same value
+
+--------------------------------------------------
+
+4. LEAKY RELU
+
+Formula:
+f(x) = x (if x > 0)
+f(x) = 0.01x (if x < 0)
+
+Range:
+(-infinity to infinity)
+
+Properties:
+- Small slope for negative values
+- Fixes dying ReLU issue
+
+Advantages:
+- Prevents dead neurons
+- Better gradient flow than ReLU
+
+Disadvantages:
+- Slope value (0.01) is fixed and not learned
+- Still not zero-centered
+
+Behavior:
+- Negative input → small negative value
+- Positive input → same value
+
+--------------------------------------------------
+
+5. ELU (Exponential Linear Unit)
+
+Formula:
+f(x) = x (if x > 0)
+f(x) = α(e^x - 1) (if x < 0)
+
+Range:
+(-α to infinity)
+
+Properties:
+- Smooth curve for negative values
+- More stable learning
+
+Advantages:
+- Reduces vanishing gradient
+- Mean output closer to zero (faster learning)
+- Better than ReLU in many cases
+
+Disadvantages:
+- More computationally expensive
+- Requires tuning of α (alpha)
+
+Behavior:
+- Negative input → smooth negative values
+- Positive input → same value
+
+--------------------------------------------------
+
+6. SOFTMAX FUNCTION
+
+Formula:
+Softmax(x_i) = e^(x_i) / Σ e^(x_j)
+
+Range:
+0 to 1 (probabilities)
+
+Properties:
+- Converts outputs into probabilities
+- Sum of outputs = 1
+
+Advantages:
+- Used for multi-class classification
+- Easy to interpret outputs
+
+Disadvantages:
+- Sensitive to large input values
+- Computationally expensive
+- Not suitable for hidden layers
+
+Behavior:
+- Higher input → higher probability
+- Outputs represent class probabilities
+
+--------------------------------------------------
