@@ -6,23 +6,27 @@ import pandas as pd
 import pickle
 import warnings
 warnings.filterwarnings('ignore')
+import os
 
 # load the trained model
+BASE_DIR = os.path.dirname(__file__)
+
 @st.cache_resource
 def load_model_and_tools():
-    model = tf.keras.models.load_model('model.h5')
+    model = tf.keras.models.load_model(
+        os.path.join(BASE_DIR, 'model.h5')
+    )
 
-    with open('onehot_encoder_geo.pkl', 'rb') as file:
+    with open(os.path.join(BASE_DIR, 'onehot_encoder_geo.pkl'), 'rb') as file:
         onehot_encoder_geo = pickle.load(file)
 
-    with open('label_encoder_gender.pkl', 'rb') as file:
+    with open(os.path.join(BASE_DIR, 'label_encoder_gender.pkl'), 'rb') as file:
         label_encoder_gender = pickle.load(file)
 
-    with open('scaler.pkl', 'rb') as file:
+    with open(os.path.join(BASE_DIR, 'scaler.pkl'), 'rb') as file:
         scaler = pickle.load(file)
 
     return model, onehot_encoder_geo, label_encoder_gender, scaler
-
 
 model, onehot_encoder_geo, label_encoder_gender, scaler = load_model_and_tools()
 
