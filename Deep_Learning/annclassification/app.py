@@ -14,7 +14,7 @@ BASE_DIR = os.path.dirname(__file__)
 @st.cache_resource
 def load_model_and_tools():
     model = tf.keras.models.load_model(
-        os.path.join(BASE_DIR, 'model.h5')
+    os.path.join(BASE_DIR, 'model.keras')
     )
 
     with open(os.path.join(BASE_DIR, 'onehot_encoder_geo.pkl'), 'rb') as file:
