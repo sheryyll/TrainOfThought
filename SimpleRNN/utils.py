@@ -4,6 +4,7 @@ from tensorflow.keras.datasets import imdb
 from tensorflow.keras.preprocessing import sequence
 from tensorflow.keras.models import load_model
 import streamlit as st
+import os
 
 # Load word index
 @st.cache_resource
@@ -16,7 +17,8 @@ word_index = load_word_index()
 # Load model
 @st.cache_resource
 def load_model_cached():
-    return load_model("simple_rnn_imdb.keras", compile=False)
+    model_path = os.path.join(os.path.dirname(__file__), "simple_rnn_imdb.keras")
+    return load_model(model_path, compile=False)
 
 def preprocess_text(text):
     text = text.lower()
