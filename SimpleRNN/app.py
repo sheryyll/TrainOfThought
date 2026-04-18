@@ -1,10 +1,12 @@
 import streamlit as st
-from utils import predict_sentiment
+from utils import predict_sentiment, load_model_cached
 
 st.set_page_config(page_title="Sentiment Analyzer", layout="centered")
 
 st.title("🎬 IMDB Sentiment Analysis (Simple RNN)")
 st.write("Enter a movie review and get sentiment prediction.")
+
+model = load_model_cached()
 
 # Input
 review = st.text_area("Enter your review:")
@@ -13,7 +15,7 @@ if st.button("Analyze Sentiment"):
     if review.strip() == "":
         st.warning("Please enter a review.")
     else:
-        sentiment, score = predict_sentiment(review)
+        sentiment, score = predict_sentiment(review, model)
         
         st.subheader(f"Sentiment: {sentiment}")
         st.write(f"Confidence Score: {score:.2f}")

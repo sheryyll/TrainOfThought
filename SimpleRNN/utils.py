@@ -3,12 +3,20 @@ import numpy as np
 from tensorflow.keras.datasets import imdb
 from tensorflow.keras.preprocessing import sequence
 from tensorflow.keras.models import load_model
+import streamlit as st
 
 # Load word index
-word_index = imdb.get_word_index()
+@st.cache_resource
+def load_word_index():
+    return imdb.get_word_index()
+
+word_index = load_word_index()
+
 
 # Load model
-model = load_model('simple_rnn_imdb.keras')
+@st.cache_resource
+def load_model_cached():
+    return load_model("simple_rnn_imdb.keras")
 
 def preprocess_text(text):
     text = text.lower()
@@ -20,7 +28,7 @@ def preprocess_text(text):
     padded = sequence.pad_sequences([encoded], maxlen=500)
     return padded
 
-def predict_sentiment(review):
+def predict_sentiment(review, model):
     processed = preprocess_text(review)
     prediction = model.predict(processed)
     
