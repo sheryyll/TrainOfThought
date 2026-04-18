@@ -16,7 +16,7 @@ word_index = load_word_index()
 # Load model
 @st.cache_resource
 def load_model_cached():
-    return load_model("simple_rnn_imdb.keras")
+    return load_model("simple_rnn_imdb.keras", compile=False)
 
 def preprocess_text(text):
     text = text.lower()
