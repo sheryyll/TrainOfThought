@@ -1,0 +1,5 @@
+streamlit
+tensorflow==2.21.0
+numpy
+pandas
+nltk
